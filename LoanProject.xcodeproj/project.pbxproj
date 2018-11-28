@@ -13,9 +13,17 @@
 		35D974A221AE978E007F139C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D974A121AE978E007F139C /* Assets.xcassets */; };
 		35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D974A321AE978E007F139C /* LaunchScreen.storyboard */; };
 		35D974A821AE978E007F139C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974A721AE978E007F139C /* main.m */; };
+		35D974C421AE991A007F139C /* LPMainTabBarC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974C121AE991A007F139C /* LPMainTabBarC.m */; };
+		35D974C521AE991A007F139C /* LPMainNavC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974C221AE991A007F139C /* LPMainNavC.m */; };
+		35D974C821AE9A0F007F139C /* UI.json in Resources */ = {isa = PBXBuildFile; fileRef = 35D974C621AE9A0F007F139C /* UI.json */; };
+		35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974CA21AE9A86007F139C /* LPCertificationVC.m */; };
+		35D974CE21AE9A9B007F139C /* LPMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974CD21AE9A9B007F139C /* LPMineVC.m */; };
+		35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D021AEA068007F139C /* LPCertificationCell.m */; };
+		5E5392F9AF2D7C820F35789C /* libPods-LoanProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C9F526D3557AF329873BE2 /* libPods-LoanProject.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A8C419A6E50DC3FBFBA2815 /* Pods-LoanProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject.release.xcconfig"; sourceTree = "<group>"; };
 		35D9749521AE978D007F139C /* LoanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D9749821AE978D007F139C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35D9749921AE978D007F139C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +34,20 @@
 		35D974A421AE978E007F139C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35D974A621AE978E007F139C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35D974A721AE978E007F139C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35D974C021AE991A007F139C /* LPMainNavC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPMainNavC.h; sourceTree = "<group>"; };
+		35D974C121AE991A007F139C /* LPMainTabBarC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPMainTabBarC.m; sourceTree = "<group>"; };
+		35D974C221AE991A007F139C /* LPMainNavC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPMainNavC.m; sourceTree = "<group>"; };
+		35D974C321AE991A007F139C /* LPMainTabBarC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPMainTabBarC.h; sourceTree = "<group>"; };
+		35D974C621AE9A0F007F139C /* UI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UI.json; sourceTree = "<group>"; };
+		35D974C721AE9A0F007F139C /* LPA-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LPA-Prefix.pch"; sourceTree = "<group>"; };
+		35D974C921AE9A86007F139C /* LPCertificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPCertificationVC.h; sourceTree = "<group>"; };
+		35D974CA21AE9A86007F139C /* LPCertificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPCertificationVC.m; sourceTree = "<group>"; };
+		35D974CC21AE9A9B007F139C /* LPMineVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPMineVC.h; sourceTree = "<group>"; };
+		35D974CD21AE9A9B007F139C /* LPMineVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPMineVC.m; sourceTree = "<group>"; };
+		35D974CF21AEA068007F139C /* LPCertificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPCertificationCell.h; sourceTree = "<group>"; };
+		35D974D021AEA068007F139C /* LPCertificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPCertificationCell.m; sourceTree = "<group>"; };
+		39C9F526D3557AF329873BE2 /* libPods-LoanProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoanProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C272F44322CDDEC15AA37C95 /* Pods-LoanProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5392F9AF2D7C820F35789C /* libPods-LoanProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +67,8 @@
 			children = (
 				35D9749721AE978D007F139C /* LoanProject */,
 				35D9749621AE978D007F139C /* Products */,
+				69D123C72F2CA9C7D031EB07 /* Pods */,
+				5AD8A8171909931820EAFDB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +83,14 @@
 		35D9749721AE978D007F139C /* LoanProject */ = {
 			isa = PBXGroup;
 			children = (
+				35D974AF21AE9861007F139C /* Classes */,
+				35D974AE21AE9861007F139C /* imageSource */,
 				35D9749821AE978D007F139C /* AppDelegate.h */,
 				35D9749921AE978D007F139C /* AppDelegate.m */,
 				35D9749B21AE978D007F139C /* ViewController.h */,
 				35D9749C21AE978D007F139C /* ViewController.m */,
+				35D974C721AE9A0F007F139C /* LPA-Prefix.pch */,
+				35D974C621AE9A0F007F139C /* UI.json */,
 				35D9749E21AE978D007F139C /* Main.storyboard */,
 				35D974A121AE978E007F139C /* Assets.xcassets */,
 				35D974A321AE978E007F139C /* LaunchScreen.storyboard */,
@@ -71,6 +100,175 @@
 			path = LoanProject;
 			sourceTree = "<group>";
 		};
+		35D974AE21AE9861007F139C /* imageSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = imageSource;
+			sourceTree = "<group>";
+		};
+		35D974AF21AE9861007F139C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				35D974B421AE9861007F139C /* Main */,
+				35D974BC21AE988C007F139C /* Login */,
+				35D974B821AE9861007F139C /* Certification */,
+				35D974B021AE9861007F139C /* Mine */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		35D974B021AE9861007F139C /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				35D974B121AE9861007F139C /* Controller */,
+				35D974B221AE9861007F139C /* Model */,
+				35D974B321AE9861007F139C /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		35D974B121AE9861007F139C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35D974CC21AE9A9B007F139C /* LPMineVC.h */,
+				35D974CD21AE9A9B007F139C /* LPMineVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35D974B221AE9861007F139C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35D974B321AE9861007F139C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35D974B421AE9861007F139C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				35D974B521AE9861007F139C /* Controller */,
+				35D974B621AE9861007F139C /* Model */,
+				35D974B721AE9861007F139C /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		35D974B521AE9861007F139C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35D974C021AE991A007F139C /* LPMainNavC.h */,
+				35D974C221AE991A007F139C /* LPMainNavC.m */,
+				35D974C321AE991A007F139C /* LPMainTabBarC.h */,
+				35D974C121AE991A007F139C /* LPMainTabBarC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35D974B621AE9861007F139C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35D974B721AE9861007F139C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35D974B821AE9861007F139C /* Certification */ = {
+			isa = PBXGroup;
+			children = (
+				35D974B921AE9861007F139C /* Controller */,
+				35D974BA21AE9861007F139C /* Model */,
+				35D974BB21AE9861007F139C /* View */,
+			);
+			path = Certification;
+			sourceTree = "<group>";
+		};
+		35D974B921AE9861007F139C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35D974C921AE9A86007F139C /* LPCertificationVC.h */,
+				35D974CA21AE9A86007F139C /* LPCertificationVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35D974BA21AE9861007F139C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35D974BB21AE9861007F139C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35D974CF21AEA068007F139C /* LPCertificationCell.h */,
+				35D974D021AEA068007F139C /* LPCertificationCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35D974BC21AE988C007F139C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				35D974BD21AE988C007F139C /* Controller */,
+				35D974BE21AE988C007F139C /* Model */,
+				35D974BF21AE988C007F139C /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		35D974BD21AE988C007F139C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35D974BE21AE988C007F139C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35D974BF21AE988C007F139C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5AD8A8171909931820EAFDB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39C9F526D3557AF329873BE2 /* libPods-LoanProject.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69D123C72F2CA9C7D031EB07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C272F44322CDDEC15AA37C95 /* Pods-LoanProject.debug.xcconfig */,
+				2A8C419A6E50DC3FBFBA2815 /* Pods-LoanProject.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,6 +276,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35D974AB21AE978E007F139C /* Build configuration list for PBXNativeTarget "LoanProject" */;
 			buildPhases = (
+				0C238D6C6BBFE1547AABA278 /* [CP] Check Pods Manifest.lock */,
 				35D9749121AE978D007F139C /* Sources */,
 				35D9749221AE978D007F139C /* Frameworks */,
 				35D9749321AE978D007F139C /* Resources */,
@@ -129,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */,
+				35D974C821AE9A0F007F139C /* UI.json in Resources */,
 				35D974A221AE978E007F139C /* Assets.xcassets in Resources */,
 				35D974A021AE978D007F139C /* Main.storyboard in Resources */,
 			);
@@ -136,14 +336,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C238D6C6BBFE1547AABA278 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoanProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35D9749121AE978D007F139C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D974C421AE991A007F139C /* LPMainTabBarC.m in Sources */,
 				35D9749D21AE978D007F139C /* ViewController.m in Sources */,
+				35D974CE21AE9A9B007F139C /* LPMineVC.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
+				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
+				35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */,
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
+				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,11 +509,15 @@
 		};
 		35D974AC21AE978E007F139C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C272F44322CDDEC15AA37C95 /* Pods-LoanProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5MUG9P9JK;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LoanProject/LPA-Prefix.pch";
 				INFOPLIST_FILE = LoanProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +530,15 @@
 		};
 		35D974AD21AE978E007F139C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A8C419A6E50DC3FBFBA2815 /* Pods-LoanProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5MUG9P9JK;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LoanProject/LPA-Prefix.pch";
 				INFOPLIST_FILE = LoanProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

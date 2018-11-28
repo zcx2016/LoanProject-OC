@@ -1,0 +1,14 @@
+[
+ {
+ "clsName" : "LPCertificationVC",
+ "title" : "认证",
+ "image" : "main_home",
+ "selectImage" : "main_home_highlight"
+ },
+ {
+ "clsName" : "LPMineVC",
+ "title" : "我的",
+ "image" : "main_my",
+ "selectImage" : "main_my_highlight"
+ }
+]

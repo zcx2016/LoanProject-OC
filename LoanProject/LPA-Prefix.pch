@@ -1,0 +1,29 @@
+//
+//  LPA-Prefix.pch
+//  LPAssistantClient
+//
+//  Created by 张晨曦 on 2018/3/28.
+//  Copyright © 2018年 张晨曦. All rights reserved.
+//
+
+#ifndef LPA_Prefix_pch
+#define LPA_Prefix_pch
+
+#ifdef __OBJC__  //判断一下， 之后oc文件才会导入下面的头文件
+
+#import <Masonry.h>
+#define kUrlReqHead @"http://192.168.6.161:8080"
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define ZCXColor(x,y,z) [UIColor colorWithRed:x/255.0 green:y/255.0 blue:z/255.0 alpha:1.0]
+
+//tableView 的 Frame
+#define kUITableViewFrame [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped]
+
+#define ZcxUserDefauts [NSUserDefaults standardUserDefaults]
+
+#endif
+
+#endif /* LPA_Prefix_pch */

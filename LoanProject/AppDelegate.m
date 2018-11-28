@@ -16,7 +16,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //设置状态栏字体颜色为黑色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    //先设置根控制器
+    self.window.rootViewController = [NSClassFromString(@"LPMainTabBarC") new];
+    self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
