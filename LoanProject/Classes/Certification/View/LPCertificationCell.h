@@ -12,6 +12,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LPCertificationCell : UITableViewCell
 
+@property (strong, nonatomic) UIImageView *headImg;
+
+@property (strong, nonatomic) UILabel *titleLb;
+
+@property (strong, nonatomic) UILabel *checkLb;
+
+@property (strong, nonatomic) UIImageView *indicatorView;
+
+@property (strong, nonatomic) UIView *lineView;
+
++ (instancetype)cellWithTableView:(UITableView *)tableView;
+
 @end
 
 NS_ASSUME_NONNULL_END

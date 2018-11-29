@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LoginVC-->
+        <scene sceneID="kex-vh-WvJ">
+            <objects>
+                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PbQ-3e-d0m" customClass="LoginVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yxD-kh-0Sl"/>
+                        <viewControllerLayoutGuide type="bottom" id="sOE-eF-V4c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uzw-O0-bVw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="GX5-mW-jB1">
+                                <rect key="frame" x="122.5" y="90" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="33f-qd-zvq"/>
+                                    <constraint firstAttribute="height" constant="130" id="4Tl-sf-k6l"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-qw-G1x">
+                                <rect key="frame" x="25" y="275" width="325" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="k7b-ua-a8v"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="填写手机验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhZ-In-9Dk">
+                                <rect key="frame" x="25" y="350" width="220" height="45"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWw-ss-S8l">
+                                <rect key="frame" x="260" y="350" width="90" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="LTP-70-IMf"/>
+                                    <constraint firstAttribute="height" constant="45" id="uYh-wW-509"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="发送验证码">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isp-GD-MBF">
+                                <rect key="frame" x="25" y="445" width="325" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="9f9-4A-5DE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="登 录">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vTf-qw-G1x" firstAttribute="top" secondItem="GX5-mW-jB1" secondAttribute="bottom" constant="55" id="4Vd-sp-r63"/>
+                            <constraint firstItem="Isp-GD-MBF" firstAttribute="leading" secondItem="vTf-qw-G1x" secondAttribute="leading" id="5sM-QY-Soc"/>
+                            <constraint firstItem="vTf-qw-G1x" firstAttribute="centerX" secondItem="Uzw-O0-bVw" secondAttribute="centerX" id="Ato-Fc-UNW"/>
+                            <constraint firstItem="IWw-ss-S8l" firstAttribute="leading" secondItem="dhZ-In-9Dk" secondAttribute="trailing" constant="15" id="FI9-3K-Wue"/>
+                            <constraint firstItem="vTf-qw-G1x" firstAttribute="leading" secondItem="Uzw-O0-bVw" secondAttribute="leading" constant="25" id="KXb-3h-X7o"/>
+                            <constraint firstItem="GX5-mW-jB1" firstAttribute="centerX" secondItem="Uzw-O0-bVw" secondAttribute="centerX" id="MF5-FW-chZ"/>
+                            <constraint firstItem="IWw-ss-S8l" firstAttribute="top" secondItem="vTf-qw-G1x" secondAttribute="bottom" constant="30" id="MOY-nU-298"/>
+                            <constraint firstItem="Isp-GD-MBF" firstAttribute="trailing" secondItem="vTf-qw-G1x" secondAttribute="trailing" id="NYk-FO-WBz"/>
+                            <constraint firstItem="IWw-ss-S8l" firstAttribute="trailing" secondItem="vTf-qw-G1x" secondAttribute="trailing" id="Q8R-rb-5JQ"/>
+                            <constraint firstItem="Isp-GD-MBF" firstAttribute="top" secondItem="dhZ-In-9Dk" secondAttribute="bottom" constant="50" id="fpu-uY-eNH"/>
+                            <constraint firstItem="IWw-ss-S8l" firstAttribute="top" secondItem="dhZ-In-9Dk" secondAttribute="top" id="lOn-Oz-tPp"/>
+                            <constraint firstItem="GX5-mW-jB1" firstAttribute="top" secondItem="yxD-kh-0Sl" secondAttribute="bottom" constant="70" id="o4D-hL-fVR"/>
+                            <constraint firstItem="dhZ-In-9Dk" firstAttribute="leading" secondItem="vTf-qw-G1x" secondAttribute="leading" id="sb0-gK-e5Y"/>
+                            <constraint firstItem="IWw-ss-S8l" firstAttribute="bottom" secondItem="dhZ-In-9Dk" secondAttribute="bottom" id="uVp-0G-gPf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginBtn" destination="Isp-GD-MBF" id="V6P-5X-uIv"/>
+                        <outlet property="logoImgView" destination="GX5-mW-jB1" id="ZSX-st-j7y"/>
+                        <outlet property="phoneTF" destination="vTf-qw-G1x" id="lhe-zC-SoR"/>
+                        <outlet property="sendCodeBtn" destination="IWw-ss-S8l" id="8gf-gM-MSU"/>
+                        <outlet property="verifyCodeTF" destination="dhZ-In-9Dk" id="zBo-Uh-xYe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n0e-Yb-Ihx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="36"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="loginLogo" width="720" height="508"/>
+    </resources>
+</document>
