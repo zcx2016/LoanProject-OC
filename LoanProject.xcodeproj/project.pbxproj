@@ -20,6 +20,8 @@
 		35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D021AEA068007F139C /* LPCertificationCell.m */; };
 		35D974D921AFE2DD007F139C /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D821AFE2DD007F139C /* LoginVC.m */; };
 		35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D974DC21AFE30B007F139C /* LoginVC.storyboard */; };
+		35D974E421AFF2CF007F139C /* IDCheckVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974E321AFF2CF007F139C /* IDCheckVC.m */; };
+		35D974E721AFF2E5007F139C /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974E621AFF2E5007F139C /* AboutUsVC.m */; };
 		5E5392F9AF2D7C820F35789C /* libPods-LoanProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C9F526D3557AF329873BE2 /* libPods-LoanProject.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,10 @@
 		35D974D721AFE2DD007F139C /* LoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		35D974D821AFE2DD007F139C /* LoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		35D974DC21AFE30B007F139C /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
+		35D974E221AFF2CF007F139C /* IDCheckVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDCheckVC.h; sourceTree = "<group>"; };
+		35D974E321AFF2CF007F139C /* IDCheckVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDCheckVC.m; sourceTree = "<group>"; };
+		35D974E521AFF2E5007F139C /* AboutUsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsVC.h; sourceTree = "<group>"; };
+		35D974E621AFF2E5007F139C /* AboutUsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsVC.m; sourceTree = "<group>"; };
 		39C9F526D3557AF329873BE2 /* libPods-LoanProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoanProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C272F44322CDDEC15AA37C95 /* Pods-LoanProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +119,7 @@
 		35D974B021AE9861007F139C /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				35D974DE21AFF2AA007F139C /* SonModule */,
 				35D974B121AE9861007F139C /* Controller */,
 				35D974B221AE9861007F139C /* Model */,
 				35D974B321AE9861007F139C /* View */,
@@ -181,6 +188,7 @@
 		35D974B821AE9861007F139C /* Certification */ = {
 			isa = PBXGroup;
 			children = (
+				35D974E021AFF2B3007F139C /* SonModule */,
 				35D974B921AE9861007F139C /* Controller */,
 				35D974BA21AE9861007F139C /* Model */,
 				35D974BB21AE9861007F139C /* View */,
@@ -228,6 +236,40 @@
 				35D974D721AFE2DD007F139C /* LoginVC.h */,
 				35D974D821AFE2DD007F139C /* LoginVC.m */,
 				35D974DC21AFE30B007F139C /* LoginVC.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35D974DE21AFF2AA007F139C /* SonModule */ = {
+			isa = PBXGroup;
+			children = (
+				35D974DF21AFF2AA007F139C /* Controller */,
+				35D974E521AFF2E5007F139C /* AboutUsVC.h */,
+				35D974E621AFF2E5007F139C /* AboutUsVC.m */,
+			);
+			path = SonModule;
+			sourceTree = "<group>";
+		};
+		35D974DF21AFF2AA007F139C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35D974E021AFF2B3007F139C /* SonModule */ = {
+			isa = PBXGroup;
+			children = (
+				35D974E121AFF2B3007F139C /* Controller */,
+				35D974E221AFF2CF007F139C /* IDCheckVC.h */,
+				35D974E321AFF2CF007F139C /* IDCheckVC.m */,
+			);
+			path = SonModule;
+			sourceTree = "<group>";
+		};
+		35D974E121AFF2B3007F139C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,11 +387,13 @@
 			files = (
 				35D974C421AE991A007F139C /* LPMainTabBarC.m in Sources */,
 				35D974CE21AE9A9B007F139C /* LPMineVC.m in Sources */,
+				35D974E721AFF2E5007F139C /* AboutUsVC.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
 				35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */,
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
 				35D974D921AFE2DD007F139C /* LoginVC.m in Sources */,
+				35D974E421AFF2CF007F139C /* IDCheckVC.m in Sources */,
 				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
