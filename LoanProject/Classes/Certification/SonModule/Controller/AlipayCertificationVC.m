@@ -1,18 +1,18 @@
 //
-//  IDCheckVC.m
+//  AlipayCertificationVC.m
 //  LoanProject
 //
-//  Created by 张晨曦 on 2018/11/29.
+//  Created by 张晨曦 on 2018/12/10.
 //  Copyright © 2018年 张晨曦. All rights reserved.
 //
 
-#import "IDCheckVC.h"
+#import "AlipayCertificationVC.h"
 
-@interface IDCheckVC ()
+@interface AlipayCertificationVC ()
 
 @end
 
-@implementation IDCheckVC
+@implementation AlipayCertificationVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
