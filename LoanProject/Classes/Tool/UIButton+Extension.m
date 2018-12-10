@@ -13,22 +13,14 @@
 + (UIButton *)createYellowBgBtn:(NSString *)title{
     
     UIButton *btn = [UIButton new];
-    
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"navBg"] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:@"navbg"] forState:UIControlStateNormal];
     btn.layer.cornerRadius = 5;
     btn.layer.masksToBounds = YES;
-    
     return btn;
 }
 
-- (void)setYellowBgBtn:(NSString *)title{
-    [self setTitle:title forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self setBackgroundImage:[UIImage imageNamed:@"navBg"] forState:UIControlStateNormal];
-    self.layer.cornerRadius = 5;
-    self.layer.masksToBounds = YES;
-}
+
 
 @end

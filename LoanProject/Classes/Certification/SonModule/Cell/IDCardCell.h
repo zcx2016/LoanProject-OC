@@ -1,8 +1,8 @@
 //
-//  UIButton+Extension.h
+//  IDCardCell.h
 //  LoanProject
 //
-//  Created by 张晨曦 on 2018/12/10.
+//  Created by 张晨曦 on 2018/12/11.
 //  Copyright © 2018年 张晨曦. All rights reserved.
 //
 
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIButton (Extension)
+@interface IDCardCell : UITableViewCell
 
-+ (UIButton *)createYellowBgBtn:(NSString *)title;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
 
 @end
 

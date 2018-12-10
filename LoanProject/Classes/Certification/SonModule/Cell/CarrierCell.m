@@ -14,6 +14,11 @@
     [super awakeFromNib];
     
     self.selectionStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.codeBtn.layer.borderWidth = 1;
+    self.codeBtn.layer.borderColor = ZCXColor(253, 153, 83).CGColor;
+    self.codeBtn.layer.cornerRadius = 5;
+    self.codeBtn.layer.masksToBounds = YES;
     [self.codeBtn setHidden:YES];
 }
 

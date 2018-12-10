@@ -98,8 +98,8 @@
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:({
             // 这里定制左边的按钮, 让其成为返回按钮
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [btn setTitle:@" " forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+//            [btn setTitle:@"   " forState:UIControlStateNormal];
+//            btn.titleLabel.font = [UIFont systemFontOfSize:15.0];
             [btn setImage:[UIImage imageNamed:@"backIcon"] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
             [btn sizeToFit];

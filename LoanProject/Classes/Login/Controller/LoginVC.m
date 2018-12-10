@@ -30,8 +30,7 @@
     [self.sendCodeBtn addTarget:self action:@selector(sendCodeEvents) forControlEvents:UIControlEventTouchUpInside];
     
     self.loginBtn.layer.cornerRadius = 5;
-    self.loginBtn.layer.borderWidth = 1;
-    self.loginBtn.layer.borderColor = ZCXColor(238, 142, 33).CGColor;
+    self.loginBtn.layer.masksToBounds = YES;
     [self.loginBtn addTarget:self action:@selector(loginEvents) forControlEvents:UIControlEventTouchUpInside];
     
 }

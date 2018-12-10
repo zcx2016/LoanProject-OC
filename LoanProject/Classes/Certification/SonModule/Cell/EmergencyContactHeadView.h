@@ -1,5 +1,5 @@
 //
-//  UIButton+Extension.h
+//  EmergencyContactHeadView.h
 //  LoanProject
 //
 //  Created by 张晨曦 on 2018/12/10.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIButton (Extension)
+@interface EmergencyContactHeadView : UITableViewHeaderFooterView
 
-+ (UIButton *)createYellowBgBtn:(NSString *)title;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 

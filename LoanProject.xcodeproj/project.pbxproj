@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		359EDD8321BEA83E00C2A8EB /* EmergencyContactHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 359EDD8221BEA83E00C2A8EB /* EmergencyContactHeadView.m */; };
+		359EDD8521BEA86300C2A8EB /* EmergencyContactHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359EDD8421BEA86300C2A8EB /* EmergencyContactHeadView.xib */; };
+		359EDD8821BEC38300C2A8EB /* AliPayFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 359EDD8721BEC38300C2A8EB /* AliPayFooterView.m */; };
+		359EDD8A21BEC3A900C2A8EB /* AliPayFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359EDD8921BEC3A900C2A8EB /* AliPayFooterView.xib */; };
+		359EDD9721BECD2700C2A8EB /* IDCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 359EDD9521BECD2700C2A8EB /* IDCardCell.m */; };
+		359EDD9821BECD2700C2A8EB /* IDCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359EDD9621BECD2700C2A8EB /* IDCardCell.xib */; };
 		35CFBE0C21BE0A7B0065B11D /* LoanProgressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE0B21BE0A7B0065B11D /* LoanProgressVC.m */; };
 		35CFBE0F21BE0AA80065B11D /* MyLoanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE0E21BE0AA80065B11D /* MyLoanVC.m */; };
 		35CFBE1221BE0AD50065B11D /* CustomerServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE1121BE0AD50065B11D /* CustomerServiceVC.m */; };
@@ -41,6 +47,15 @@
 
 /* Begin PBXFileReference section */
 		2A8C419A6E50DC3FBFBA2815 /* Pods-LoanProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject.release.xcconfig"; sourceTree = "<group>"; };
+		359EDD8121BEA83E00C2A8EB /* EmergencyContactHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmergencyContactHeadView.h; sourceTree = "<group>"; };
+		359EDD8221BEA83E00C2A8EB /* EmergencyContactHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmergencyContactHeadView.m; sourceTree = "<group>"; };
+		359EDD8421BEA86300C2A8EB /* EmergencyContactHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmergencyContactHeadView.xib; sourceTree = "<group>"; };
+		359EDD8621BEC38300C2A8EB /* AliPayFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliPayFooterView.h; sourceTree = "<group>"; };
+		359EDD8721BEC38300C2A8EB /* AliPayFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AliPayFooterView.m; sourceTree = "<group>"; };
+		359EDD8921BEC3A900C2A8EB /* AliPayFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliPayFooterView.xib; sourceTree = "<group>"; };
+		359EDD9421BECD2700C2A8EB /* IDCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDCardCell.h; sourceTree = "<group>"; };
+		359EDD9521BECD2700C2A8EB /* IDCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDCardCell.m; sourceTree = "<group>"; };
+		359EDD9621BECD2700C2A8EB /* IDCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDCardCell.xib; sourceTree = "<group>"; };
 		35CFBE0A21BE0A7B0065B11D /* LoanProgressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanProgressVC.h; sourceTree = "<group>"; };
 		35CFBE0B21BE0A7B0065B11D /* LoanProgressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanProgressVC.m; sourceTree = "<group>"; };
 		35CFBE0D21BE0AA80065B11D /* MyLoanVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLoanVC.h; sourceTree = "<group>"; };
@@ -128,6 +143,15 @@
 				35CFBE3C21BE65380065B11D /* CarrierCell.h */,
 				35CFBE3D21BE65380065B11D /* CarrierCell.m */,
 				35CFBE3E21BE65380065B11D /* CarrierCell.xib */,
+				359EDD8121BEA83E00C2A8EB /* EmergencyContactHeadView.h */,
+				359EDD8221BEA83E00C2A8EB /* EmergencyContactHeadView.m */,
+				359EDD8421BEA86300C2A8EB /* EmergencyContactHeadView.xib */,
+				359EDD8621BEC38300C2A8EB /* AliPayFooterView.h */,
+				359EDD8721BEC38300C2A8EB /* AliPayFooterView.m */,
+				359EDD8921BEC3A900C2A8EB /* AliPayFooterView.xib */,
+				359EDD9421BECD2700C2A8EB /* IDCardCell.h */,
+				359EDD9521BECD2700C2A8EB /* IDCardCell.m */,
+				359EDD9621BECD2700C2A8EB /* IDCardCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -431,11 +455,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				359EDD8A21BEC3A900C2A8EB /* AliPayFooterView.xib in Resources */,
 				35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */,
 				35CFBE4021BE65380065B11D /* CarrierCell.xib in Resources */,
 				35D974C821AE9A0F007F139C /* UI.json in Resources */,
 				35D974A221AE978E007F139C /* Assets.xcassets in Resources */,
 				35CFBE3821BE5D060065B11D /* BankCardCell.xib in Resources */,
+				359EDD9821BECD2700C2A8EB /* IDCardCell.xib in Resources */,
+				359EDD8521BEA86300C2A8EB /* EmergencyContactHeadView.xib in Resources */,
 				35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */,
 				35D974A021AE978D007F139C /* Main.storyboard in Resources */,
 			);
@@ -484,13 +511,16 @@
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
 				35D974D921AFE2DD007F139C /* LoginVC.m in Sources */,
 				35CFBE1221BE0AD50065B11D /* CustomerServiceVC.m in Sources */,
+				359EDD8321BEA83E00C2A8EB /* EmergencyContactHeadView.m in Sources */,
 				35CFBE4321BE681C0065B11D /* PhoneCertificationVC.m in Sources */,
 				35CFBE2821BE485A0065B11D /* MineHeadView.m in Sources */,
 				35CFBE2121BE0C3C0065B11D /* BankCardCertificationVC.m in Sources */,
 				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
 				35CFBE3721BE5D060065B11D /* BankCardCell.m in Sources */,
+				359EDD9721BECD2700C2A8EB /* IDCardCell.m in Sources */,
 				35CFBE1521BE0AFC0065B11D /* CardManageVC.m in Sources */,
 				35CFBE1B21BE0BE20065B11D /* AlipayCertificationVC.m in Sources */,
+				359EDD8821BEC38300C2A8EB /* AliPayFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

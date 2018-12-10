@@ -44,14 +44,14 @@
 
 - (void)setBotBtn{
     
-    _quitBtn = [UIButton new];
-    [_quitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [_quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _quitBtn.layer.cornerRadius = 6;
-    _quitBtn.layer.borderWidth = 1;
-    _quitBtn.layer.borderColor = ZCXColor(238, 147, 55).CGColor;
-    [_quitBtn setBackgroundColor:ZCXColor(238, 147, 55)];
-    _quitBtn.layer.masksToBounds = YES;
+    _quitBtn = [UIButton createYellowBgBtn:@"退出登录"];
+//    [_quitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+//    [_quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    _quitBtn.layer.cornerRadius = 6;
+//    _quitBtn.layer.borderWidth = 1;
+//    _quitBtn.layer.borderColor = ZCXColor(238, 147, 55).CGColor;
+//    [_quitBtn setBackgroundColor:ZCXColor(238, 147, 55)];
+//    _quitBtn.layer.masksToBounds = YES;
     
     [_quitBtn addTarget:self action:@selector(quitClick) forControlEvents:UIControlEventTouchUpInside];
     

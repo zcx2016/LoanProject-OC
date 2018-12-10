@@ -42,15 +42,7 @@
 
 - (void)setBotBtn{
     
-    _submitBtn = [UIButton new];
-    [_submitBtn setTitle:@"提交贷款申请" forState:UIControlStateNormal];
-    [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _submitBtn.layer.cornerRadius = 6;
-    _submitBtn.layer.borderWidth = 1;
-    _submitBtn.layer.borderColor = ZCXColor(224, 224, 224).CGColor;
-    [_submitBtn setBackgroundColor:ZCXColor(224, 224, 224)];
-    _submitBtn.layer.masksToBounds = YES;
-    
+    _submitBtn = [UIButton createYellowBgBtn:@"提交贷款申请"];
     [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_submitBtn];
@@ -90,9 +82,12 @@
         IDCardCertificationVC *vc = [IDCardCertificationVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
+        CarrierCertificationVC *vc = [CarrierCertificationVC new];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.row == 2){
-        
+        AlipayCertificationVC *vc = [AlipayCertificationVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         BankCardCertificationVC *vc = [BankCardCertificationVC new];
         [self.navigationController pushViewController:vc animated:YES];

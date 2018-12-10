@@ -1,5 +1,5 @@
 //
-//  UIButton+Extension.h
+//  AliPayFooterView.h
 //  LoanProject
 //
 //  Created by 张晨曦 on 2018/12/10.
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIButton (Extension)
-
-+ (UIButton *)createYellowBgBtn:(NSString *)title;
+@interface AliPayFooterView : UITableViewHeaderFooterView
 
 @end
 

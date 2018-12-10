@@ -43,7 +43,7 @@
     _checkLb.text = @"未认证";
     _checkLb.textColor = [UIColor lightGrayColor];
 
-    _indicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiantou"]];
+    _indicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightArrow"]];
 }
 
 - (void)layoutSubviews{

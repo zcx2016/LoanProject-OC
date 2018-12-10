@@ -13,7 +13,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) UIButton *agreeBtn;
+@property (nonatomic, strong) UIButton *chooseBtn;
+@property (nonatomic, strong) UILabel *protocolLabel;
 @property (nonatomic, strong) UIButton *submitBtn;
 
 //自定义 电话,银行卡 的inputAccessoryView
@@ -42,35 +43,67 @@
 - (void)setBotBtn{
     
     //同意协议 按钮
+    _chooseBtn = [UIButton new];
+    [_chooseBtn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
+    [_chooseBtn addTarget:self action:@selector(chooseEvents:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_chooseBtn];
+    [_chooseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).with.offset(200);
+        make.left.equalTo(self.view).with.offset(15);
+        make.width.height.equalTo(@30);
+    }];
     
+    //协议
+    _protocolLabel = [UILabel new];
+    _protocolLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickProtocol)];
+    [_protocolLabel addGestureRecognizer:ges];
+    
+    //富文本
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"同意《用户使用协议》"];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, 2)];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(2, attributedStr.length - 2)];
+    _protocolLabel .attributedText = attributedStr;
+    
+    [self.view addSubview:_protocolLabel];
+    [_protocolLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.chooseBtn);
+        make.left.equalTo(self.chooseBtn.mas_right).with.offset(5);
+    }];
+
     
     //确认按钮
     _submitBtn = [UIButton createYellowBgBtn:@"确认"];
-    
-    _submitBtn = [UIButton new];
-    
-//    _submitBtn setYellowBgBtn:<#(nonnull NSString *)#>
-    
-    
-    [_submitBtn setTitle:@"确认" forState:UIControlStateNormal];
-    [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _submitBtn.layer.cornerRadius = 6;
-    [_submitBtn setBackgroundImage:[UIImage imageNamed:@"navbg"] forState:UIControlStateNormal];
-    _submitBtn.layer.masksToBounds = YES;
-    
     [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_submitBtn];
     [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-50);
-        make.left.equalTo(self.view).with.offset(20);
+        make.top.equalTo(self.view).with.offset(250);
+        make.left.equalTo(self.view).with.offset(15);
         make.height.equalTo(@50);
     }];
 }
 
+- (void)clickProtocol{
+    NSLog(@"点击协议");
+}
+
+- (void)chooseEvents:(UIButton *)btn{
+    if (btn.isSelected == NO){
+        btn.selected = !btn.selected;
+        [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
+        NSLog(@"不同意协议");
+    }else{
+        btn.selected = !btn.selected;
+        [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
+        NSLog(@"同意协议");
+    }
+    
+}
+
 - (void)submitClick{
-    NSLog(@"手机信息-- %@,%@,%@",_weak_serverPwdCell.inputTF.text,_weak_verifyCodeCell.inputTF.text,_weak_phoneCell.inputTF.text);
+    NSLog(@"手机信息-- %@,%@,%@",_weak_phoneCell.inputTF.text,_weak_serverPwdCell.inputTF.text,_weak_verifyCodeCell.inputTF.text);
     
 }
 
@@ -85,9 +118,9 @@
 
 #pragma mark - tableView DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CarrierCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BankCardCell" forIndexPath:indexPath];
+    CarrierCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CarrierCell" forIndexPath:indexPath];
     cell.inputTF.inputAccessoryView = self.customAccessoryView;
-    
+    cell.inputTF.keyboardType = UIKeyboardTypeNumberPad;
     if (indexPath.row == 0){
         _weak_phoneCell = cell;
         cell.inputTF.placeholder = @"请输入手机号码";
@@ -124,7 +157,7 @@
 #pragma mark - 懒加载tableView
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 130) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
