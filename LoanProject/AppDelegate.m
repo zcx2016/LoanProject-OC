@@ -18,8 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    //设置状态栏字体颜色为黑色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    //设置状态栏字体颜色
+    //黑色=UIStatusBarStyleDefault  白色=UIStatusBarStyleLightContent
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     //先设置根控制器
     self.window.rootViewController = [NSClassFromString(@"LPMainTabBarC") new];

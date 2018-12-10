@@ -14,7 +14,14 @@
 		35CFBE1821BE0B8A0065B11D /* CarrierCertificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE1721BE0B8A0065B11D /* CarrierCertificationVC.m */; };
 		35CFBE1B21BE0BE20065B11D /* AlipayCertificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE1A21BE0BE20065B11D /* AlipayCertificationVC.m */; };
 		35CFBE1E21BE0C1C0065B11D /* IDCardCertificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE1D21BE0C1C0065B11D /* IDCardCertificationVC.m */; };
-		35CFBE2121BE0C3C0065B11D /* BankCardCertification.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE2021BE0C3C0065B11D /* BankCardCertification.m */; };
+		35CFBE2121BE0C3C0065B11D /* BankCardCertificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE2021BE0C3C0065B11D /* BankCardCertificationVC.m */; };
+		35CFBE2821BE485A0065B11D /* MineHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE2721BE485A0065B11D /* MineHeadView.m */; };
+		35CFBE3721BE5D060065B11D /* BankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE3521BE5D060065B11D /* BankCardCell.m */; };
+		35CFBE3821BE5D060065B11D /* BankCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35CFBE3621BE5D060065B11D /* BankCardCell.xib */; };
+		35CFBE3F21BE65380065B11D /* CarrierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE3D21BE65380065B11D /* CarrierCell.m */; };
+		35CFBE4021BE65380065B11D /* CarrierCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35CFBE3E21BE65380065B11D /* CarrierCell.xib */; };
+		35CFBE4321BE681C0065B11D /* PhoneCertificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE4221BE681C0065B11D /* PhoneCertificationVC.m */; };
+		35CFBE4921BE6E560065B11D /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE4821BE6E560065B11D /* UIButton+Extension.m */; };
 		35D9749A21AE978D007F139C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D9749921AE978D007F139C /* AppDelegate.m */; };
 		35D974A021AE978D007F139C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D9749E21AE978D007F139C /* Main.storyboard */; };
 		35D974A221AE978E007F139C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D974A121AE978E007F139C /* Assets.xcassets */; };
@@ -48,8 +55,20 @@
 		35CFBE1A21BE0BE20065B11D /* AlipayCertificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlipayCertificationVC.m; sourceTree = "<group>"; };
 		35CFBE1C21BE0C1C0065B11D /* IDCardCertificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDCardCertificationVC.h; sourceTree = "<group>"; };
 		35CFBE1D21BE0C1C0065B11D /* IDCardCertificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDCardCertificationVC.m; sourceTree = "<group>"; };
-		35CFBE1F21BE0C3C0065B11D /* BankCardCertification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardCertification.h; sourceTree = "<group>"; };
-		35CFBE2021BE0C3C0065B11D /* BankCardCertification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardCertification.m; sourceTree = "<group>"; };
+		35CFBE1F21BE0C3C0065B11D /* BankCardCertificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardCertificationVC.h; sourceTree = "<group>"; };
+		35CFBE2021BE0C3C0065B11D /* BankCardCertificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardCertificationVC.m; sourceTree = "<group>"; };
+		35CFBE2621BE485A0065B11D /* MineHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeadView.h; sourceTree = "<group>"; };
+		35CFBE2721BE485A0065B11D /* MineHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineHeadView.m; sourceTree = "<group>"; };
+		35CFBE3421BE5D060065B11D /* BankCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardCell.h; sourceTree = "<group>"; };
+		35CFBE3521BE5D060065B11D /* BankCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardCell.m; sourceTree = "<group>"; };
+		35CFBE3621BE5D060065B11D /* BankCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCardCell.xib; sourceTree = "<group>"; };
+		35CFBE3C21BE65380065B11D /* CarrierCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarrierCell.h; sourceTree = "<group>"; };
+		35CFBE3D21BE65380065B11D /* CarrierCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarrierCell.m; sourceTree = "<group>"; };
+		35CFBE3E21BE65380065B11D /* CarrierCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarrierCell.xib; sourceTree = "<group>"; };
+		35CFBE4121BE681C0065B11D /* PhoneCertificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneCertificationVC.h; sourceTree = "<group>"; };
+		35CFBE4221BE681C0065B11D /* PhoneCertificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneCertificationVC.m; sourceTree = "<group>"; };
+		35CFBE4721BE6E560065B11D /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
+		35CFBE4821BE6E560065B11D /* UIButton+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		35D9749521AE978D007F139C /* LoanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D9749821AE978D007F139C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35D9749921AE978D007F139C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +110,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35CFBE2521BE48500065B11D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35CFBE2621BE485A0065B11D /* MineHeadView.h */,
+				35CFBE2721BE485A0065B11D /* MineHeadView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35CFBE3021BE5C400065B11D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				35CFBE3421BE5D060065B11D /* BankCardCell.h */,
+				35CFBE3521BE5D060065B11D /* BankCardCell.m */,
+				35CFBE3621BE5D060065B11D /* BankCardCell.xib */,
+				35CFBE3C21BE65380065B11D /* CarrierCell.h */,
+				35CFBE3D21BE65380065B11D /* CarrierCell.m */,
+				35CFBE3E21BE65380065B11D /* CarrierCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		35CFBE4521BE6E0E0065B11D /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				35CFBE4721BE6E560065B11D /* UIButton+Extension.h */,
+				35CFBE4821BE6E560065B11D /* UIButton+Extension.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		35D9748C21AE978D007F139C = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +179,7 @@
 		35D974AF21AE9861007F139C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				35CFBE4521BE6E0E0065B11D /* Tool */,
 				35D974D521AFE2C7007F139C /* Login */,
 				35D974B421AE9861007F139C /* Main */,
 				35D974B821AE9861007F139C /* Certification */,
@@ -141,9 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				35D974B121AE9861007F139C /* Controller */,
+				35CFBE2521BE48500065B11D /* View */,
 				35D974DE21AFF2AA007F139C /* SonModule */,
 				35D974B221AE9861007F139C /* Model */,
-				35D974B321AE9861007F139C /* View */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -162,13 +213,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		35D974B321AE9861007F139C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		35D974B421AE9861007F139C /* Main */ = {
@@ -209,8 +253,8 @@
 		35D974B821AE9861007F139C /* Certification */ = {
 			isa = PBXGroup;
 			children = (
-				35D974E021AFF2B3007F139C /* SonModule */,
 				35D974B921AE9861007F139C /* Controller */,
+				35D974E021AFF2B3007F139C /* SonModule */,
 				35D974BA21AE9861007F139C /* Model */,
 				35D974BB21AE9861007F139C /* View */,
 			);
@@ -289,6 +333,7 @@
 		35D974E021AFF2B3007F139C /* SonModule */ = {
 			isa = PBXGroup;
 			children = (
+				35CFBE3021BE5C400065B11D /* Cell */,
 				35D974E121AFF2B3007F139C /* Controller */,
 			);
 			path = SonModule;
@@ -301,10 +346,12 @@
 				35CFBE1D21BE0C1C0065B11D /* IDCardCertificationVC.m */,
 				35CFBE1621BE0B8A0065B11D /* CarrierCertificationVC.h */,
 				35CFBE1721BE0B8A0065B11D /* CarrierCertificationVC.m */,
+				35CFBE4121BE681C0065B11D /* PhoneCertificationVC.h */,
+				35CFBE4221BE681C0065B11D /* PhoneCertificationVC.m */,
 				35CFBE1921BE0BE20065B11D /* AlipayCertificationVC.h */,
 				35CFBE1A21BE0BE20065B11D /* AlipayCertificationVC.m */,
-				35CFBE1F21BE0C3C0065B11D /* BankCardCertification.h */,
-				35CFBE2021BE0C3C0065B11D /* BankCardCertification.m */,
+				35CFBE1F21BE0C3C0065B11D /* BankCardCertificationVC.h */,
+				35CFBE2021BE0C3C0065B11D /* BankCardCertificationVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -385,8 +432,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */,
+				35CFBE4021BE65380065B11D /* CarrierCell.xib in Resources */,
 				35D974C821AE9A0F007F139C /* UI.json in Resources */,
 				35D974A221AE978E007F139C /* Assets.xcassets in Resources */,
+				35CFBE3821BE5D060065B11D /* BankCardCell.xib in Resources */,
 				35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */,
 				35D974A021AE978D007F139C /* Main.storyboard in Resources */,
 			);
@@ -420,12 +469,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CFBE3F21BE65380065B11D /* CarrierCell.m in Sources */,
 				35D974C421AE991A007F139C /* LPMainTabBarC.m in Sources */,
 				35D974CE21AE9A9B007F139C /* LPMineVC.m in Sources */,
 				35CFBE0F21BE0AA80065B11D /* MyLoanVC.m in Sources */,
 				35D974E721AFF2E5007F139C /* HelpCenterVC.m in Sources */,
 				35CFBE1821BE0B8A0065B11D /* CarrierCertificationVC.m in Sources */,
 				35CFBE0C21BE0A7B0065B11D /* LoanProgressVC.m in Sources */,
+				35CFBE4921BE6E560065B11D /* UIButton+Extension.m in Sources */,
 				35CFBE1E21BE0C1C0065B11D /* IDCardCertificationVC.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
@@ -433,8 +484,11 @@
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
 				35D974D921AFE2DD007F139C /* LoginVC.m in Sources */,
 				35CFBE1221BE0AD50065B11D /* CustomerServiceVC.m in Sources */,
-				35CFBE2121BE0C3C0065B11D /* BankCardCertification.m in Sources */,
+				35CFBE4321BE681C0065B11D /* PhoneCertificationVC.m in Sources */,
+				35CFBE2821BE485A0065B11D /* MineHeadView.m in Sources */,
+				35CFBE2121BE0C3C0065B11D /* BankCardCertificationVC.m in Sources */,
 				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
+				35CFBE3721BE5D060065B11D /* BankCardCell.m in Sources */,
 				35CFBE1521BE0AFC0065B11D /* CardManageVC.m in Sources */,
 				35CFBE1B21BE0BE20065B11D /* AlipayCertificationVC.m in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  BankCardCertification.h
+//  CarrierCell.h
 //  LoanProject
 //
 //  Created by 张晨曦 on 2018/12/10.
@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BankCardCertification : UIViewController
+@interface CarrierCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UITextField *inputTF;
+
+@property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 
 @end
 

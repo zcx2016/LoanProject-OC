@@ -10,10 +10,17 @@
 #import "LPCertificationCell.h"
 #import "LoginVC.h"
 
+//
+#import "IDCardCertificationVC.h"
+#import "CarrierCertificationVC.h"
+#import "AlipayCertificationVC.h"
+#import "BankCardCertificationVC.h"
+
 @interface LPCertificationVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, strong) NSArray *imgArr;
 @property (nonatomic, strong) NSArray *titleArr;
 
 @property (nonatomic, strong) UIButton *submitBtn;
@@ -25,7 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    _titleArr = @[@"身份认证",@"运营商认证",@"支付宝认证",@"银行卡认证"];
+    _imgArr = @[@"id_check",@"carrier_check",@"zfb_check",@"bankcard_check"];
+    _titleArr = @[@"身份证认证",@"运营商认证",@"支付宝认证",@"银行卡认证"];
     
     [self setBotBtn];
     
@@ -36,10 +44,11 @@
     
     _submitBtn = [UIButton new];
     [_submitBtn setTitle:@"提交贷款申请" forState:UIControlStateNormal];
-    [_submitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _submitBtn.layer.cornerRadius = 6;
     _submitBtn.layer.borderWidth = 1;
-    _submitBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _submitBtn.layer.borderColor = ZCXColor(224, 224, 224).CGColor;
+    [_submitBtn setBackgroundColor:ZCXColor(224, 224, 224)];
     _submitBtn.layer.masksToBounds = YES;
     
     [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
@@ -55,11 +64,7 @@
 
 - (void)submitClick{
     NSLog(@"提交贷款申请");
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
-    LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
-                   @"LoginVC"];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+
 }
 
 #pragma mark - tableView Delegate
@@ -75,31 +80,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LPCertificationCell *cell = [LPCertificationCell cellWithTableView:tableView];
 //    LPCertificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LPCertificationCell" forIndexPath:indexPath];
+    [cell.headImg setImage:[UIImage imageNamed:_imgArr[indexPath.row]]];
     cell.titleLb.text = _titleArr[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
-        
+        IDCardCertificationVC *vc = [IDCardCertificationVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
         
     }else if (indexPath.row == 2){
         
     }else{
-        
+        BankCardCertificationVC *vc = [BankCardCertificationVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }
-//    LPAVipDetailVC *vc = [LPAVipDetailVC new];
-//    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
-#pragma mark - 设置行高
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 100;
-//}
-
+#pragma mark - 设置高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.01;
+    return 180;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -107,7 +110,8 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [[UIView alloc] init];
+    UIImageView *imgview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banner1"]];
+    return imgview;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] init];
@@ -123,12 +127,23 @@
         _tableView.rowHeight = 50;
         _tableView.backgroundColor = [UIColor whiteColor];
         //注册cell
-//        _tableView registerClass:<#(nullable Class)#> forCellReuseIdentifier:<#(nonnull NSString *)#>
+
 //        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LPCertificationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"LPCertificationCell"];
         [self.view addSubview:_tableView];
     }
     return _tableView;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 
 @end

@@ -8,11 +8,21 @@
 
 #import "LPMineVC.h"
 #import "LPCertificationCell.h"
+#import "MineHeadView.h"
+#import "LoginVC.h"
+
+//
+#import "LoanProgressVC.h"
+#import "MyLoanVC.h"
+#import "CustomerServiceVC.h"
+#import "CardManageVC.h"
+#import "HelpCenterVC.h"
 
 @interface LPMineVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, strong) NSArray *imgArr;
 @property (nonatomic, strong) NSArray *titleArr;
 
 @property (nonatomic, strong) UIButton *quitBtn;
@@ -24,9 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"个人中心";
-    
-    _titleArr = @[@"贷款进度",@"我的贷款",@"客服",@"银行卡管理",@"帮助中心",@"关于我们"];
+    _imgArr = @[@"loanProgress",@"myLoan",@"customServer",@"bankcard_check",@"helpCenter"];
+    _titleArr = @[@"贷款进度",@"我的贷款",@"客服",@"银行卡管理",@"帮助中心"];
     
     [self setBotBtn];
     
@@ -37,10 +46,11 @@
     
     _quitBtn = [UIButton new];
     [_quitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [_quitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _quitBtn.layer.cornerRadius = 6;
     _quitBtn.layer.borderWidth = 1;
-    _quitBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _quitBtn.layer.borderColor = ZCXColor(238, 147, 55).CGColor;
+    [_quitBtn setBackgroundColor:ZCXColor(238, 147, 55)];
     _quitBtn.layer.masksToBounds = YES;
     
     [_quitBtn addTarget:self action:@selector(quitClick) forControlEvents:UIControlEventTouchUpInside];
@@ -56,6 +66,12 @@
 
 - (void)quitClick{
     NSLog(@"退出登录");
+    
+    //弹出 登录界面
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
+    LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
+                   @"LoginVC"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - tableView Delegate
@@ -72,13 +88,15 @@
     LPCertificationCell *cell = [LPCertificationCell cellWithTableView:tableView];
     //    LPCertificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LPCertificationCell" forIndexPath:indexPath];
     [cell.checkLb setHidden:YES];
+    [cell.headImg setImage:[UIImage imageNamed:_imgArr[indexPath.row]]];
     cell.titleLb.text = _titleArr[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
-        NSLog(@"0000");
+        LoanProgressVC *vc = [LoanProgressVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
         NSLog(@"111");
     }else if (indexPath.row == 2){
@@ -90,17 +108,12 @@
     }else {
         NSLog(@"关于我们");
     }
-    //    LPAVipDetailVC *vc = [LPAVipDetailVC new];
-    //    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
-#pragma mark - 设置行高
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 100;
-//}
-
+#pragma mark - 设置高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.01;
+    return 220;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -108,8 +121,10 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [[UIView alloc] init];
+    MineHeadView *view = [MineHeadView viewWithTableView:tableView];
+    return view;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
@@ -123,11 +138,26 @@
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _tableView.rowHeight = 50;
         _tableView.backgroundColor = [UIColor whiteColor];
+        //注册headView
+    
         //注册cell
 //        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LPCertificationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"LPCertificationCell"];
         [self.view addSubview:_tableView];
     }
     return _tableView;
+}
+
+//
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 

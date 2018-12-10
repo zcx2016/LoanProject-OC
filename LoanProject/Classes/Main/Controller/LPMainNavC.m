@@ -9,8 +9,6 @@
 
 #define CurrentSystemVersion ([[[UIDevice currentDevice] systemVersion] floatValue])
 
-#define DIYColor(x,y,z)  [UIColor colorWithRed:x/255.0 green:y/255.0 blue:z/255.0 alpha:1.0]
-
 @interface LPMainNavC () <UIGestureRecognizerDelegate>
 
 @end
@@ -32,14 +30,15 @@
         }
 
         //设置导航栏背景颜色为白色不透明
-        navBar.barStyle = UIBarStyleDefault;
-        navBar.translucent = NO;
-        navBar.tintColor = [UIColor blackColor];
+//        navBar.barStyle = UIBarStyleDefault;
+//        navBar.translucent = NO;
+//        navBar.tintColor = [UIColor blackColor];
+        [navBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
 
         // 设置导航栏的标题字体
         [navBar setTitleTextAttributes:@{
                                          NSFontAttributeName: [UIFont boldSystemFontOfSize:19],
-                                         NSForegroundColorAttributeName: [UIColor blackColor]
+                                         NSForegroundColorAttributeName: [UIColor whiteColor]
                                          }];
         // 设置 item 的显示属性
         UIBarButtonItem *item = [UIBarButtonItem appearance];
@@ -99,9 +98,9 @@
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:({
             // 这里定制左边的按钮, 让其成为返回按钮
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [btn setTitle:@"     " forState:UIControlStateNormal];
+            [btn setTitle:@" " forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:15.0];
-            [btn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:@"backIcon"] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
             [btn sizeToFit];
             btn;

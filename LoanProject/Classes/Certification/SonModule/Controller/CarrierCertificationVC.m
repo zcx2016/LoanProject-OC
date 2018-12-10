@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    self.navigationItem.title = @"运营商认证";
+    self.navigationItem.title = @"紧急联系人";
 }
 
 

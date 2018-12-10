@@ -53,8 +53,8 @@
     [_headImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.left.equalTo(self.mas_left).with.offset(10);
-        make.width.equalTo(@25);
-        make.height.equalTo(@20);
+        make.width.equalTo(@28);
+        make.height.equalTo(@28);
     }];
 
     [self addSubview:_titleLb];

@@ -38,6 +38,8 @@
         // selected 状态下的 title 属性
         [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:184/255.0 green:163/255.0 blue:26/255.0 alpha:1.0], NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
         // 对所有的 UITabBarItem 对象统一设置
+        
+        [[UITabBar appearance] setBackgroundColor:[UIColor whiteColor]];
     }
 }
 
@@ -103,11 +105,13 @@
         // 包装导航控制器, 并进行设置
         UINavigationController *nav = [[NSClassFromString(@"LPMainNavC") alloc] initWithRootViewController:vc];
         //设置文字与图片的距离
-        [nav.tabBarItem setTitlePositionAdjustment:UIOffsetMake(-4, -4)];
+//        [nav.tabBarItem setTitlePositionAdjustment:UIOffsetMake(-4, -4)];
+        [nav.tabBarItem setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
         
         nav.tabBarItem.image = [UIImage imageNamed:image];
         nav.tabBarItem.selectedImage = [[UIImage imageNamed:selImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         nav;
+        
     });
 }
 

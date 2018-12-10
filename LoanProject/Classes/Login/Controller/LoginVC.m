@@ -24,14 +24,14 @@
 
     self.verifyCodeTF.inputAccessoryView = self.customAccessoryView;
     
-    self.sendCodeBtn.layer.cornerRadius = 6;
+    self.sendCodeBtn.layer.cornerRadius = 5;
     self.sendCodeBtn.layer.borderWidth = 1;
-    self.sendCodeBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    self.sendCodeBtn.layer.borderColor = ZCXColor(238, 142, 33).CGColor;
     [self.sendCodeBtn addTarget:self action:@selector(sendCodeEvents) forControlEvents:UIControlEventTouchUpInside];
     
     self.loginBtn.layer.cornerRadius = 5;
     self.loginBtn.layer.borderWidth = 1;
-    self.loginBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    self.loginBtn.layer.borderColor = ZCXColor(238, 142, 33).CGColor;
     [self.loginBtn addTarget:self action:@selector(loginEvents) forControlEvents:UIControlEventTouchUpInside];
     
 }
