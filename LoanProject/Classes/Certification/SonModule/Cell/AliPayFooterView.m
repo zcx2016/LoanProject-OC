@@ -13,6 +13,7 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
 
+    self.uploadZhiMaImgView.userInteractionEnabled = YES;
 }
 
 @end

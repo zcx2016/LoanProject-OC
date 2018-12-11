@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AliPayFooterView : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet UIImageView *uploadZhiMaImgView;
 
 @end
 

@@ -98,15 +98,19 @@
         LoanProgressVC *vc = [LoanProgressVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
-        NSLog(@"111");
+        MyLoanVC *vc = [MyLoanVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 2){
-        NSLog(@"222");
+        CustomerServiceVC *vc = [CustomerServiceVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 3){
-        
-    }else if (indexPath.row == 4){
-        
-    }else {
-        NSLog(@"关于我们");
+//        CardManageVC *vc = [CardManageVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
+        CardManageVC *vc = [[UIStoryboard storyboardWithName:@"CardManageVC" bundle:nil] instantiateViewControllerWithIdentifier:@"CardManageVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        HelpCenterVC *vc = [HelpCenterVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
 }
@@ -132,11 +136,11 @@
 #pragma mark - 懒加载tableView
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 130) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 80) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _tableView.rowHeight = 50;
+        _tableView.rowHeight = ZCXRowHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         //注册headView
     

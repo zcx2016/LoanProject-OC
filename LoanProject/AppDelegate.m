@@ -27,6 +27,9 @@
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    //设置hud消失时间
+    [SVProgressHUD setMinimumDismissTimeInterval:(1)];
+    
     return YES;
 }
 

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Card ManageVC-->
+        <scene sceneID="1de-Rp-TQZ">
+            <objects>
+                <viewController storyboardIdentifier="CardManageVC" id="MOx-UG-m19" customClass="CardManageVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dUi-cF-iTC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTy-Fe-dIR">
+                                <rect key="frame" x="30" y="300" width="315" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gW0-Fu-NHZ"/>
+                                </constraints>
+                                <state key="normal" title="更换卡片" backgroundImage="navbg">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD6-h5-QY4">
+                                <rect key="frame" x="40" y="60" width="295" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mycard" translatesAutoresizingMaskIntoConstraints="NO" id="TZc-AY-FRd">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="200"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周星驰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-Wh-Qoy">
+                                        <rect key="frame" x="20" y="73" width="64.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="储蓄卡号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yuc-Cw-khl">
+                                        <rect key="frame" x="20" y="123.5" width="65.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2376 2387 2387 1373" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFb-Se-aO6">
+                                        <rect key="frame" x="20" y="158" width="190.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Wgv-Wh-Qoy" firstAttribute="leading" secondItem="mD6-h5-QY4" secondAttribute="leading" constant="20" id="97Y-Wr-BZ7"/>
+                                    <constraint firstAttribute="height" constant="200" id="AZN-Ir-HdW"/>
+                                    <constraint firstItem="nFb-Se-aO6" firstAttribute="top" secondItem="Yuc-Cw-khl" secondAttribute="bottom" constant="15" id="D3q-No-7R7"/>
+                                    <constraint firstItem="TZc-AY-FRd" firstAttribute="leading" secondItem="mD6-h5-QY4" secondAttribute="leading" id="ECs-h6-qVZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="TZc-AY-FRd" secondAttribute="trailing" id="Ina-bQ-czd"/>
+                                    <constraint firstItem="nFb-Se-aO6" firstAttribute="leading" secondItem="mD6-h5-QY4" secondAttribute="leading" constant="20" id="KwQ-MD-evK"/>
+                                    <constraint firstItem="TZc-AY-FRd" firstAttribute="top" secondItem="mD6-h5-QY4" secondAttribute="top" id="Sca-C3-2UH"/>
+                                    <constraint firstItem="Yuc-Cw-khl" firstAttribute="top" secondItem="Wgv-Wh-Qoy" secondAttribute="bottom" constant="25" id="V2x-z2-c5k"/>
+                                    <constraint firstAttribute="bottom" secondItem="nFb-Se-aO6" secondAttribute="bottom" constant="20" id="YWD-n7-FgM"/>
+                                    <constraint firstAttribute="bottom" secondItem="TZc-AY-FRd" secondAttribute="bottom" id="a31-MO-p1B"/>
+                                    <constraint firstItem="Yuc-Cw-khl" firstAttribute="leading" secondItem="mD6-h5-QY4" secondAttribute="leading" constant="20" id="shz-Yx-mTE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XTy-Fe-dIR" firstAttribute="leading" secondItem="Zu3-2Z-bJC" secondAttribute="leading" constant="30" id="4FH-R9-HtC"/>
+                            <constraint firstItem="Zu3-2Z-bJC" firstAttribute="trailing" secondItem="XTy-Fe-dIR" secondAttribute="trailing" constant="30" id="Mih-6p-dpV"/>
+                            <constraint firstItem="XTy-Fe-dIR" firstAttribute="centerX" secondItem="dUi-cF-iTC" secondAttribute="centerX" id="il0-s2-Wrg"/>
+                            <constraint firstItem="XTy-Fe-dIR" firstAttribute="top" secondItem="mD6-h5-QY4" secondAttribute="bottom" constant="40" id="jgw-Kh-xMj"/>
+                            <constraint firstItem="Zu3-2Z-bJC" firstAttribute="trailing" secondItem="mD6-h5-QY4" secondAttribute="trailing" constant="40" id="lZo-1M-Qqs"/>
+                            <constraint firstItem="mD6-h5-QY4" firstAttribute="leading" secondItem="Zu3-2Z-bJC" secondAttribute="leading" constant="40" id="mGv-D7-3Xi"/>
+                            <constraint firstItem="mD6-h5-QY4" firstAttribute="top" secondItem="Zu3-2Z-bJC" secondAttribute="top" constant="40" id="u2X-R5-Mqn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zu3-2Z-bJC"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardNumLabel" destination="nFb-Se-aO6" id="q4p-3E-vBC"/>
+                        <outlet property="changeCardBtn" destination="XTy-Fe-dIR" id="yNm-Jm-lZw"/>
+                        <outlet property="nameLabel" destination="Wgv-Wh-Qoy" id="n90-cA-LD2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLa-uf-IXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-258.39999999999998" y="126.38680659670166"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mycard" width="300" height="180"/>
+        <image name="navbg" width="347" height="42"/>
+    </resources>
+</document>

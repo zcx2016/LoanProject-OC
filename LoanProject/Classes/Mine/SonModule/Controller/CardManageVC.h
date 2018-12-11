@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardManageVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardNumLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *changeCardBtn;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,8 +8,12 @@
 
 #import "AlipayCertificationVC.h"
 #import "CarrierCell.h"
+#import "AliPayFooterView.h"
 
-@interface AlipayCertificationVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
+@interface AlipayCertificationVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *submitBtn;
@@ -17,9 +21,14 @@
 //自定义 电话的inputAccessoryView
 @property (nonatomic, strong) UIToolbar *customAccessoryView;
 
-//弱引用9个cell
+// 调用相机/相册
+@property (nonatomic, strong) UIImagePickerController *imagePickerController;
+
+//弱引用2个cell
 @property (nonatomic, weak) CarrierCell *weak_numCell;
 @property (nonatomic, weak) CarrierCell *weak_pwdCell;
+//
+@property (nonatomic, weak) AliPayFooterView *weak_zhimaView;
 
 @end
 
@@ -34,6 +43,12 @@
     [self tableView];
     
     [self setBotBtn];
+    
+    //照片选择器
+    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
+    self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.imagePickerController.allowsEditing = YES;
 }
 
 - (void)setBotBtn{
@@ -89,26 +104,34 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.01;
+    return 400;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    return [[UIView alloc] init];
+    AliPayFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"AliPayFooterView"];
+    //赋值
+    _weak_zhimaView = view;
+    //添加点击事件
+    [view.uploadZhiMaImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(uploadImg:)]];
+    return view;
 }
 
 #pragma mark - 懒加载tableView
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 -80) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _tableView.rowHeight = 60;
+        _tableView.rowHeight = ZCXRowHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        //注册footView
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AliPayFooterView class]) bundle:[NSBundle mainBundle]] forHeaderFooterViewReuseIdentifier:@"AliPayFooterView"];
         //注册cell
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CarrierCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CarrierCell"];
         [self.view addSubview:_tableView];
@@ -138,7 +161,89 @@
     [self.weak_pwdCell.inputTF resignFirstResponder];
 }
 
+//上传芝麻信用
+- (void)uploadImg:(UITapGestureRecognizer *)recognize{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择照片" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"打开相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击调用相册
+        self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.imagePickerController.allowsEditing = YES;
+        //相册权限
+        ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
+        if (authStatus == ALAuthorizationStatusRestricted || authStatus ==ALAuthorizationStatusDenied){
+            //无权限 引导去开启
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+    }]];
+    
+    //判断设备是否有具有摄像头(相机)功能
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        [alert addAction:[UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //点击调用照相机
+            self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            self.imagePickerController.allowsEditing = YES;
+            //相机权限
+            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+            if (authStatus ==AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied ){
+                // 无权限 引导去开启
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if ([[UIApplication sharedApplication]canOpenURL:url]) {
+                    [[UIApplication sharedApplication]openURL:url];
+                }
+            }
+            [self presentViewController:self.imagePickerController animated:YES completion:nil];
+        }]];
+    }
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self  presentViewController:alert animated:YES completion:nil];
+}
 
+#pragma mark - 相机／相册 代理
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    //通过key值获取到图片
+    UIImage * image =info[UIImagePickerControllerOriginalImage];
+    //转换成jpg格式，并压缩，0.5比例最好
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    
+    //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
+    //
+    //    //将图片上传到服务器
+    //    NSDictionary *dict = @{@"registerId" : self.registerId , @"employeeId" : self.employeeId};
+    //
+    //    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/app/users/updatePhoto.do"] parameters:dict name:@"imgarray0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+    //
+    //        //存头像
+    //        [UserDefautsLhm setObject:result[@"data"] forKey:KeyUserHeadImg];
+    //    }];
+    //
+    
+    //    //判断数据源类型
+    if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {    //相册
+        //显示图片
+        _weak_zhimaView.uploadZhiMaImgView.image = image;
+        [self  dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {   //相机
+        
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        //显示图片
+        _weak_zhimaView.uploadZhiMaImgView.image = image;
+        
+        [self  dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 
+//当用户取消选取时调用
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

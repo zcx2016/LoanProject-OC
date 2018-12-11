@@ -1,34 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AliPayFooterView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="314"/>
+            <rect key="frame" x="0.0" y="0.0" width="378" height="460"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传截图" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mc-eK-Tzm">
-                    <rect key="frame" x="15" y="10" width="69.5" height="21"/>
+                    <rect key="frame" x="15" y="15" width="69.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_zhima" translatesAutoresizingMaskIntoConstraints="NO" id="vck-yv-egU">
+                    <rect key="frame" x="114" y="15" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="JK4-Ig-Ahf"/>
+                        <constraint firstAttribute="width" constant="150" id="PMx-VV-uJw"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zhima" translatesAutoresizingMaskIntoConstraints="NO" id="XZ6-7P-Lbf">
+                    <rect key="frame" x="62" y="229.5" width="254" height="182"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="254" id="RK5-jF-g8U"/>
+                        <constraint firstAttribute="height" constant="182" id="SnW-HF-0Ue"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传芝麻信用页面截图" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRR-by-Jjo">
+                    <rect key="frame" x="107.5" y="180" width="163.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vck-yv-egU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AlP-mc-6dy"/>
+                <constraint firstItem="vck-yv-egU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Bkh-YQ-u6e"/>
+                <constraint firstItem="XZ6-7P-Lbf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FeI-Vj-Pxg"/>
+                <constraint firstItem="VRR-by-Jjo" firstAttribute="top" secondItem="vck-yv-egU" secondAttribute="bottom" constant="15" id="bwp-Sj-mTE"/>
+                <constraint firstItem="XZ6-7P-Lbf" firstAttribute="top" secondItem="VRR-by-Jjo" secondAttribute="bottom" constant="30" id="d1G-Qj-hBD"/>
                 <constraint firstItem="6mc-eK-Tzm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="htF-ZD-Y1H"/>
-                <constraint firstItem="6mc-eK-Tzm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="xBj-b3-uYz"/>
+                <constraint firstItem="VRR-by-Jjo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ikg-uk-niM"/>
+                <constraint firstItem="6mc-eK-Tzm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="xBj-b3-uYz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="138.40000000000001" y="266.26686656671666"/>
+            <connections>
+                <outlet property="uploadZhiMaImgView" destination="vck-yv-egU" id="3gK-jZ-BpA"/>
+            </connections>
+            <point key="canvasLocation" x="140.80000000000001" y="331.93403298350825"/>
         </view>
     </objects>
+    <resources>
+        <image name="upload_zhima" width="101" height="101"/>
+        <image name="zhima" width="254" height="182"/>
+    </resources>
 </document>

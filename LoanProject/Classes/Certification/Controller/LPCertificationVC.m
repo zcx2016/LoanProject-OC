@@ -119,7 +119,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _tableView.rowHeight = 50;
+        _tableView.rowHeight = ZCXRowHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         //注册cell
 

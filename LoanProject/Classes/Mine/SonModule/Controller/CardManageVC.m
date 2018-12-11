@@ -18,7 +18,15 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"银行卡管理";
+    
+    [self setUpView];
 }
 
+- (void)setUpView{
+    
+    self.changeCardBtn.layer.cornerRadius = 5;
+    self.changeCardBtn.layer.masksToBounds = YES;
+    
+}
 
 @end
