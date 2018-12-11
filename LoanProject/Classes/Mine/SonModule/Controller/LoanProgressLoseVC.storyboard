@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Loan Progress LoseVC-->
+        <scene sceneID="mF2-vK-RrQ">
+            <objects>
+                <viewController id="XyF-5s-Py2" customClass="LoanProgressLoseVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t0i-2o-dBO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_no" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-YN-w4X">
+                                <rect key="frame" x="122.5" y="100" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="83n-qg-zqy"/>
+                                    <constraint firstAttribute="height" constant="130" id="yih-MJ-7pL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的申请未通过！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZW-Um-2rt">
+                                <rect key="frame" x="86" y="270" width="203" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="失败原因：如果说去年肆虐全球的Cry病毒的制造者意在勒索，“熊猫烧香”这款蠕虫病毒的作者就纯粹是为了“炫技”。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODV-Pd-Gh2">
+                                <rect key="frame" x="25" y="360" width="325" height="64.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SRG-YN-w4X" firstAttribute="centerX" secondItem="t0i-2o-dBO" secondAttribute="centerX" id="9Bf-Qo-hpk"/>
+                            <constraint firstItem="ODV-Pd-Gh2" firstAttribute="leading" secondItem="t0i-2o-dBO" secondAttribute="leading" constant="25" id="FRv-1J-rh2"/>
+                            <constraint firstItem="TZW-Um-2rt" firstAttribute="centerX" secondItem="t0i-2o-dBO" secondAttribute="centerX" id="FtK-hp-ySi"/>
+                            <constraint firstItem="ODV-Pd-Gh2" firstAttribute="centerX" secondItem="t0i-2o-dBO" secondAttribute="centerX" id="GdO-iE-76T"/>
+                            <constraint firstItem="SRG-YN-w4X" firstAttribute="top" secondItem="L9m-2Y-KCp" secondAttribute="top" constant="80" id="PrG-Pf-Pah"/>
+                            <constraint firstAttribute="trailing" secondItem="ODV-Pd-Gh2" secondAttribute="trailing" constant="25" id="io1-fl-8VG"/>
+                            <constraint firstItem="TZW-Um-2rt" firstAttribute="top" secondItem="SRG-YN-w4X" secondAttribute="bottom" constant="40" id="jpu-1N-H2i"/>
+                            <constraint firstItem="ODV-Pd-Gh2" firstAttribute="top" secondItem="TZW-Um-2rt" secondAttribute="bottom" constant="60" id="v7b-N4-bwb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L9m-2Y-KCp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUR-qo-QIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-57" y="159"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="check_no" width="87" height="87"/>
+    </resources>
+</document>

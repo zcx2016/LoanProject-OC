@@ -13,6 +13,8 @@
 
 //
 #import "LoanProgressVC.h"
+#import "LoanProgressIngVC.h"
+#import "LoanProgressLoseVC.h"
 #import "MyLoanVC.h"
 #import "CustomerServiceVC.h"
 #import "CardManageVC.h"
@@ -45,14 +47,6 @@
 - (void)setBotBtn{
     
     _quitBtn = [UIButton createYellowBgBtn:@"退出登录"];
-//    [_quitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-//    [_quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    _quitBtn.layer.cornerRadius = 6;
-//    _quitBtn.layer.borderWidth = 1;
-//    _quitBtn.layer.borderColor = ZCXColor(238, 147, 55).CGColor;
-//    [_quitBtn setBackgroundColor:ZCXColor(238, 147, 55)];
-//    _quitBtn.layer.masksToBounds = YES;
-    
     [_quitBtn addTarget:self action:@selector(quitClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_quitBtn];
@@ -65,8 +59,7 @@
 }
 
 - (void)quitClick{
-    NSLog(@"退出登录");
-    
+
     //弹出 登录界面
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
     LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
@@ -86,7 +79,6 @@
 #pragma mark - tableView DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LPCertificationCell *cell = [LPCertificationCell cellWithTableView:tableView];
-    //    LPCertificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LPCertificationCell" forIndexPath:indexPath];
     [cell.checkLb setHidden:YES];
     [cell.headImg setImage:[UIImage imageNamed:_imgArr[indexPath.row]]];
     cell.titleLb.text = _titleArr[indexPath.row];
@@ -95,17 +87,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
-        LoanProgressVC *vc = [LoanProgressVC new];
+        //此处分3种情况，分别是 审核中/审核失败/审核通过
+        LoanProgressVC *vc = [[UIStoryboard storyboardWithName:@"LoanProgressVC" bundle:nil] instantiateViewControllerWithIdentifier:@"LoanProgressVC"];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
-        MyLoanVC *vc = [MyLoanVC new];
+        MyLoanVC *vc = [[UIStoryboard storyboardWithName:@"MyLoanVC" bundle:nil] instantiateViewControllerWithIdentifier:@"MyLoanVC"];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 2){
         CustomerServiceVC *vc = [CustomerServiceVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 3){
-//        CardManageVC *vc = [CardManageVC new];
-//        [self.navigationController pushViewController:vc animated:YES];
+
         CardManageVC *vc = [[UIStoryboard storyboardWithName:@"CardManageVC" bundle:nil] instantiateViewControllerWithIdentifier:@"CardManageVC"];
         [self.navigationController pushViewController:vc animated:YES];
     }else{
