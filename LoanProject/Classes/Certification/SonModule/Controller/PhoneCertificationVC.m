@@ -99,7 +99,6 @@
         [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
         NSLog(@"同意协议");
     }
-    
 }
 
 - (void)submitClick{
@@ -133,6 +132,7 @@
         _weak_verifyCodeCell = cell;
         [cell.codeBtn setHidden:NO];
         cell.inputTF.placeholder = @"请输入验证码";
+        [cell.codeBtn addTarget:self action:@selector(openCountdown) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return cell;
@@ -187,6 +187,48 @@
     [self.weak_phoneCell.inputTF resignFirstResponder];
     [self.weak_serverPwdCell.inputTF resignFirstResponder];
     [self.weak_verifyCodeCell.inputTF resignFirstResponder];
+}
+
+#pragma mark - 发送验证码
+// 开启倒计时效果
+-(void)openCountdown{
+    
+    __block NSInteger time = 59; //倒计时时间
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        if(time <= 0){ //倒计时结束，关闭
+            
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮的样式
+                [self.weak_verifyCodeCell.codeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+                [self.weak_verifyCodeCell.codeBtn setTitleColor:ZCXColor(253, 141, 38) forState:UIControlStateNormal];
+                self.weak_verifyCodeCell.codeBtn.layer.borderColor = ZCXColor(253, 141, 38).CGColor;
+                self.weak_verifyCodeCell.codeBtn.userInteractionEnabled = YES;
+            });
+            
+        }else{ //倒计时开始
+            
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮显示读秒效果
+                [self.weak_verifyCodeCell.codeBtn setTitle:[NSString stringWithFormat:@"%ds后重发", seconds] forState:UIControlStateNormal];
+                [self.weak_verifyCodeCell.codeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                self.weak_verifyCodeCell.codeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+                self.weak_verifyCodeCell.codeBtn.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
 }
 
 @end

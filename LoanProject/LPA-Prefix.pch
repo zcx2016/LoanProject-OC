@@ -11,10 +11,16 @@
 
 #ifdef __OBJC__  //判断一下， 之后oc文件才会导入下面的头文件
 
+#import <LCNetworking.h>
+#import "UIImageView+WebCache.h"
+
 #import "SVProgressHUD.h"
 #import "UIButton+Extension.h"
 #import <Masonry.h>
-#define kUrlReqHead @"http://192.168.6.161:8080"
+
+//#define kUrlReqHead @"http://192.168.6.161:8080"
+
+#define kUrlReqHead @"/API.asmx"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height

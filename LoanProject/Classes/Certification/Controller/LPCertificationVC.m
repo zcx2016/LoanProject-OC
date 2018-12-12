@@ -19,6 +19,8 @@
 @interface LPCertificationVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *chooseBtn;
+@property (nonatomic, strong) UILabel *protocolLabel;
 
 @property (nonatomic, strong) NSArray *imgArr;
 @property (nonatomic, strong) NSArray *titleArr;
@@ -38,20 +40,76 @@
     [self setBotBtn];
     
     [self tableView];
+    
+    [self loadList];
+}
+
+- (void)loadList{
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/getkey"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         NSLog(@"key---%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         NSLog(@"key----%@",error);
+    }];
 }
 
 - (void)setBotBtn{
     
+    //同意协议 按钮
+    _chooseBtn = [UIButton new];
+    [_chooseBtn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
+    [_chooseBtn addTarget:self action:@selector(chooseEvents:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_chooseBtn];
+    [_chooseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).with.offset(-70);
+        make.left.equalTo(self.view).with.offset(15);
+        make.width.height.equalTo(@30);
+    }];
+    
+    //协议
+    _protocolLabel = [UILabel new];
+    _protocolLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickProtocol)];
+    [_protocolLabel addGestureRecognizer:ges];
+    
+    //富文本
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"同意《容易借贷款协议》"];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, 2)];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(2, attributedStr.length - 2)];
+    _protocolLabel .attributedText = attributedStr;
+    
+    [self.view addSubview:_protocolLabel];
+    [_protocolLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.chooseBtn);
+        make.left.equalTo(self.chooseBtn.mas_right).with.offset(5);
+    }];
+
+    //提交贷款申请按钮
     _submitBtn = [UIButton createYellowBgBtn:@"提交贷款申请"];
     [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_submitBtn];
     [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-80);
+        make.bottom.equalTo(self.view).with.offset(-110);
         make.left.equalTo(self.view).with.offset(20);
         make.height.equalTo(@50);
     }];
+}
+
+- (void)clickProtocol{
+    NSLog(@"点击协议");
+}
+
+- (void)chooseEvents:(UIButton *)btn{
+    if (btn.isSelected == NO){
+        btn.selected = !btn.selected;
+        [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
+        NSLog(@"不同意协议");
+    }else{
+        btn.selected = !btn.selected;
+        [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
+        NSLog(@"同意协议");
+    }
 }
 
 - (void)submitClick{
@@ -71,7 +129,6 @@
 #pragma mark - tableView DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LPCertificationCell *cell = [LPCertificationCell cellWithTableView:tableView];
-//    LPCertificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LPCertificationCell" forIndexPath:indexPath];
     [cell.headImg setImage:[UIImage imageNamed:_imgArr[indexPath.row]]];
     cell.titleLb.text = _titleArr[indexPath.row];
     return cell;
@@ -121,9 +178,6 @@
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _tableView.rowHeight = ZCXRowHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
-        //注册cell
-
-//        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LPCertificationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"LPCertificationCell"];
         [self.view addSubview:_tableView];
     }
     return _tableView;

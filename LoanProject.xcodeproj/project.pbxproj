@@ -256,8 +256,8 @@
 			children = (
 				35D974B121AE9861007F139C /* Controller */,
 				35CFBE2521BE48500065B11D /* View */,
-				35D974DE21AFF2AA007F139C /* SonModule */,
 				35D974B221AE9861007F139C /* Model */,
+				35D974DE21AFF2AA007F139C /* SonModule */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -317,9 +317,9 @@
 			isa = PBXGroup;
 			children = (
 				35D974B921AE9861007F139C /* Controller */,
-				35D974E021AFF2B3007F139C /* SonModule */,
 				35D974BA21AE9861007F139C /* Model */,
 				35D974BB21AE9861007F139C /* View */,
+				35D974E021AFF2B3007F139C /* SonModule */,
 			);
 			path = Certification;
 			sourceTree = "<group>";
@@ -409,8 +409,8 @@
 		35D974E021AFF2B3007F139C /* SonModule */ = {
 			isa = PBXGroup;
 			children = (
-				35CFBE3021BE5C400065B11D /* Cell */,
 				35D974E121AFF2B3007F139C /* Controller */,
+				35CFBE3021BE5C400065B11D /* Cell */,
 			);
 			path = SonModule;
 			sourceTree = "<group>";
@@ -474,6 +474,7 @@
 				35D9749221AE978D007F139C /* Frameworks */,
 				35D9749321AE978D007F139C /* Resources */,
 				3CC1D8C5CD536F3C1A1DFAC7 /* [CP] Copy Pods Resources */,
+				7C2022E79E406FEA73B40339 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -580,6 +581,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C2022E79E406FEA73B40339 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

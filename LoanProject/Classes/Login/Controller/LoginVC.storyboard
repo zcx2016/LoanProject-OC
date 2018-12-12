@@ -43,22 +43,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWw-ss-S8l">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWw-ss-S8l">
                                 <rect key="frame" x="250" y="338" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="LTP-70-IMf"/>
                                     <constraint firstAttribute="height" constant="40" id="uYh-wW-509"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="发送验证码">
                                     <color key="titleColor" red="0.93333333330000001" green="0.5568627451" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isp-GD-MBF">
-                                <rect key="frame" x="25" y="428" width="325" height="45"/>
+                                <rect key="frame" x="25" y="428" width="325" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="9f9-4A-5DE"/>
+                                    <constraint firstAttribute="height" constant="50" id="9f9-4A-5DE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="登 录" backgroundImage="navbg">

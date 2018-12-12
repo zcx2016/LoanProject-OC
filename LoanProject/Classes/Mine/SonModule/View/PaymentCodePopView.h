@@ -12,6 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PaymentCodePopView : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
+
+@property (weak, nonatomic) IBOutlet UIImageView *codeImgView;
+
+@property (weak, nonatomic) IBOutlet UILabel *payMoneyLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *whiteContentView;
+
 @end
 
 NS_ASSUME_NONNULL_END

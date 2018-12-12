@@ -12,14 +12,19 @@
 
 #import "PhoneCertificationVC.h"
 #import "GetAddressBookPopView.h"
+//读取通讯录的头文件
+#import <Contacts/Contacts.h>
 
 @interface CarrierCertificationVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIButton *submitBtn;
+@property (nonatomic, strong) UIButton *sureBtn;
 
 //自定义 电话的inputAccessoryView
 @property (nonatomic, strong) UIToolbar *customAccessoryView;
+
+//通讯录字典
+@property (nonatomic, strong) NSMutableDictionary *addressBookDict;
 
 //弱引用9个cell
 @property (nonatomic, weak) CarrierCell *weak_firstPhoneCell;
@@ -45,23 +50,42 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    //初始化 通讯录字典
+    self.addressBookDict = [NSMutableDictionary dictionary];
+    
+    //设置UI
     [self tableView];
     
     [self setBotBtn];
+    
+    //通知--退出当前控制器
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(quitCurrentVcNoti:) name:@"quitCurrentVc" object:nil];
+    //通知--读取通讯录信息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readAddressBookNoti:) name:@"readAddressBook" object:nil];
     
     //弹出 获取通讯录view
     GetAddressBookPopView *addressBookPopView = [[NSBundle mainBundle] loadNibNamed:@"GetAddressBookPopView" owner:nil options:nil].firstObject;
     addressBookPopView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     [UIApplication.sharedApplication.keyWindow addSubview:addressBookPopView];
+    
 }
 
+#pragma mark - 拒绝/同意 获取 通讯录的授权 通知
+- (void)quitCurrentVcNoti:(NSNotification *)noti{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)readAddressBookNoti:(NSNotification *)noti{
+    [self requestContactAuthorAfterSystemVersion9];
+}
+
+#pragma mark - 确认按钮
 - (void)setBotBtn{
-    //确认按钮
-    _submitBtn = [UIButton createYellowBgBtn:@"确认"];
-    [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
+    _sureBtn = [UIButton createYellowBgBtn:@"确认"];
+    [_sureBtn addTarget:self action:@selector(sureClick) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:_submitBtn];
-    [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:_sureBtn];
+    [_sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).with.offset(-20);
         make.left.equalTo(self.view).with.offset(15);
@@ -69,7 +93,7 @@
     }];
 }
 
-- (void)submitClick{
+- (void)sureClick{
     NSLog(@"紧急联系人信息-- %@,%@,%@ /n %@,%@,%@ /n %@,%@,%@",_weak_firstNameCell.inputTF.text,_weak_firstContactCell.inputTF.text,_weak_firstPhoneCell.inputTF.text, _weak_secNameCell.inputTF.text, _weak_secContactCell.inputTF.text, _weak_secPhoneCell.inputTF.text, _weak_thirdNameCell.inputTF.text, _weak_thirdContactCell.inputTF.text , _weak_thirdPhoneCell.inputTF.text);
     
     PhoneCertificationVC *vc = [PhoneCertificationVC new];
@@ -200,6 +224,88 @@
     [self.weak_firstPhoneCell.inputTF resignFirstResponder];
     [self.weak_secPhoneCell.inputTF resignFirstResponder];
     [self.weak_thirdPhoneCell.inputTF resignFirstResponder];
+}
+
+#pragma mark 请求通讯录权限
+- (void)requestContactAuthorAfterSystemVersion9{
+    
+    CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    if (status == CNAuthorizationStatusNotDetermined) {
+        CNContactStore *store = [[CNContactStore alloc] init];
+        [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError*  _Nullable error) {
+            if (error) {
+                NSLog(@"授权失败！");
+            }else {
+                NSLog(@"成功授权！");
+            }
+        }];
+    }
+    else if(status == CNAuthorizationStatusRestricted)
+    {
+        NSLog(@"用户拒绝！");
+        [self showAlertViewAboutNotAuthorAccessContact];
+    }
+    else if (status == CNAuthorizationStatusDenied)
+    {
+        NSLog(@"用户拒绝！");
+        [self showAlertViewAboutNotAuthorAccessContact];
+    }
+    else if (status == CNAuthorizationStatusAuthorized)//已经授权
+    {
+        //有通讯录权限-- 进行下一步操作
+        [self openContact];
+    }
+    
+}
+
+//有通讯录权限-- 进行下一步操作
+- (void)openContact{
+    // 获取指定的字段,并不是要获取所有字段，需要指定具体的字段
+    NSArray *keysToFetch = @[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey];
+    CNContactFetchRequest *fetchRequest = [[CNContactFetchRequest alloc] initWithKeysToFetch:keysToFetch];
+    CNContactStore *contactStore = [[CNContactStore alloc] init];
+    
+    [contactStore enumerateContactsWithFetchRequest:fetchRequest error:nil usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
+
+        //拼接姓名
+        NSString *nameStr = [NSString stringWithFormat:@"%@%@",contact.familyName,contact.givenName];
+        NSArray *phoneNumbers = contact.phoneNumbers;
+        //电话
+        NSString *phoneStr;
+        
+        for (CNLabeledValue *labelValue in phoneNumbers) {
+            //遍历一个人名下的多个电话号码
+            CNPhoneNumber *phoneNumber = labelValue.value;
+            phoneStr = phoneNumber.stringValue;
+            
+            //去掉电话中的特殊字符
+            phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"+86" withString:@""];
+            phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"(" withString:@""];
+            phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@")" withString:@""];
+            phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+            phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+//            NSLog(@"姓名=%@, 电话号码是=%@", nameStr, string);
+        }
+        //    *stop = YES; // 停止循环，相当于break；
+        [self.addressBookDict setObject:nameStr forKey:phoneStr];
+        
+    }];
+    NSLog(@"通讯录字典---%ld---%@",self.addressBookDict.count, self.addressBookDict);
+}
+
+//提示没有通讯录权限
+- (void)showAlertViewAboutNotAuthorAccessContact{
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"请授权通讯录权限"
+                                          message:@"请在iPhone的\"设置-隐私-通讯录\"选项中,允许容易借app访问你的通讯录"
+                                          preferredStyle: UIAlertControllerStyleAlert];
+    
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:OKAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

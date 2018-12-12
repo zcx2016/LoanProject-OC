@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSContactsUsageDescription</key>
+	<string>为确保贷款成功，系统需要获取您的通讯录信息！</string>
 	<key>NSCameraUsageDescription</key>
 	<string>为确保贷款成功，系统需要调用您的相机！</string>
 	<key>NSPhotoLibraryUsageDescription</key>

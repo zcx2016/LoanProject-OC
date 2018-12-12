@@ -37,12 +37,12 @@
 
 - (void)sendCodeEvents{
     NSLog(@"发送验证码");
+    [self openCountdown];
 }
 
 - (void)loginEvents{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 //自定义 电话 和 qq 的inputAccessoryView
 - (UIToolbar *)customAccessoryView{
@@ -59,6 +59,52 @@
 - (void)done{
     [self.phoneTF resignFirstResponder];
     [self.verifyCodeTF resignFirstResponder];
+}
+
+/* 注意：
+ 在创建Button时, 要设置Button的样式:
+ 当type为: UIButtonTypeCustom时 , 是普通读秒的效果.
+ 当type为: 其他时, 是一闪一闪的效果.
+ */
+// 开启倒计时效果
+-(void)openCountdown{
+    
+    __block NSInteger time = 59; //倒计时时间
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        if(time <= 0){ //倒计时结束，关闭
+            
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮的样式
+                [self.sendCodeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+                [self.sendCodeBtn setTitleColor:ZCXColor(253, 141, 38) forState:UIControlStateNormal];
+                self.sendCodeBtn.layer.borderColor = ZCXColor(253, 141, 38).CGColor;
+                self.sendCodeBtn.userInteractionEnabled = YES;
+            });
+            
+        }else{ //倒计时开始
+            
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮显示读秒效果
+                [self.sendCodeBtn setTitle:[NSString stringWithFormat:@"%ds后重发", seconds] forState:UIControlStateNormal];
+                [self.sendCodeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                self.sendCodeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+                self.sendCodeBtn.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
 }
 
 @end

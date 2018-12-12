@@ -82,8 +82,7 @@
     IDCardCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IDCardCell" forIndexPath:indexPath];
     
     //图片添加 点击效果
-    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImg:)];
-    [cell.imgView addGestureRecognizer:ges];
+    [cell.imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImg:)]];
     
     if (indexPath.row == 0){
         [cell.imgView setImage:[UIImage imageNamed:@"shenfen1"]];

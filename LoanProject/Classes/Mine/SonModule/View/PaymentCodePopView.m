@@ -13,6 +13,39 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    _whiteContentView.layer.cornerRadius = 10;
+    _whiteContentView.layer.masksToBounds = YES;
+    
+    //二维码长按事件
+    _codeImgView.userInteractionEnabled = YES;
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveToAlbum:)];
+    longPress.minimumPressDuration = 1; //定为1秒
+    [_codeImgView addGestureRecognizer:longPress];
+    
+    //关闭按钮点击事件
+    [_closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void)saveToAlbum:(UILongPressGestureRecognizer*)gestureRecognizer{
+   
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+            UIImageWriteToSavedPhotosAlbum(_codeImgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+
+}
+
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if(error){
+        [SVProgressHUD showErrorWithStatus:@"保存图片失败!"];
+    }else{
+        [SVProgressHUD showSuccessWithStatus:@"已保存图片至相册!"];
+    }
+}
+
+//关闭弹出框
+- (void)closeView{
+    [self removeFromSuperview];
 }
 
 @end

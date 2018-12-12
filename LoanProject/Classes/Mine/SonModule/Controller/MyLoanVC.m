@@ -7,6 +7,7 @@
 //
 
 #import "MyLoanVC.h"
+#import "PaymentCodePopView.h"
 
 @interface MyLoanVC ()
 
@@ -49,7 +50,11 @@
 
 
 - (void)returnMoneyClick{
-    NSLog(@"我要还款");
+
+    //弹出 获取通讯录view
+    PaymentCodePopView *popView = [[NSBundle mainBundle] loadNibNamed:@"PaymentCodePopView" owner:nil options:nil].firstObject;
+    popView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [UIApplication.sharedApplication.keyWindow addSubview:popView];
 }
 
 - (void)copyWeixin{

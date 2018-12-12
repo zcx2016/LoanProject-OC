@@ -28,11 +28,15 @@
 //拒绝
 - (void)refuse{
     [self removeFromSuperview];
+    //发送通知给vc，退出当前vc
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"quitCurrentVc" object:nil];
 }
 
 //同意
 - (void)agree{
     [self removeFromSuperview];
+    //发送通知给vc，读取通讯录信息，并保存
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"readAddressBook" object:nil];
 }
 
 @end

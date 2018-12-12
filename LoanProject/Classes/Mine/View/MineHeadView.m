@@ -30,8 +30,12 @@
 - (void)initView{
     
     _bgImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banner2"]];
+    _bgImgView.userInteractionEnabled = YES;
     
     _headImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"touxiang"]];
+    _headImgView.userInteractionEnabled = YES;
+    _headImgView.layer.cornerRadius = 40;
+    _headImgView.layer.masksToBounds = YES;
     
     _phoneLabel = [UILabel new];
     _phoneLabel.textColor = [UIColor whiteColor];
