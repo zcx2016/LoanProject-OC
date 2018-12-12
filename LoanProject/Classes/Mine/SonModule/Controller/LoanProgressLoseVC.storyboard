@@ -13,7 +13,7 @@
         <!--Loan Progress LoseVC-->
         <scene sceneID="mF2-vK-RrQ">
             <objects>
-                <viewController id="XyF-5s-Py2" customClass="LoanProgressLoseVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoanProgressLoseVC" id="XyF-5s-Py2" customClass="LoanProgressLoseVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t0i-2o-dBO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
