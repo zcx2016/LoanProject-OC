@@ -172,7 +172,12 @@
                     </view>
                     <connections>
                         <outlet property="backMoneyLabel" destination="Gf5-nB-oZb" id="Xhi-9G-7mr"/>
+                        <outlet property="callBtn" destination="XHh-Pt-LdX" id="XhI-PU-wSr"/>
                         <outlet property="canBorrowMoneyLabel" destination="Y3i-VG-sTo" id="dmn-ad-oIV"/>
+                        <outlet property="copiBtn" destination="xVv-Ew-VA2" id="CeC-FJ-nYz"/>
+                        <outlet property="phoneLabel" destination="uDc-L5-kSF" id="ogS-Hn-BoX"/>
+                        <outlet property="serverMoneyLabel" destination="3XF-Ek-96a" id="uBs-GG-07U"/>
+                        <outlet property="wechatLabel" destination="voM-Ae-Ju4" id="btZ-lO-Dk8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3uw-hf-0Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>

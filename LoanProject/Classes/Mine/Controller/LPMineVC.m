@@ -15,6 +15,7 @@
 #import "LoanProgressVC.h"
 #import "LoanProgressIngVC.h"
 #import "LoanProgressLoseVC.h"
+#import "RepaySuccessVC.h"
 #import "MyLoanVC.h"
 #import "CustomerServiceVC.h"
 #import "CardManageVC.h"

@@ -167,6 +167,8 @@
                         <outlet property="callBtn" destination="qLO-3D-9fA" id="fnW-UX-ips"/>
                         <outlet property="canBorrowMoneyLabel" destination="GNO-qf-0gH" id="oOV-5M-Efe"/>
                         <outlet property="copiBtn" destination="1Pt-ic-7th" id="13R-s6-HmZ"/>
+                        <outlet property="phoneLabel" destination="HMA-tt-fqa" id="ly5-lg-1Vk"/>
+                        <outlet property="wechatLabel" destination="7we-5m-xjc" id="AKP-P1-mjQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sF-kd-lhy" userLabel="First Responder" sceneMemberID="firstResponder"/>

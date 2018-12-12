@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *backMoneyLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *serverMoneyLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *wechatLabel;
 @property (weak, nonatomic) IBOutlet UIButton *copiBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
 
 

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		357E657621C10DB100245EC8 /* GetAddressBookPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 357E657521C10DB100245EC8 /* GetAddressBookPopView.m */; };
+		357E657821C10DE900245EC8 /* GetAddressBookPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357E657721C10DE900245EC8 /* GetAddressBookPopView.xib */; };
+		357E657B21C10E4500245EC8 /* RepaySuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 357E657A21C10E4500245EC8 /* RepaySuccessVC.m */; };
+		357E657D21C10E7900245EC8 /* RepaySuccessVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357E657C21C10E7900245EC8 /* RepaySuccessVC.storyboard */; };
+		357E658021C10ECC00245EC8 /* PaymentCodePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 357E657F21C10ECC00245EC8 /* PaymentCodePopView.m */; };
+		357E658221C10EDC00245EC8 /* PaymentCodePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357E658121C10EDC00245EC8 /* PaymentCodePopView.xib */; };
 		359EDD8321BEA83E00C2A8EB /* EmergencyContactHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 359EDD8221BEA83E00C2A8EB /* EmergencyContactHeadView.m */; };
 		359EDD8521BEA86300C2A8EB /* EmergencyContactHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359EDD8421BEA86300C2A8EB /* EmergencyContactHeadView.xib */; };
 		359EDD8821BEC38300C2A8EB /* AliPayFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 359EDD8721BEC38300C2A8EB /* AliPayFooterView.m */; };
@@ -56,6 +62,15 @@
 
 /* Begin PBXFileReference section */
 		2A8C419A6E50DC3FBFBA2815 /* Pods-LoanProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject.release.xcconfig"; sourceTree = "<group>"; };
+		357E657421C10DB100245EC8 /* GetAddressBookPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetAddressBookPopView.h; sourceTree = "<group>"; };
+		357E657521C10DB100245EC8 /* GetAddressBookPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetAddressBookPopView.m; sourceTree = "<group>"; };
+		357E657721C10DE900245EC8 /* GetAddressBookPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetAddressBookPopView.xib; sourceTree = "<group>"; };
+		357E657921C10E4500245EC8 /* RepaySuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepaySuccessVC.h; sourceTree = "<group>"; };
+		357E657A21C10E4500245EC8 /* RepaySuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepaySuccessVC.m; sourceTree = "<group>"; };
+		357E657C21C10E7900245EC8 /* RepaySuccessVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RepaySuccessVC.storyboard; sourceTree = "<group>"; };
+		357E657E21C10ECC00245EC8 /* PaymentCodePopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentCodePopView.h; sourceTree = "<group>"; };
+		357E657F21C10ECC00245EC8 /* PaymentCodePopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentCodePopView.m; sourceTree = "<group>"; };
+		357E658121C10EDC00245EC8 /* PaymentCodePopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCodePopView.xib; sourceTree = "<group>"; };
 		359EDD8121BEA83E00C2A8EB /* EmergencyContactHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmergencyContactHeadView.h; sourceTree = "<group>"; };
 		359EDD8221BEA83E00C2A8EB /* EmergencyContactHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmergencyContactHeadView.m; sourceTree = "<group>"; };
 		359EDD8421BEA86300C2A8EB /* EmergencyContactHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmergencyContactHeadView.xib; sourceTree = "<group>"; };
@@ -173,6 +188,9 @@
 				359EDD9421BECD2700C2A8EB /* IDCardCell.h */,
 				359EDD9521BECD2700C2A8EB /* IDCardCell.m */,
 				359EDD9621BECD2700C2A8EB /* IDCardCell.xib */,
+				357E657421C10DB100245EC8 /* GetAddressBookPopView.h */,
+				357E657521C10DB100245EC8 /* GetAddressBookPopView.m */,
+				357E657721C10DE900245EC8 /* GetAddressBookPopView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -381,6 +399,9 @@
 				35FEF01F21BFB51C0026196E /* CardManageVC.storyboard */,
 				35D974E521AFF2E5007F139C /* HelpCenterVC.h */,
 				35D974E621AFF2E5007F139C /* HelpCenterVC.m */,
+				357E657921C10E4500245EC8 /* RepaySuccessVC.h */,
+				357E657A21C10E4500245EC8 /* RepaySuccessVC.m */,
+				357E657C21C10E7900245EC8 /* RepaySuccessVC.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -417,6 +438,9 @@
 				35FEF01A21BF99460026196E /* CustomServerCell.h */,
 				35FEF01B21BF99460026196E /* CustomServerCell.m */,
 				35FEF01C21BF99460026196E /* CustomServerCell.xib */,
+				357E657E21C10ECC00245EC8 /* PaymentCodePopView.h */,
+				357E657F21C10ECC00245EC8 /* PaymentCodePopView.m */,
+				357E658121C10EDC00245EC8 /* PaymentCodePopView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -498,7 +522,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FEF01E21BF99460026196E /* CustomServerCell.xib in Resources */,
+				357E657821C10DE900245EC8 /* GetAddressBookPopView.xib in Resources */,
 				359EDD8A21BEC3A900C2A8EB /* AliPayFooterView.xib in Resources */,
+				357E657D21C10E7900245EC8 /* RepaySuccessVC.storyboard in Resources */,
 				35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */,
 				35FEF03321BFC4700026196E /* MyLoanVC.storyboard in Resources */,
 				35FEF02F21BFC2DF0026196E /* LoanProgressLoseVC.storyboard in Resources */,
@@ -509,6 +535,7 @@
 				35CFBE3821BE5D060065B11D /* BankCardCell.xib in Resources */,
 				359EDD9821BECD2700C2A8EB /* IDCardCell.xib in Resources */,
 				359EDD8521BEA86300C2A8EB /* EmergencyContactHeadView.xib in Resources */,
+				357E658221C10EDC00245EC8 /* PaymentCodePopView.xib in Resources */,
 				35FEF03121BFC40C0026196E /* LoanProgressVC.storyboard in Resources */,
 				35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */,
 				35FEF02021BFB51C0026196E /* CardManageVC.storyboard in Resources */,
@@ -568,7 +595,9 @@
 				35CFBE0F21BE0AA80065B11D /* MyLoanVC.m in Sources */,
 				35D974E721AFF2E5007F139C /* HelpCenterVC.m in Sources */,
 				35CFBE1821BE0B8A0065B11D /* CarrierCertificationVC.m in Sources */,
+				357E657B21C10E4500245EC8 /* RepaySuccessVC.m in Sources */,
 				35CFBE0C21BE0A7B0065B11D /* LoanProgressVC.m in Sources */,
+				357E658021C10ECC00245EC8 /* PaymentCodePopView.m in Sources */,
 				35FEF01D21BF99460026196E /* CustomServerCell.m in Sources */,
 				35CFBE4921BE6E560065B11D /* UIButton+Extension.m in Sources */,
 				35CFBE1E21BE0C1C0065B11D /* IDCardCertificationVC.m in Sources */,
@@ -590,6 +619,7 @@
 				35CFBE1521BE0AFC0065B11D /* CardManageVC.m in Sources */,
 				35CFBE1B21BE0BE20065B11D /* AlipayCertificationVC.m in Sources */,
 				359EDD8821BEC38300C2A8EB /* AliPayFooterView.m in Sources */,
+				357E657621C10DB100245EC8 /* GetAddressBookPopView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

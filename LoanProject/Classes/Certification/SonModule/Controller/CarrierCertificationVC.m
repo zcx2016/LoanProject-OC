@@ -11,6 +11,7 @@
 #import "EmergencyContactHeadView.h"
 
 #import "PhoneCertificationVC.h"
+#import "GetAddressBookPopView.h"
 
 @interface CarrierCertificationVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
@@ -46,7 +47,12 @@
     
     [self tableView];
     
-     [self setBotBtn];
+    [self setBotBtn];
+    
+    //弹出 获取通讯录view
+    GetAddressBookPopView *addressBookPopView = [[NSBundle mainBundle] loadNibNamed:@"GetAddressBookPopView" owner:nil options:nil].firstObject;
+    addressBookPopView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [UIApplication.sharedApplication.keyWindow addSubview:addressBookPopView];
 }
 
 - (void)setBotBtn{

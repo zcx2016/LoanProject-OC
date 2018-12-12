@@ -49,15 +49,20 @@
 
 
 - (void)returnMoneyClick{
-    NSLog(@"111");
+    NSLog(@"我要还款");
 }
 
 - (void)copyWeixin{
-    
+    //复制到粘贴板
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    pb.string = _wechatLabel.text;
+    [SVProgressHUD showSuccessWithStatus:@"微信号已复制到粘贴板!"];
 }
 
 - (void)callPhone{
-    
+    //打电话
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_phoneLabel.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
 @end

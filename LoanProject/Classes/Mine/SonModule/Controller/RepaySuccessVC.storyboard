@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Repay SuccessVC-->
+        <scene sceneID="msQ-Qp-U4N">
+            <objects>
+                <viewController storyboardIdentifier="RepaySuccessVC" id="9WQ-Yf-5az" customClass="RepaySuccessVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bg5-e0-nDR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repaySuc" translatesAutoresizingMaskIntoConstraints="NO" id="9m5-fp-kNq">
+                                <rect key="frame" x="137.5" y="60" width="100" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="lwe-r2-4CN"/>
+                                    <constraint firstAttribute="width" constant="100" id="puE-BL-gGx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还款成功！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZq-4l-lOQ">
+                                <rect key="frame" x="121.5" y="215" width="132" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                                <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前无欠款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S85-Q6-t53">
+                                <rect key="frame" x="136.5" y="261.5" width="102" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-7u-JoM">
+                                <rect key="frame" x="20" y="320.5" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="o63-6y-4qN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <state key="normal" title="申请贷款" backgroundImage="navbg">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9m5-fp-kNq" firstAttribute="centerX" secondItem="Bg5-e0-nDR" secondAttribute="centerX" id="1TQ-mg-8I7"/>
+                            <constraint firstItem="S85-Q6-t53" firstAttribute="centerX" secondItem="Bg5-e0-nDR" secondAttribute="centerX" id="65g-i5-9DF"/>
+                            <constraint firstItem="HuT-7u-JoM" firstAttribute="top" secondItem="S85-Q6-t53" secondAttribute="bottom" constant="35" id="Bq1-wh-59M"/>
+                            <constraint firstItem="9m5-fp-kNq" firstAttribute="top" secondItem="i0U-Ns-6rG" secondAttribute="top" constant="40" id="GlJ-kl-xFZ"/>
+                            <constraint firstItem="HuT-7u-JoM" firstAttribute="centerX" secondItem="Bg5-e0-nDR" secondAttribute="centerX" id="Mzc-Yd-th2"/>
+                            <constraint firstItem="xZq-4l-lOQ" firstAttribute="centerX" secondItem="Bg5-e0-nDR" secondAttribute="centerX" id="YGx-vf-RSx"/>
+                            <constraint firstItem="xZq-4l-lOQ" firstAttribute="top" secondItem="9m5-fp-kNq" secondAttribute="bottom" constant="50" id="ksw-qD-K0G"/>
+                            <constraint firstItem="S85-Q6-t53" firstAttribute="top" secondItem="xZq-4l-lOQ" secondAttribute="bottom" constant="15" id="nYA-Zw-8dK"/>
+                            <constraint firstItem="HuT-7u-JoM" firstAttribute="leading" secondItem="i0U-Ns-6rG" secondAttribute="leading" constant="20" id="vMU-bE-R7r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="i0U-Ns-6rG"/>
+                    </view>
+                    <connections>
+                        <outlet property="applyMoneyBtn" destination="HuT-7u-JoM" id="aKV-wf-BVj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjm-zJ-AUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="109"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="navbg" width="347" height="42"/>
+        <image name="repaySuc" width="87" height="87"/>
+    </resources>
+</document>
