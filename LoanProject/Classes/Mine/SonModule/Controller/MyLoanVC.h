@@ -12,6 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MyLoanVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *canBorrowMoneyLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *backMoneyLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *serverMoneyLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *copiBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *callBtn;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
