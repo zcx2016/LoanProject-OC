@@ -28,6 +28,9 @@
 //选择的哪个图片的index
 @property (nonatomic, strong) NSIndexPath *selectIndex;
 
+//图片url
+@property (nonatomic, strong) NSURL *pic1Url;
+
 @end
 
 @implementation IDCardCertificationVC
@@ -65,7 +68,15 @@
 }
 
 - (void)submitClick{
-    NSLog(@"2222");
+    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    
+    NSDictionary *dict = @{@"uid" : uid, @"key": key ,@"positive" : [self.pic1Url absoluteString], @"back":[self.pic1Url absoluteString],@"hold":[self.pic1Url absoluteString]};
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"上传身份证---%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"上传身份证---%@",error);
+    }];
 }
 
 #pragma mark - tableView Delegate
@@ -186,6 +197,11 @@
     UIImage * image =info[UIImagePickerControllerOriginalImage];
     //转换成jpg格式，并压缩，0.5比例最好
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    
+    //
+    NSString *imgStr = imageData.utf8String;
+//    NSString *imgStr = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+    self.pic1Url = [NSURL URLWithString:imgStr];
     
     //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
     //

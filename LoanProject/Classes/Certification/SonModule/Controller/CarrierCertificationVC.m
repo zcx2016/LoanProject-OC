@@ -52,6 +52,8 @@
     
     //初始化 通讯录字典
     self.addressBookDict = [NSMutableDictionary dictionary];
+    NSString *phone = [ZcxUserDefauts objectForKey:@"phone"];
+    [self.addressBookDict setObject:phone forKey:phone];
     
     //设置UI
     [self tableView];
@@ -94,10 +96,53 @@
 }
 
 - (void)sureClick{
-    NSLog(@"紧急联系人信息-- %@,%@,%@ /n %@,%@,%@ /n %@,%@,%@",_weak_firstNameCell.inputTF.text,_weak_firstContactCell.inputTF.text,_weak_firstPhoneCell.inputTF.text, _weak_secNameCell.inputTF.text, _weak_secContactCell.inputTF.text, _weak_secPhoneCell.inputTF.text, _weak_thirdNameCell.inputTF.text, _weak_thirdContactCell.inputTF.text , _weak_thirdPhoneCell.inputTF.text);
     
-    PhoneCertificationVC *vc = [PhoneCertificationVC new];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([_weak_firstNameCell.inputTF.text isEqualToString:@""] || [_weak_firstContactCell.inputTF.text isEqualToString:@""] ||
+        [_weak_firstPhoneCell.inputTF.text isEqualToString:@""]|| [_weak_secNameCell.inputTF.text isEqualToString:@""] ||
+        [_weak_secContactCell.inputTF.text isEqualToString:@""] || [_weak_secPhoneCell.inputTF.text isEqualToString:@""] ||
+        [_weak_thirdNameCell.inputTF.text isEqualToString:@""] || [_weak_thirdContactCell.inputTF.text isEqualToString:@""] ||
+        [_weak_thirdPhoneCell.inputTF.text isEqualToString:@""] ){
+        
+        [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
+        return;
+    }
+    
+//    NSLog(@"紧急联系人信息-- %@,%@,%@ /n %@,%@,%@ /n %@,%@,%@",_weak_firstNameCell.inputTF.text,_weak_firstContactCell.inputTF.text,_weak_firstPhoneCell.inputTF.text, _weak_secNameCell.inputTF.text, _weak_secContactCell.inputTF.text, _weak_secPhoneCell.inputTF.text, _weak_thirdNameCell.inputTF.text, _weak_thirdContactCell.inputTF.text , _weak_thirdPhoneCell.inputTF.text);
+    
+    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    
+    NSDictionary *dict = @{@"key": key,
+                           @"uid" : uid,
+                           @"name1" : _weak_firstNameCell.inputTF.text, @"contacts1":_weak_firstContactCell.inputTF.text,
+                           @"phone1": _weak_firstPhoneCell.inputTF.text,
+                           @"name2" : _weak_secNameCell.inputTF.text, @"contacts2":_weak_secContactCell.inputTF.text,
+                           @"phone2": _weak_secPhoneCell.inputTF.text,
+                           @"name3" : _weak_thirdNameCell.inputTF.text, @"contacts3":_weak_thirdContactCell.inputTF.text,
+                           @"phone3": _weak_thirdPhoneCell.inputTF.text
+                           };
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveOperator"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"保存紧急联系人---%@",responseObject);
+        
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
+        if ([stateCode isEqualToString:@"0"]){
+            [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //推向下一个界面
+                PhoneCertificationVC *vc = [PhoneCertificationVC new];
+                [self.navigationController pushViewController:vc animated:YES];
+            });
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"保存失败！"];
+            return ;
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"存紧急联系人错误---%@",error);
+    }];
+    
+
 }
 
 #pragma mark - tableView Delegate
@@ -293,6 +338,13 @@
         
     }];
     NSLog(@"通讯录字典---%ld---%@",self.addressBookDict.count, self.addressBookDict);
+    
+    //发送通讯录给后台
+//    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingPathComponent:@"/UploadDic.aspx"] parameters:self.addressBookDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"通讯录---%@",responseObject);
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"通讯录错误---%@",error);
+//    }];
 }
 
 //提示没有通讯录权限

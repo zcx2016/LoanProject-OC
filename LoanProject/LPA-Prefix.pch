@@ -16,11 +16,12 @@
 
 #import "SVProgressHUD.h"
 #import "UIButton+Extension.h"
+#import "NSData+UTF8.h"
 #import <Masonry.h>
 
-//#define kUrlReqHead @"http://192.168.6.161:8080"
+#import "LPUser.h"
 
-#define kUrlReqHead @"/API.asmx"
+#define kUrlReqHead @"http://43.229.152.127"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height

@@ -40,7 +40,21 @@
     [self openCountdown];
 }
 
+#pragma mark - 登录
 - (void)loginEvents{
+   
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : key};
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"登录---%@",responseObject);
+        //保存用户编号和手机
+        [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
+        [ZcxUserDefauts setObject:responseObject[@"phone"] forKey:@"phone"];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"登录---%@",error);
+    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
