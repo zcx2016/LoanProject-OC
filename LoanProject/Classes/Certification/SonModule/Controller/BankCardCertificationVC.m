@@ -66,6 +66,33 @@
 - (void)submitClick{
     NSLog(@"提交银行卡信息-- %@,%@,%@,%@",_weak_nameCell.inputTF.text,_weak_idCardCell.inputTF.text,_weak_cardCell.inputTF.text,_weak_phoneCell.inputTF.text);
     
+    if ([_weak_nameCell.inputTF.text isEqualToString:@""] || [_weak_idCardCell.inputTF.text isEqualToString:@""] || [_weak_cardCell.inputTF.text isEqualToString:@""] || [_weak_phoneCell.inputTF.text isEqualToString:@""]){
+        
+        [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
+        return;
+    }
+    
+    
+    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    
+    NSDictionary *dict = @{@"uid" : uid, @"key" :key, @"bankcard" : _weak_nameCell.inputTF.text,@"idnumber" : _weak_idCardCell.inputTF.text, @"savingscard": _weak_cardCell.inputTF.text, @"phone" :_weak_phoneCell.inputTF.text};
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveBank"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"银行卡-----%@",responseObject);
+        
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
+        if ([stateCode isEqualToString:@"0"]){
+            [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //返回上个界面
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"银行卡错误-----%@",error);
+    }];
 }
 
 #pragma mark - tableView Delegate

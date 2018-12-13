@@ -113,8 +113,26 @@
 }
 
 - (void)submitClick{
-    NSLog(@"提交贷款申请");
-
+  
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
+    
+    NSDictionary *dict = @{@"key":key, @"uid": uid};
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveLoan"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"提交贷款申请----%@",responseObject);
+        
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
+        if ([stateCode isEqualToString:@"0"]){
+            [SVProgressHUD showSuccessWithStatus:@"申请成功！"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"申请失败！"];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"提交贷款申请失败----%@",error);
+    }];
 }
 
 #pragma mark - tableView Delegate

@@ -67,6 +67,31 @@
 
 - (void)submitClick{
     NSLog(@"支付宝认证-- %@,%@",_weak_numCell.inputTF.text,_weak_pwdCell.inputTF.text);
+    if ([_weak_numCell.inputTF.text isEqualToString:@""] || [_weak_pwdCell.inputTF.text isEqualToString:@""] ){
+        [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
+        return;
+    }
+    
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
+    
+    NSDictionary *dict = @{@"uid":uid, @"key":key,@"alipay":_weak_numCell.inputTF.text, @"alipaycipher" : _weak_pwdCell.inputTF.text};
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveAlipay"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"支付宝认证----%@",responseObject);
+        
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
+        if ([stateCode isEqualToString:@"0"]){
+            [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //返回上个界面
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+            
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"支付宝认证错误----%@",error);
+    }];
 }
 
 #pragma mark - tableView Delegate
