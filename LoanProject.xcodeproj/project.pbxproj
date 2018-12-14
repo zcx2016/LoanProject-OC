@@ -20,7 +20,7 @@
 		359EDD9721BECD2700C2A8EB /* IDCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 359EDD9521BECD2700C2A8EB /* IDCardCell.m */; };
 		359EDD9821BECD2700C2A8EB /* IDCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359EDD9621BECD2700C2A8EB /* IDCardCell.xib */; };
 		35A4ED3621C2635500C35ECB /* LPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A4ED3521C2635500C35ECB /* LPUser.m */; };
-		35A4ED3A21C27ACB00C35ECB /* NSData+UTF8.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A4ED3921C27ACB00C35ECB /* NSData+UTF8.m */; };
+		35A8743A21C35F6D0028D83B /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A8743921C35F6D0028D83B /* UIImage+Compress.m */; };
 		35CFBE0C21BE0A7B0065B11D /* LoanProgressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE0B21BE0A7B0065B11D /* LoanProgressVC.m */; };
 		35CFBE0F21BE0AA80065B11D /* MyLoanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE0E21BE0AA80065B11D /* MyLoanVC.m */; };
 		35CFBE1221BE0AD50065B11D /* CustomerServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CFBE1121BE0AD50065B11D /* CustomerServiceVC.m */; };
@@ -84,8 +84,8 @@
 		359EDD9621BECD2700C2A8EB /* IDCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDCardCell.xib; sourceTree = "<group>"; };
 		35A4ED3421C2635500C35ECB /* LPUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPUser.h; sourceTree = "<group>"; };
 		35A4ED3521C2635500C35ECB /* LPUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPUser.m; sourceTree = "<group>"; };
-		35A4ED3821C27ACB00C35ECB /* NSData+UTF8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+UTF8.h"; sourceTree = "<group>"; };
-		35A4ED3921C27ACB00C35ECB /* NSData+UTF8.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+UTF8.m"; sourceTree = "<group>"; };
+		35A8743821C35F6D0028D83B /* UIImage+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compress.h"; sourceTree = "<group>"; };
+		35A8743921C35F6D0028D83B /* UIImage+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
 		35CFBE0A21BE0A7B0065B11D /* LoanProgressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanProgressVC.h; sourceTree = "<group>"; };
 		35CFBE0B21BE0A7B0065B11D /* LoanProgressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanProgressVC.m; sourceTree = "<group>"; };
 		35CFBE0D21BE0AA80065B11D /* MyLoanVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLoanVC.h; sourceTree = "<group>"; };
@@ -208,8 +208,8 @@
 				35CFBE4821BE6E560065B11D /* UIButton+Extension.m */,
 				35A4ED3421C2635500C35ECB /* LPUser.h */,
 				35A4ED3521C2635500C35ECB /* LPUser.m */,
-				35A4ED3821C27ACB00C35ECB /* NSData+UTF8.h */,
-				35A4ED3921C27ACB00C35ECB /* NSData+UTF8.m */,
+				35A8743821C35F6D0028D83B /* UIImage+Compress.h */,
+				35A8743921C35F6D0028D83B /* UIImage+Compress.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -628,13 +628,13 @@
 				35CFBE4921BE6E560065B11D /* UIButton+Extension.m in Sources */,
 				35CFBE1E21BE0C1C0065B11D /* IDCardCertificationVC.m in Sources */,
 				35FEF02D21BFC2D70026196E /* LoanProgressLoseVC.m in Sources */,
-				35A4ED3A21C27ACB00C35ECB /* NSData+UTF8.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
 				35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */,
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
 				35D974D921AFE2DD007F139C /* LoginVC.m in Sources */,
 				35CFBE1221BE0AD50065B11D /* CustomerServiceVC.m in Sources */,
+				35A8743A21C35F6D0028D83B /* UIImage+Compress.m in Sources */,
 				359EDD8321BEA83E00C2A8EB /* EmergencyContactHeadView.m in Sources */,
 				35CFBE4321BE681C0065B11D /* PhoneCertificationVC.m in Sources */,
 				35CFBE2821BE485A0065B11D /* MineHeadView.m in Sources */,

@@ -13,6 +13,9 @@
 //自定义 电话 的inputAccessoryView
 @property (nonatomic, strong) UIToolbar *customAccessoryView;
 
+//验证码
+@property (nonatomic, copy) NSString *verifyCode;
+
 @end
 
 @implementation LoginVC
@@ -37,11 +40,42 @@
 
 - (void)sendCodeEvents{
     NSLog(@"发送验证码");
-    [self openCountdown];
+    
+    if ([self.phoneTF.text isEqualToString:@""]){
+        [SVProgressHUD showErrorWithStatus:@"手机号和服务密码不能为空！"];
+        return;
+    }
+    
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSDictionary *dict = @{@"phone" : self.phoneTF.text, @"key":key};
+    
+    [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"发送验证码-----%@",responseObject);
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
+        if ([stateCode isEqualToString:@"0"]){
+            // 开启倒计时效果
+            [self showCountDown];
+            //保存验证码
+            self.verifyCode = responseObject[@"key"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"获取验证码失败！"];
+            return;
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"发送验证码错误-----%@",error);
+    }];
+
 }
 
 #pragma mark - 登录
 - (void)loginEvents{
+    
+    if ([_phoneTF.text isEqualToString:@""] || [_verifyCodeTF.text isEqualToString:@""]){
+        [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
+        return;
+    }
    
     NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : key};
@@ -52,10 +86,15 @@
         [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
         [ZcxUserDefauts setObject:responseObject[@"phone"] forKey:@"phone"];
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"登录---%@",error);
     }];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 //自定义 电话 和 qq 的inputAccessoryView
@@ -81,7 +120,7 @@
  当type为: 其他时, 是一闪一闪的效果.
  */
 // 开启倒计时效果
--(void)openCountdown{
+-(void)showCountDown{
     
     __block NSInteger time = 59; //倒计时时间
     

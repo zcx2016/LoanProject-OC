@@ -71,12 +71,15 @@
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
-    NSDictionary *dict = @{@"uid" : uid, @"key": key ,@"positive" : [self.pic1Url absoluteString], @"back":[self.pic1Url absoluteString],@"hold":[self.pic1Url absoluteString]};
+    NSDictionary *dict = @{@"uid" : uid, @"key": key ,@"positive" : @"111", @"back":@"222",@"hold":@"333"};
+    
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"上传身份证---%@",responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"上传身份证---%@",error);
     }];
+    
+    
 }
 
 #pragma mark - tableView Delegate
@@ -199,20 +202,20 @@
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     
     //
-    NSString *imgStr = imageData.utf8String;
-//    NSString *imgStr = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
-    self.pic1Url = [NSURL URLWithString:imgStr];
+//    NSString *imgStr = imageData.utf8String;
+////    NSString *imgStr = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+//    self.pic1Url = [NSURL URLWithString:imgStr];
     
     //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
     //
-    //    //将图片上传到服务器
-    //    NSDictionary *dict = @{@"registerId" : self.registerId , @"employeeId" : self.employeeId};
-    //
-    //    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/app/users/updatePhoto.do"] parameters:dict name:@"imgarray0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
-    //
-    //        //存头像
-    //        [UserDefautsLhm setObject:result[@"data"] forKey:KeyUserHeadImg];
-    //    }];
+ 
+    
+        [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"111" data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+    
+            NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+//            //存头像
+//            [UserDefautsLhm setObject:result[@"data"] forKey:KeyUserHeadImg];
+        }];
     //
     
     //    //判断数据源类型

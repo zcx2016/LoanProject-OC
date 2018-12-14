@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PhoneCertificationVC : UIViewController
 
+//通讯录字典
+@property (nonatomic, strong) NSDictionary *addressBookDict;
+
 @end
 
 NS_ASSUME_NONNULL_END

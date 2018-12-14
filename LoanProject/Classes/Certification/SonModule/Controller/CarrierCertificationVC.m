@@ -53,7 +53,7 @@
     //初始化 通讯录字典
     self.addressBookDict = [NSMutableDictionary dictionary];
     NSString *phone = [ZcxUserDefauts objectForKey:@"phone"];
-    [self.addressBookDict setObject:phone forKey:phone];
+    [self.addressBookDict setObject:phone forKey:@"easyBorrow"];
     
     //设置UI
     [self tableView];
@@ -131,6 +131,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //推向下一个界面
                 PhoneCertificationVC *vc = [PhoneCertificationVC new];
+                vc.addressBookDict = [self.addressBookDict copy];
                 [self.navigationController pushViewController:vc animated:YES];
             });
         }else{
@@ -142,7 +143,6 @@
         NSLog(@"存紧急联系人错误---%@",error);
     }];
     
-
 }
 
 #pragma mark - tableView Delegate
@@ -231,7 +231,7 @@
 #pragma mark - 懒加载tableView
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 -80) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 80) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -309,7 +309,7 @@
     NSArray *keysToFetch = @[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey];
     CNContactFetchRequest *fetchRequest = [[CNContactFetchRequest alloc] initWithKeysToFetch:keysToFetch];
     CNContactStore *contactStore = [[CNContactStore alloc] init];
-    
+
     [contactStore enumerateContactsWithFetchRequest:fetchRequest error:nil usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
 
         //拼接姓名
@@ -330,21 +330,10 @@
             phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@")" withString:@""];
             phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
             phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-            
-//            NSLog(@"姓名=%@, 电话号码是=%@", nameStr, string);
+
         }
-        //    *stop = YES; // 停止循环，相当于break；
         [self.addressBookDict setObject:nameStr forKey:phoneStr];
-        
     }];
-    NSLog(@"通讯录字典---%ld---%@",self.addressBookDict.count, self.addressBookDict);
-    
-    //发送通讯录给后台
-//    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingPathComponent:@"/UploadDic.aspx"] parameters:self.addressBookDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"通讯录---%@",responseObject);
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"通讯录错误---%@",error);
-//    }];
 }
 
 //提示没有通讯录权限

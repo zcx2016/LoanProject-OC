@@ -16,7 +16,7 @@
 
 #import "SVProgressHUD.h"
 #import "UIButton+Extension.h"
-#import "NSData+UTF8.h"
+#import "UIImage+Compress.h"
 #import <Masonry.h>
 
 #import "LPUser.h"

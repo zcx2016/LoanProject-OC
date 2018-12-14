@@ -29,6 +29,7 @@
     
     //设置hud消失时间
     [SVProgressHUD setMinimumDismissTimeInterval:(1)];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     return YES;
 }

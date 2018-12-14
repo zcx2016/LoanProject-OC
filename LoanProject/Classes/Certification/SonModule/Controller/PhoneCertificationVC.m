@@ -25,6 +25,9 @@
 @property (nonatomic, weak) CarrierCell *weak_serverPwdCell;
 @property (nonatomic, weak) CarrierCell *weak_verifyCodeCell;
 
+//验证码
+@property (nonatomic, copy) NSString *verifyCode;
+
 @end
 
 @implementation PhoneCertificationVC
@@ -104,6 +107,34 @@
 - (void)submitClick{
     NSLog(@"手机信息-- %@,%@,%@",_weak_phoneCell.inputTF.text,_weak_serverPwdCell.inputTF.text,_weak_verifyCodeCell.inputTF.text);
     
+    if ([_weak_phoneCell.inputTF.text isEqualToString:@""] || [_weak_serverPwdCell.inputTF.text isEqualToString:@""] || [_weak_verifyCodeCell.inputTF.text isEqualToString:@""]){
+        
+        [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
+        return;
+    }
+    
+    if (![_weak_verifyCodeCell.inputTF.text isEqualToString:self.verifyCode]){
+        [SVProgressHUD showErrorWithStatus:@"验证码输入错误！"];
+        return;
+    }
+    
+    //发送通讯录给后台
+    [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingPathComponent:@"/UploadDic.aspx"] parameters:self.addressBookDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"通讯录---%@",responseObject);
+        
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
+        if ([stateCode isEqualToString:@"200"]){
+            [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"提交失败！"];
+            return;
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"通讯录错误---%@",error);
+    }];
+    
 }
 
 #pragma mark - tableView Delegate
@@ -132,7 +163,7 @@
         _weak_verifyCodeCell = cell;
         [cell.codeBtn setHidden:NO];
         cell.inputTF.placeholder = @"请输入验证码";
-        [cell.codeBtn addTarget:self action:@selector(openCountdown) forControlEvents:UIControlEventTouchUpInside];
+        [cell.codeBtn addTarget:self action:@selector(sendVerifyCode) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return cell;
@@ -190,9 +221,37 @@
 }
 
 #pragma mark - 发送验证码
-// 开启倒计时效果
--(void)openCountdown{
+- (void)sendVerifyCode{
     
+    if ([self.weak_phoneCell.inputTF.text isEqualToString:@""] || [self.weak_serverPwdCell.inputTF.text isEqualToString:@""]){
+        [SVProgressHUD showErrorWithStatus:@"手机号和服务密码不能为空！"];
+        return;
+    }
+
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSDictionary *dict = @{@"phone" : self.weak_phoneCell.inputTF.text, @"key":key};
+    
+    [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"发送验证码-----%@",responseObject);
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
+        if ([stateCode isEqualToString:@"0"]){
+            // 开启倒计时效果
+            [self showCountDown];
+            //保存验证码
+            self.verifyCode = responseObject[@"key"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"获取验证码失败！"];
+            return;
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"发送验证码错误-----%@",error);
+    }];
+}
+
+// 开启倒计时效果
+- (void)showCountDown{
     __block NSInteger time = 59; //倒计时时间
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);

@@ -30,6 +30,9 @@
 //
 @property (nonatomic, weak) AliPayFooterView *weak_zhimaView;
 
+//上传图片 地址
+@property (nonatomic, copy) NSString *zmImgStr;
+
 @end
 
 @implementation AlipayCertificationVC
@@ -75,7 +78,7 @@
     NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     
-    NSDictionary *dict = @{@"uid":uid, @"key":key,@"alipay":_weak_numCell.inputTF.text, @"alipaycipher" : _weak_pwdCell.inputTF.text};
+    NSDictionary *dict = @{@"uid":uid, @"key":key,@"alipay":_weak_numCell.inputTF.text, @"alipaycipher" : _weak_pwdCell.inputTF.text , @"zmImg" : self.zmImgStr};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveAlipay"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"支付宝认证----%@",responseObject);
@@ -234,22 +237,31 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     //通过key值获取到图片
     UIImage * image =info[UIImagePickerControllerOriginalImage];
+   
+//    NSData *imageData2 = [image compressWithMaxLength:100];
+    
     //转换成jpg格式，并压缩，0.5比例最好
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    NSData *imageData2 = UIImageJPEGRepresentation(image, 0.5);
     
     //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
     //
     //    //将图片上传到服务器
     //    NSDictionary *dict = @{@"registerId" : self.registerId , @"employeeId" : self.employeeId};
     //
-    //    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/app/users/updatePhoto.do"] parameters:dict name:@"imgarray0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
-    //
-    //        //存头像
-    //        [UserDefautsLhm setObject:result[@"data"] forKey:KeyUserHeadImg];
-    //    }];
+        [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"zhima.jpg" data:imageData2 completion:^(id  _Nonnull result, BOOL isSuccess) {
+    
+            NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+            NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+            if ([stateCode isEqualToString:@"200"]){
+                self.zmImgStr = result[@"img"];
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                return;
+            }
+        }];
     //
     
-    //    //判断数据源类型
+    //判断数据源类型
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {    //相册
         //显示图片
         _weak_zhimaView.uploadZhiMaImgView.image = image;

@@ -224,12 +224,12 @@
     //转换成jpg格式，并压缩，0.5比例最好
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     
-    //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
-    //
-    //    //将图片上传到服务器
-    //    NSDictionary *dict = @{@"registerId" : self.registerId , @"employeeId" : self.employeeId};
-    //
-    //    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/app/users/updatePhoto.do"] parameters:dict name:@"imgarray0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+//        NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
+//    
+//        //将图片上传到服务器
+//        NSDictionary *dict = @{@"registerId" : self.registerId , @"employeeId" : self.employeeId};
+//    
+//        [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/app/users/updatePhoto.do"] parameters:dict name:@"imgarray0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
     //
     //        //存头像
     //        [UserDefautsLhm setObject:result[@"data"] forKey:KeyUserHeadImg];
