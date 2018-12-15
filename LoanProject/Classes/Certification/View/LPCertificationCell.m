@@ -67,7 +67,7 @@
     [_indicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.right.equalTo(self.mas_right).with.offset(-10);
-        make.width.equalTo(@10);
+        make.width.equalTo(@14);
         make.height.equalTo(@15);
     }];
     

@@ -7,10 +7,12 @@
 //
 
 #import "LoanProgressVC.h"
+#import "PaymentCodePopView.h"
 
 @interface LoanProgressVC ()
 
 @property (nonatomic, strong) UIButton *payMoneyBtn;
+
 @end
 
 @implementation LoanProgressVC
@@ -29,6 +31,13 @@
     [_copiBtn addTarget:self action:@selector(copyWeixin) forControlEvents:UIControlEventTouchUpInside];
     [_callBtn addTarget:self action:@selector(callPhone) forControlEvents:UIControlEventTouchUpInside];
     
+    //赋值
+    _canBorrowMoneyLabel.text = self.loanMoney;
+    _serverMoneyLabel.text = [[@"会员服务费:" stringByAppendingString:self.serverMoney] stringByAppendingString:@"元"];
+    _wechatLabel.text = self.weChat;
+    _phoneLabel.text = self.telephone;
+    
+    //底部button
     [self setBotBtn];
 }
 
@@ -48,7 +57,13 @@
 
 
 - (void)returnMoneyClick{
-    NSLog(@"支付～～");
+
+    //弹出 支付view
+    PaymentCodePopView *popView = [[NSBundle mainBundle] loadNibNamed:@"PaymentCodePopView" owner:nil options:nil].firstObject;
+    popView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    popView.feeAddress = self.feeAddress;
+    popView.money = self.serverMoney;
+    [UIApplication.sharedApplication.keyWindow addSubview:popView];
 }
 
 - (void)copyWeixin{

@@ -72,7 +72,6 @@
         return;
     }
     
-    
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
@@ -86,7 +85,7 @@
             [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //返回上个界面
-                [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             });
         }
         
@@ -145,10 +144,10 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
-
 
 #pragma mark - 懒加载tableView
 - (UITableView *)tableView{

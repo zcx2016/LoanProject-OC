@@ -81,14 +81,46 @@
     NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : key};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+         [SVProgressHUD showProgress:-1 status:@"登录中..."];
+        
         NSLog(@"登录---%@",responseObject);
         //保存用户编号和手机
         [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
         [ZcxUserDefauts setObject:responseObject[@"phone"] forKey:@"phone"];
+        //保存额度
+        [ZcxUserDefauts setObject:responseObject[@"limit"] forKey:@"limit"];
+        //设置 已登录 属性
+        [ZcxUserDefauts setBool:YES forKey:@"isLogin"];
+        //四大认证
+        if ([responseObject[@"isChecIdentity"] isEqual:@0]){ //身份认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecIdentity"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecIdentity"];
+        }
+        if ([responseObject[@"isChecOperator"] isEqual:@0]){ //运营商认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecOperator"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecOperator"];
+        }
+        if ([responseObject[@"isChecAlipay"] isEqual:@0]){ //支付宝认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecAlipay"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecAlipay"];
+        }
+        if ([responseObject[@"isChecBankCard"] isEqual:@0]){ //银行卡认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecBankCard"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecBankCard"];
+        }
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [SVProgressHUD dismiss];
+            [self dismissViewControllerAnimated:YES completion:^{
+                //发送通知,给主界面，刷新 认证信息
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateUI" object:nil];
+            }];
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -243,23 +243,17 @@
     //转换成jpg格式，并压缩，0.5比例最好
     NSData *imageData2 = UIImageJPEGRepresentation(image, 0.5);
     
-    //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
-    //
-    //    //将图片上传到服务器
-    //    NSDictionary *dict = @{@"registerId" : self.registerId , @"employeeId" : self.employeeId};
-    //
-        [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"zhima.jpg" data:imageData2 completion:^(id  _Nonnull result, BOOL isSuccess) {
-    
-            NSLog(@"res----%@, isSuc---%d",result,isSuccess);
-            NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
-            if ([stateCode isEqualToString:@"200"]){
-                self.zmImgStr = result[@"img"];
-            }else{
-                [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
-                return;
-            }
+    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"zhima.jpg" data:imageData2 completion:^(id  _Nonnull result, BOOL isSuccess) {
+        
+        NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+        NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+        if ([stateCode isEqualToString:@"200"]){
+            self.zmImgStr = result[@"img"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+            return;
+        }
         }];
-    //
     
     //判断数据源类型
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {    //相册

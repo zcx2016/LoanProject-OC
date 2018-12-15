@@ -51,9 +51,11 @@
 
 - (void)returnMoneyClick{
 
-    //弹出 获取通讯录view
+    //弹出 支付view
     PaymentCodePopView *popView = [[NSBundle mainBundle] loadNibNamed:@"PaymentCodePopView" owner:nil options:nil].firstObject;
     popView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    popView.feeAddress = self.feeAddress;
+    popView.money = self.loanMoney;
     [UIApplication.sharedApplication.keyWindow addSubview:popView];
 }
 

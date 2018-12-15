@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSArray *titleArr;
 
 @property (nonatomic, strong) UIButton *submitBtn;
+//是否同意协议
+@property (nonatomic, assign) BOOL isAgreeProtocol;
 
 @end
 
@@ -37,19 +39,84 @@
     _imgArr = @[@"id_check",@"carrier_check",@"zfb_check",@"bankcard_check"];
     _titleArr = @[@"身份证认证",@"运营商认证",@"支付宝认证",@"银行卡认证"];
     
+    //默认为同意
+    self.isAgreeProtocol = true;
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUINoti:) name:@"updateUI" object:nil];
+    
     [self setBotBtn];
     
     [self tableView];
     
-    [self loadList];
+    BOOL isLogin = [ZcxUserDefauts boolForKey:@"isLogin"];
+    NSLog(@"isLogin---%d",isLogin);
+    if (isLogin == NO){
+         [self getKey];
+        
+    }else{
+        //加载首页信息
+        [self loadList];
+    }
+    
 }
 
-- (void)loadList{
+//获取key值
+- (void)getKey{
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/getkey"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [ZcxUserDefauts setObject:responseObject[@"key"] forKey:@"key"];
+        
+        //弹出 登录界面
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
+        LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
+                       @"LoginVC"];
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          NSLog(@"key----%@",error);
     }];
+}
+
+//加载首页信息
+- (void)loadList{
+    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSString *phone = [ZcxUserDefauts objectForKey:@"phone"];
+    NSDictionary *dict = @{@"phone":phone, @"key" : key};
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"默认登录---%@",responseObject);
+
+        //四大认证
+        if ([responseObject[@"isChecIdentity"] isEqual:@0]){ //身份认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecIdentity"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecIdentity"];
+        }
+        if ([responseObject[@"isChecOperator"] isEqual:@0]){ //运营商认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecOperator"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecOperator"];
+        }
+        if ([responseObject[@"isChecAlipay"] isEqual:@0]){ //支付宝认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecAlipay"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecAlipay"];
+        }
+        if ([responseObject[@"isChecBankCard"] isEqual:@0]){ //银行卡认证
+            [ZcxUserDefauts setBool:NO forKey:@"isChecBankCard"];
+        }else{
+            [ZcxUserDefauts setBool:YES forKey:@"isChecBankCard"];
+        }
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"登录---%@",error);
+    }];
+}
+
+- (void)updateUINoti:(NSNotification *)noti{
+    [self.tableView reloadData];
 }
 
 - (void)setBotBtn{
@@ -104,15 +171,28 @@
     if (btn.isSelected == NO){
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
-        NSLog(@"不同意协议");
+        self.isAgreeProtocol = false;
     }else{
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
-        NSLog(@"同意协议");
+        self.isAgreeProtocol = true;
     }
 }
 
 - (void)submitClick{
+    
+    if (self.isAgreeProtocol == false){
+        [SVProgressHUD showErrorWithStatus:@"请先同意《容易借贷款协议》!"];
+        return;
+    }
+    
+    if ([ZcxUserDefauts boolForKey:@"isChecIdentity"] == false ||
+        [ZcxUserDefauts boolForKey:@"isChecOperator"] == false ||
+        [ZcxUserDefauts boolForKey:@"isChecAlipay"] == false ||
+        [ZcxUserDefauts boolForKey:@"isChecBankCard"] == false){
+        [SVProgressHUD showErrorWithStatus:@"尚有信息未完成认证，请等认证后再提交!"];
+        return;
+    }
   
     NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
@@ -149,23 +229,74 @@
     LPCertificationCell *cell = [LPCertificationCell cellWithTableView:tableView];
     [cell.headImg setImage:[UIImage imageNamed:_imgArr[indexPath.row]]];
     cell.titleLb.text = _titleArr[indexPath.row];
+    
+    if (indexPath.row == 0){
+        if (![ZcxUserDefauts boolForKey:@"isChecIdentity"]){ //身份 未认证
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
+        }else{
+            cell.checkLb.text = @"已认证";
+            cell.checkLb.textColor = ZCXColor(0, 189, 0);
+            [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
+        }
+    }else if (indexPath.row == 1){
+        if (![ZcxUserDefauts boolForKey:@"isChecOperator"]){ //运营商 未认证
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
+        }else{
+            cell.checkLb.text = @"已认证";
+            cell.checkLb.textColor = ZCXColor(0, 189, 0);
+            [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
+        }
+    }else if (indexPath.row == 2){
+        if (![ZcxUserDefauts boolForKey:@"isChecAlipay"]){ //支付宝 未认证
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
+        }else{
+            cell.checkLb.text = @"已认证";
+            cell.checkLb.textColor = ZCXColor(0, 189, 0);
+            [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
+        }
+    }else{
+        if (![ZcxUserDefauts boolForKey:@"isChecBankCard"]){ //银行卡 未认证
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
+        }else{
+            cell.checkLb.text = @"已认证";
+            cell.checkLb.textColor = ZCXColor(0, 189, 0);
+            [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
+        }
+    }
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
-        IDCardCertificationVC *vc = [IDCardCertificationVC new];
-        [self.navigationController pushViewController:vc animated:YES];
+        if (![ZcxUserDefauts boolForKey:@"isChecIdentity"]){
+            IDCardCertificationVC *vc = [IDCardCertificationVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }else if (indexPath.row == 1){
-        CarrierCertificationVC *vc = [CarrierCertificationVC new];
-        [self.navigationController pushViewController:vc animated:YES];
-        
+        if (![ZcxUserDefauts boolForKey:@"isChecOperator"]){
+            CarrierCertificationVC *vc = [CarrierCertificationVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }else if (indexPath.row == 2){
-        AlipayCertificationVC *vc = [AlipayCertificationVC new];
-        [self.navigationController pushViewController:vc animated:YES];
+        if (![ZcxUserDefauts boolForKey:@"isChecAlipay"]){
+            AlipayCertificationVC *vc = [AlipayCertificationVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }else{
-        BankCardCertificationVC *vc = [BankCardCertificationVC new];
-        [self.navigationController pushViewController:vc animated:YES];
+        if (![ZcxUserDefauts boolForKey:@"isChecBankCard"]){
+            BankCardCertificationVC *vc = [BankCardCertificationVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+  
     }
 
 }

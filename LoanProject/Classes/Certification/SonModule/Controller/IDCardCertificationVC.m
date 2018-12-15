@@ -29,7 +29,9 @@
 @property (nonatomic, strong) NSIndexPath *selectIndex;
 
 //图片url
-@property (nonatomic, strong) NSURL *pic1Url;
+@property (nonatomic, strong) NSString *pic1UrlStr;
+@property (nonatomic, strong) NSString *pic2UrlStr;
+@property (nonatomic, strong) NSString *pic3UrlStr;
 
 @end
 
@@ -71,10 +73,24 @@
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
-    NSDictionary *dict = @{@"uid" : uid, @"key": key ,@"positive" : @"111", @"back":@"222",@"hold":@"333"};
+    NSDictionary *dict = @{@"uid" : uid, @"key": key ,@"positive" : self.pic1UrlStr, @"back":self.pic2UrlStr,@"hold":self.pic3UrlStr};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         NSLog(@"上传身份证---%@",responseObject);
+        
+        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
+        if ([stateCode isEqualToString:@"0"]){
+            [SVProgressHUD showSuccessWithStatus:@"上传成功！"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //推回上一个界面
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"上传失败，请重新上传！"];
+            return;
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"上传身份证---%@",error);
     }];
@@ -201,31 +217,55 @@
     //转换成jpg格式，并压缩，0.5比例最好
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     
-    //
-//    NSString *imgStr = imageData.utf8String;
-////    NSString *imgStr = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
-//    self.pic1Url = [NSURL URLWithString:imgStr];
-    
-    //    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
-    //
- 
-    
-        [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"111" data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
-    
-            NSLog(@"res----%@, isSuc---%d",result,isSuccess);
-//            //存头像
-//            [UserDefautsLhm setObject:result[@"data"] forKey:KeyUserHeadImg];
-        }];
-    //
+    NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
+
     
     //    //判断数据源类型
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {    //相册
         if (_selectIndex.row == 0){
+            
             _weak_firstCell.imgView.image = image;
+            
+            [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+                
+                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+                if ([stateCode isEqualToString:@"200"]){
+                    self.pic1UrlStr = result[@"img"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    return;
+                }
+            }];
         }else if (_selectIndex.row == 1){
+            
             _weak_secCell.imgView.image = image;
+            
+            [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+                
+                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+                if ([stateCode isEqualToString:@"200"]){
+                    self.pic2UrlStr = result[@"img"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    return;
+                }
+            }];
         }else{
             _weak_thirdCell.imgView.image = image;
+            
+            [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+                
+                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+                if ([stateCode isEqualToString:@"200"]){
+                    self.pic3UrlStr = result[@"img"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    return;
+                }
+            }];
         }
         
         [self  dismissViewControllerAnimated:YES completion:nil];
@@ -237,10 +277,46 @@
 
         if (_selectIndex.row == 0){
             _weak_firstCell.imgView.image = image;
+            
+            [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+                
+                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+                if ([stateCode isEqualToString:@"200"]){
+                    self.pic1UrlStr = result[@"img"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    return;
+                }
+            }];
         }else if (_selectIndex.row == 1){
             _weak_secCell.imgView.image = image;
+            
+            [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+                
+                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+                if ([stateCode isEqualToString:@"200"]){
+                    self.pic2UrlStr = result[@"img"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    return;
+                }
+            }];
         }else{
             _weak_thirdCell.imgView.image = image;
+            
+            [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+                
+                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
+                if ([stateCode isEqualToString:@"200"]){
+                    self.pic3UrlStr = result[@"img"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    return;
+                }
+            }];
         }
         
         [self  dismissViewControllerAnimated:YES completion:nil];
@@ -250,6 +326,14 @@
 //当用户取消选取时调用
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//获取当前时间
+- (NSString *)getCurrentTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    return dateTime;
 }
 
 @end

@@ -16,7 +16,6 @@
 
 #import "SVProgressHUD.h"
 #import "UIButton+Extension.h"
-#import "UIImage+Compress.h"
 #import <Masonry.h>
 
 #import "LPUser.h"
@@ -25,6 +24,8 @@
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define kPlaceholderHeadImage [UIImage imageNamed:@"erweima"]
 
 #define ZCXColor(x,y,z) [UIColor colorWithRed:x/255.0 green:y/255.0 blue:z/255.0 alpha:1.0]
 

@@ -25,7 +25,7 @@
     self.navigationItem.title = @"客服";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _titleArr = @[@[@"weixin",@"castle0905",@"复制"],@[@"phone",@"15620000000",@"拨打"]];
+    _titleArr = @[@[@"weixin",@"复制"],@[@"phone",@"拨打"]];
 
     [self tableView];
 }
@@ -44,9 +44,13 @@
     CustomServerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomServerCell" forIndexPath:indexPath];
     //赋值
     [cell.imgView setImage:[UIImage imageNamed:_titleArr[indexPath.row][0]]];
-    cell.titleLb.text = _titleArr[indexPath.row][1];
-    [cell.eventBtn setTitle:_titleArr[indexPath.row][2] forState:UIControlStateNormal];
+    [cell.eventBtn setTitle:_titleArr[indexPath.row][1] forState:UIControlStateNormal];
     [cell.eventBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (indexPath.row == 0){
+        cell.titleLb.text = self.weChat;
+    }else{
+        cell.titleLb.text = self.telephone;
+    }
     return cell;
 }
 
@@ -55,7 +59,9 @@
     if ([btn.titleLabel.text isEqualToString: @"复制"]){
         //复制到粘贴板
         UIPasteboard *pb = [UIPasteboard generalPasteboard];
-        pb.string = cell.titleLb.text;
+        if (cell.titleLb.text != nil){
+            pb.string = cell.titleLb.text;
+        }
         [SVProgressHUD showSuccessWithStatus:@"微信号已复制到粘贴板!"];
     }
     if ([btn.titleLabel.text isEqualToString: @"拨打"]){

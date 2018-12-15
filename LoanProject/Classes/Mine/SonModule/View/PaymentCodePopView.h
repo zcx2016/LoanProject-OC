@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIView *whiteContentView;
 
+//二维码地址
+@property (nonatomic, copy) NSString  *feeAddress;
+//金额
+@property (nonatomic, copy) NSString  *money;
+
 @end
 
 NS_ASSUME_NONNULL_END

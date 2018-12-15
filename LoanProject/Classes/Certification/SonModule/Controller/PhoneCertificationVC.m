@@ -28,6 +28,9 @@
 //验证码
 @property (nonatomic, copy) NSString *verifyCode;
 
+//是否同意协议
+@property (nonatomic, assign) BOOL isAgreeProtocol;
+
 @end
 
 @implementation PhoneCertificationVC
@@ -37,6 +40,9 @@
     
     self.navigationItem.title = @"手机认证";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //默认为同意
+    self.isAgreeProtocol = true;
     
     [self setBotBtn];
     
@@ -96,16 +102,21 @@
     if (btn.isSelected == NO){
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
-        NSLog(@"不同意协议");
+        self.isAgreeProtocol = false;
     }else{
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
-        NSLog(@"同意协议");
+        self.isAgreeProtocol = true;
     }
 }
 
 - (void)submitClick{
     NSLog(@"手机信息-- %@,%@,%@",_weak_phoneCell.inputTF.text,_weak_serverPwdCell.inputTF.text,_weak_verifyCodeCell.inputTF.text);
+    
+    if (self.isAgreeProtocol == false){
+        [SVProgressHUD showErrorWithStatus:@"请先同意《容易借贷款协议》!"];
+        return;
+    }
     
     if ([_weak_phoneCell.inputTF.text isEqualToString:@""] || [_weak_serverPwdCell.inputTF.text isEqualToString:@""] || [_weak_verifyCodeCell.inputTF.text isEqualToString:@""]){
         

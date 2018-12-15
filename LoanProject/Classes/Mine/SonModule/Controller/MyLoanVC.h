@@ -22,6 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
 
+//贷款总额
+@property (nonatomic, copy) NSString  *loanMoney;
+
+//还款 二维码地址
+@property (nonatomic, copy) NSString  *feeAddress;
 
 @end
 

@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoanProgressLoseVC : UIViewController
 
+//贷款审核备注
+@property (nonatomic, copy) NSString  *loseInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

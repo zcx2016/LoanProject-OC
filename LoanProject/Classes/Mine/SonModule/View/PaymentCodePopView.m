@@ -7,6 +7,7 @@
 //
 
 #import "PaymentCodePopView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation PaymentCodePopView
 
@@ -24,6 +25,22 @@
     
     //关闭按钮点击事件
     [_closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    //设置 金额 和 二维码
+    if (self.money != nil){
+        self.payMoneyLabel.text = [[@"支付" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
+    }
+    
+    if (self.feeAddress != nil){
+        NSURL *imageUrl = [NSURL URLWithString:[kUrlReqHead stringByAppendingString:self.feeAddress]];
+        [self.codeImgView sd_setImageWithURL:imageUrl placeholderImage:kPlaceholderHeadImage completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            
+        }];
+    }
     
 }
 
