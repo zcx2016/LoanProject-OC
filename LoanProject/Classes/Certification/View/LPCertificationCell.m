@@ -67,7 +67,7 @@
     [_indicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.right.equalTo(self.mas_right).with.offset(-10);
-        make.width.equalTo(@14);
+        make.width.equalTo(@12);
         make.height.equalTo(@15);
     }];
     
@@ -78,16 +78,5 @@
     }];
     
 }
-
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//    // Initialization code
-//}
-//
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    [super setSelected:selected animated:animated];
-//
-//    // Configure the view for the selected state
-//}
 
 @end

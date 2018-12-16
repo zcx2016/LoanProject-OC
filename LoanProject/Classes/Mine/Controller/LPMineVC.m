@@ -81,6 +81,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+     [self loadList];
+    
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
@@ -106,8 +108,7 @@
     self.imagePickerController.delegate = self;
     self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.imagePickerController.allowsEditing = YES;
-    
-    [self loadList];
+
 }
 
 - (void)loadList{
@@ -160,7 +161,18 @@
 }
 
 - (void)quitClick{
-
+    //先清空信息
+    _weak_headView.phoneLabel.text = @"  ";
+    [ZcxUserDefauts removeObjectForKey:@"uid"];
+    [ZcxUserDefauts removeObjectForKey:@"phone"];
+    [ZcxUserDefauts removeObjectForKey:@"limit"];
+    [ZcxUserDefauts removeObjectForKey:@"isLogin"];
+    [ZcxUserDefauts removeObjectForKey:@"isChecIdentity"];
+    [ZcxUserDefauts removeObjectForKey:@"isChecOperator"];
+    [ZcxUserDefauts removeObjectForKey:@"isChecAlipay"];
+    [ZcxUserDefauts removeObjectForKey:@"isChecBankCard"];
+    [ZcxUserDefauts synchronize];
+    
     //弹出 登录界面
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
     LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
@@ -243,13 +255,35 @@
         vc.telephone = self.CSTelephone;
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 3){
-        CardManageVC *vc = [[UIStoryboard storyboardWithName:@"CardManageVC" bundle:nil] instantiateViewControllerWithIdentifier:@"CardManageVC"];
-        [self.navigationController pushViewController:vc animated:YES];
+        [self judgeHaveBankCard];
     }else{
         HelpCenterVC *vc = [HelpCenterVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }
 
+}
+
+- (void)judgeHaveBankCard{
+    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
+    
+    NSDictionary *dict = @{@"uid" : uid, @"key" : kLpKey};
+    
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetBank"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"银行卡信息-----%@",responseObject);
+        
+        if ([responseObject[@"bankcard"] isEqualToString:@""]){
+            [SVProgressHUD showErrorWithStatus:@"您尚未绑定银行卡!"];
+            return ;
+        }else{
+            CardManageVC *vc = [[UIStoryboard storyboardWithName:@"CardManageVC" bundle:nil] instantiateViewControllerWithIdentifier:@"CardManageVC"];
+            vc.name = responseObject[@"bankcard"];
+            vc.card = responseObject[@"savingscard"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"银行卡信息错误-----%@",error);
+    }];
 }
 
 #pragma mark - 设置高度
@@ -263,7 +297,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     MineHeadView *view = [MineHeadView viewWithTableView:tableView];
-//    _weak_headView = view;
+    _weak_headView = view;
 //    //添加点击事件
 //    [view.headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeIcon:)]];
     

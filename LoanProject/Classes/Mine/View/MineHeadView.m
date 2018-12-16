@@ -40,7 +40,7 @@
     _phoneLabel = [UILabel new];
     _phoneLabel.textColor = [UIColor whiteColor];
     _phoneLabel.font = [UIFont boldSystemFontOfSize:20];
-    _phoneLabel.text = @"18000023323";
+    _phoneLabel.text = @"                     ";
     
     _renzhenBtn = [UIButton new];
     [_renzhenBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

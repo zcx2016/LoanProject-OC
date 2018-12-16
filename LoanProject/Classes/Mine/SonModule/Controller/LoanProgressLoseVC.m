@@ -18,6 +18,8 @@
     [super viewDidLoad];
    
     self.navigationItem.title = @"贷款进度";
+    
+    self.loseReasonLabel.text = [@"失败原因：" stringByAppendingString:self.loseInfo];
 }
 
 

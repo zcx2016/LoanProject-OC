@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 //贷款审核备注
 @property (nonatomic, copy) NSString  *loseInfo;
 
+@property (weak, nonatomic) IBOutlet UILabel *loseReasonLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

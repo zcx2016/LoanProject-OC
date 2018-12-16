@@ -24,12 +24,14 @@
     self.changeCardBtn.layer.masksToBounds = YES;
     [self.changeCardBtn addTarget:self action:@selector(changeCard) forControlEvents:UIControlEventTouchUpInside];
     
-    [self loadCardInfo];
+    self.nameLabel.text = self.name;
+    self.cardNumLabel.text = self.card;
+    
+//    [self loadCardInfo];
 }
 
 - (void)loadCardInfo{
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
     NSDictionary *dict = @{@"uid" : uid, @"key" : kLpKey};
     
