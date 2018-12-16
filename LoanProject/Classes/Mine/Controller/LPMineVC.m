@@ -111,10 +111,10 @@
 }
 
 - (void)loadList{
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     
-    NSDictionary *dict = @{@"key":key,@"uid":uid};
+    NSDictionary *dict = @{@"key":kLpKey,@"uid":uid};
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetLoan"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSLog(@"贷款信息----%@",responseObject);

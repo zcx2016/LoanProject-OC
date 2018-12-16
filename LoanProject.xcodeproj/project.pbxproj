@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3564978721C54A080075AD7F /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3564978621C54A080075AD7F /* UIImage+Extension.m */; };
+		3564978A21C6370B0075AD7F /* ProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3564978921C6370B0075AD7F /* ProtocolVC.m */; };
 		357E657621C10DB100245EC8 /* GetAddressBookPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 357E657521C10DB100245EC8 /* GetAddressBookPopView.m */; };
 		357E657821C10DE900245EC8 /* GetAddressBookPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357E657721C10DE900245EC8 /* GetAddressBookPopView.xib */; };
 		357E657B21C10E4500245EC8 /* RepaySuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 357E657A21C10E4500245EC8 /* RepaySuccessVC.m */; };
@@ -66,6 +67,8 @@
 		2A8C419A6E50DC3FBFBA2815 /* Pods-LoanProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoanProject/Pods-LoanProject.release.xcconfig"; sourceTree = "<group>"; };
 		3564978521C54A080075AD7F /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		3564978621C54A080075AD7F /* UIImage+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		3564978821C6370B0075AD7F /* ProtocolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtocolVC.h; sourceTree = "<group>"; };
+		3564978921C6370B0075AD7F /* ProtocolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProtocolVC.m; sourceTree = "<group>"; };
 		357E657421C10DB100245EC8 /* GetAddressBookPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetAddressBookPopView.h; sourceTree = "<group>"; };
 		357E657521C10DB100245EC8 /* GetAddressBookPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetAddressBookPopView.m; sourceTree = "<group>"; };
 		357E657721C10DE900245EC8 /* GetAddressBookPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetAddressBookPopView.xib; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 				35CFBE1A21BE0BE20065B11D /* AlipayCertificationVC.m */,
 				35CFBE1F21BE0C3C0065B11D /* BankCardCertificationVC.h */,
 				35CFBE2021BE0C3C0065B11D /* BankCardCertificationVC.m */,
+				3564978821C6370B0075AD7F /* ProtocolVC.h */,
+				3564978921C6370B0075AD7F /* ProtocolVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -631,6 +636,7 @@
 				35FEF02D21BFC2D70026196E /* LoanProgressLoseVC.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
+				3564978A21C6370B0075AD7F /* ProtocolVC.m in Sources */,
 				35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */,
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
 				35D974D921AFE2DD007F139C /* LoginVC.m in Sources */,

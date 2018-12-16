@@ -20,6 +20,8 @@
 
 #import "LPUser.h"
 
+#define kLpKey @"8562E592C0C3D2EA2B56A5855CAD22F9"
+
 #define kUrlReqHead @"http://43.229.152.127"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width

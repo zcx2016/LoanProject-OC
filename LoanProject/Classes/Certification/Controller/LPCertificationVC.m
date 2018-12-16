@@ -15,6 +15,7 @@
 #import "CarrierCertificationVC.h"
 #import "AlipayCertificationVC.h"
 #import "BankCardCertificationVC.h"
+#import "ProtocolVC.h"
 
 @interface LPCertificationVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -33,6 +34,27 @@
 
 @implementation LPCertificationVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    BOOL isLogin = [ZcxUserDefauts boolForKey:@"isLogin"];
+    NSLog(@"isLogin---%d",isLogin);
+    if (isLogin == NO){
+        [self getKey];
+    }else{
+        //加载首页信息
+        [self loadList];
+    }
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -48,39 +70,32 @@
     
     [self tableView];
     
-    BOOL isLogin = [ZcxUserDefauts boolForKey:@"isLogin"];
-    NSLog(@"isLogin---%d",isLogin);
-    if (isLogin == NO){
-         [self getKey];
-        
-    }else{
-        //加载首页信息
-        [self loadList];
-    }
-    
 }
 
 //获取key值
 - (void)getKey{
-    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/getkey"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [ZcxUserDefauts setObject:responseObject[@"key"] forKey:@"key"];
-        
-        //弹出 登录界面
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
-        LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
-                       @"LoginVC"];
-        [self.navigationController presentViewController:vc animated:YES completion:nil];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         NSLog(@"key----%@",error);
-    }];
+    
+    //弹出 登录界面
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LoginVC" bundle:[NSBundle mainBundle]];
+    LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
+                   @"LoginVC"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    
+//    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/getkey"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [ZcxUserDefauts setObject:responseObject[@"key"] forKey:@"key"];
+//        
+//        
+//        
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//         NSLog(@"key----%@",error);
+//    }];
 }
 
 //加载首页信息
 - (void)loadList{
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *phone = [ZcxUserDefauts objectForKey:@"phone"];
-    NSDictionary *dict = @{@"phone":phone, @"key" : key};
+    NSDictionary *dict = @{@"phone":phone, @"key" : kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -161,10 +176,23 @@
         make.left.equalTo(self.view).with.offset(20);
         make.height.equalTo(@50);
     }];
+    
+    //设置 按钮状态
+    if ([ZcxUserDefauts boolForKey:@"isChecIdentity"] == YES &&
+        [ZcxUserDefauts boolForKey:@"isChecOperator"] == YES &&
+        [ZcxUserDefauts boolForKey:@"isChecAlipay"] == YES &&
+        [ZcxUserDefauts boolForKey:@"isChecBankCard"] == YES && self.isAgreeProtocol == YES){
+        [_submitBtn setBackgroundImage:[UIImage imageNamed:@"navbg"] forState:UIControlStateNormal];
+        _submitBtn.userInteractionEnabled = YES;
+    }else{
+        [_submitBtn setBackgroundImage:[UIImage imageNamed:@"grayNavbg"] forState:UIControlStateNormal];
+        _submitBtn.userInteractionEnabled = NO;
+    }
 }
 
 - (void)clickProtocol{
-    NSLog(@"点击协议");
+    ProtocolVC *vc = [ProtocolVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)chooseEvents:(UIButton *)btn{
@@ -172,32 +200,36 @@
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
         self.isAgreeProtocol = false;
+        [_submitBtn setBackgroundImage:[UIImage imageNamed:@"grayNavbg"] forState:UIControlStateNormal];
+        _submitBtn.userInteractionEnabled = NO;
     }else{
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
         self.isAgreeProtocol = true;
+        [_submitBtn setBackgroundImage:[UIImage imageNamed:@"navbg"] forState:UIControlStateNormal];
+        _submitBtn.userInteractionEnabled = YES;
     }
 }
 
 - (void)submitClick{
     
-    if (self.isAgreeProtocol == false){
-        [SVProgressHUD showErrorWithStatus:@"请先同意《容易借贷款协议》!"];
-        return;
-    }
-    
-    if ([ZcxUserDefauts boolForKey:@"isChecIdentity"] == false ||
-        [ZcxUserDefauts boolForKey:@"isChecOperator"] == false ||
-        [ZcxUserDefauts boolForKey:@"isChecAlipay"] == false ||
-        [ZcxUserDefauts boolForKey:@"isChecBankCard"] == false){
-        [SVProgressHUD showErrorWithStatus:@"尚有信息未完成认证，请等认证后再提交!"];
-        return;
-    }
+//    if (self.isAgreeProtocol == false){
+//        [SVProgressHUD showErrorWithStatus:@"请先同意《容易借贷款协议》!"];
+//        return;
+//    }
+//    
+//    if ([ZcxUserDefauts boolForKey:@"isChecIdentity"] == false ||
+//        [ZcxUserDefauts boolForKey:@"isChecOperator"] == false ||
+//        [ZcxUserDefauts boolForKey:@"isChecAlipay"] == false ||
+//        [ZcxUserDefauts boolForKey:@"isChecBankCard"] == false){
+//        [SVProgressHUD showErrorWithStatus:@"尚有信息未完成认证，请等认证后再提交!"];
+//        return;
+//    }
   
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     
-    NSDictionary *dict = @{@"key":key, @"uid": uid};
+    NSDictionary *dict = @{@"key":kLpKey, @"uid": uid};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveLoan"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -332,16 +364,6 @@
     return _tableView;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
 
 @end

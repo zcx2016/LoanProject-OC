@@ -110,9 +110,9 @@
 //    NSLog(@"紧急联系人信息-- %@,%@,%@ /n %@,%@,%@ /n %@,%@,%@",_weak_firstNameCell.inputTF.text,_weak_firstContactCell.inputTF.text,_weak_firstPhoneCell.inputTF.text, _weak_secNameCell.inputTF.text, _weak_secContactCell.inputTF.text, _weak_secPhoneCell.inputTF.text, _weak_thirdNameCell.inputTF.text, _weak_thirdContactCell.inputTF.text , _weak_thirdPhoneCell.inputTF.text);
     
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
-    NSDictionary *dict = @{@"key": key,
+    NSDictionary *dict = @{@"key": kLpKey,
                            @"uid" : uid,
                            @"name1" : _weak_firstNameCell.inputTF.text, @"contacts1":_weak_firstContactCell.inputTF.text,
                            @"phone1": _weak_firstPhoneCell.inputTF.text,

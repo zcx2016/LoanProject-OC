@@ -73,9 +73,9 @@
     }
     
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
-    NSDictionary *dict = @{@"uid" : uid, @"key" :key, @"bankcard" : _weak_nameCell.inputTF.text,@"idnumber" : _weak_idCardCell.inputTF.text, @"savingscard": _weak_cardCell.inputTF.text, @"phone" :_weak_phoneCell.inputTF.text};
+    NSDictionary *dict = @{@"uid" : uid, @"key" :kLpKey, @"bankcard" : _weak_nameCell.inputTF.text,@"idnumber" : _weak_idCardCell.inputTF.text, @"savingscard": _weak_cardCell.inputTF.text, @"phone" :_weak_phoneCell.inputTF.text};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveBank"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"银行卡-----%@",responseObject);

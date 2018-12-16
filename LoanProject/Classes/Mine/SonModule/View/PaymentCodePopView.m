@@ -36,7 +36,8 @@
     }
     
     if (self.feeAddress != nil){
-        NSURL *imageUrl = [NSURL URLWithString:[kUrlReqHead stringByAppendingString:self.feeAddress]];
+        
+        NSURL *imageUrl = [NSURL URLWithString:[[kUrlReqHead stringByAppendingString:@"/"] stringByAppendingString:self.feeAddress]];
         [self.codeImgView sd_setImageWithURL:imageUrl placeholderImage:kPlaceholderHeadImage completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             
         }];

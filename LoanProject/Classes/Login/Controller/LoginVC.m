@@ -46,8 +46,9 @@
         return;
     }
     
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
-    NSDictionary *dict = @{@"phone" : self.phoneTF.text, @"key":key};
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    
+    NSDictionary *dict = @{@"phone" : self.phoneTF.text, @"key":kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -77,8 +78,8 @@
         return;
     }
    
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
-    NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : key};
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+    NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

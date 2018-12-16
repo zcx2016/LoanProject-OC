@@ -75,10 +75,10 @@
         return;
     }
     
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     
-    NSDictionary *dict = @{@"uid":uid, @"key":key,@"alipay":_weak_numCell.inputTF.text, @"alipaycipher" : _weak_pwdCell.inputTF.text , @"zmImg" : self.zmImgStr};
+    NSDictionary *dict = @{@"uid":uid, @"key":kLpKey,@"alipay":_weak_numCell.inputTF.text, @"alipaycipher" : _weak_pwdCell.inputTF.text , @"zmImg" : self.zmImgStr};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveAlipay"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"支付宝认证----%@",responseObject);

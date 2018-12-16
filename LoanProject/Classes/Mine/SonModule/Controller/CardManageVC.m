@@ -29,9 +29,9 @@
 
 - (void)loadCardInfo{
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
-    NSDictionary *dict = @{@"uid" : uid, @"key" : key};
+    NSDictionary *dict = @{@"uid" : uid, @"key" : kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetBank"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"银行卡信息-----%@",responseObject);

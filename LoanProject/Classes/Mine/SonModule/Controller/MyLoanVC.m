@@ -31,6 +31,8 @@
     [_copiBtn addTarget:self action:@selector(copyWeixin) forControlEvents:UIControlEventTouchUpInside];
     [_callBtn addTarget:self action:@selector(callPhone) forControlEvents:UIControlEventTouchUpInside];
     
+    self.canBorrowMoneyLabel.text = self.loanMoney;
+    
     [self setBotBtn];
 }
 

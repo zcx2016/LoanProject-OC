@@ -71,9 +71,9 @@
 
 - (void)submitClick{
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     
-    NSDictionary *dict = @{@"uid" : uid, @"key": key ,@"positive" : self.pic1UrlStr, @"back":self.pic2UrlStr,@"hold":self.pic3UrlStr};
+    NSDictionary *dict = @{@"uid" : uid, @"key": kLpKey ,@"positive" : self.pic1UrlStr, @"back":self.pic2UrlStr,@"hold":self.pic3UrlStr};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
