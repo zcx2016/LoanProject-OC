@@ -79,6 +79,12 @@
                                     <constraint firstAttribute="height" constant="1" id="6U8-Ad-A6k"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重庆市容易借金融贷款有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnI-Me-Rd3">
+                                <rect key="frame" x="66" y="626" width="243" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -90,8 +96,10 @@
                             <constraint firstItem="vTf-qw-G1x" firstAttribute="leading" secondItem="Uzw-O0-bVw" secondAttribute="leading" constant="25" id="KXb-3h-X7o"/>
                             <constraint firstItem="GX5-mW-jB1" firstAttribute="centerX" secondItem="Uzw-O0-bVw" secondAttribute="centerX" id="MF5-FW-chZ"/>
                             <constraint firstItem="IWw-ss-S8l" firstAttribute="top" secondItem="vTf-qw-G1x" secondAttribute="bottom" constant="25" id="MOY-nU-298"/>
+                            <constraint firstItem="sOE-eF-V4c" firstAttribute="top" secondItem="OnI-Me-Rd3" secondAttribute="bottom" constant="20" id="N0y-vE-6Q5"/>
                             <constraint firstItem="Isp-GD-MBF" firstAttribute="trailing" secondItem="vTf-qw-G1x" secondAttribute="trailing" id="NYk-FO-WBz"/>
                             <constraint firstItem="IWw-ss-S8l" firstAttribute="trailing" secondItem="vTf-qw-G1x" secondAttribute="trailing" id="Q8R-rb-5JQ"/>
+                            <constraint firstItem="OnI-Me-Rd3" firstAttribute="centerX" secondItem="Uzw-O0-bVw" secondAttribute="centerX" id="Xzd-vF-gdT"/>
                             <constraint firstItem="wb8-xd-YXn" firstAttribute="leading" secondItem="Uzw-O0-bVw" secondAttribute="leading" id="f4r-9g-LBF"/>
                             <constraint firstItem="Isp-GD-MBF" firstAttribute="top" secondItem="dhZ-In-9Dk" secondAttribute="bottom" constant="50" id="fpu-uY-eNH"/>
                             <constraint firstItem="IWw-ss-S8l" firstAttribute="top" secondItem="dhZ-In-9Dk" secondAttribute="top" id="lOn-Oz-tPp"/>

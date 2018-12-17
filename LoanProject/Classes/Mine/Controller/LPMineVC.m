@@ -216,10 +216,16 @@
     if (indexPath.row == 0){
         //此处分3种情况，分别是 审核中/审核失败/审核通过
         if ([self.isNew isEqualToString:@"0"]){
-//            [SVProgressHUD showErrorWithStatus:@"您暂未申请贷款!"];
-//            return;
-            RepaySuccessVC *vc = [[UIStoryboard storyboardWithName:@"RepaySuccessVC" bundle:nil] instantiateViewControllerWithIdentifier:@"RepaySuccessVC"];
-            [self.navigationController pushViewController:vc animated:YES];
+            
+            if ([self.mloan isEqualToString:@"0"]){
+                [SVProgressHUD showErrorWithStatus:@"您暂未申请贷款!"];
+                return;
+            }
+            if ([self.mloan isEqualToString:@"1"]){
+                RepaySuccessVC *vc = [[UIStoryboard storyboardWithName:@"RepaySuccessVC" bundle:nil] instantiateViewControllerWithIdentifier:@"RepaySuccessVC"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
         }else{
             if ([self.isPass isEqualToString:@"0"]){ //审核中
                 LoanProgressIngVC *vc = [[UIStoryboard storyboardWithName:@"LoanProgressIngVC" bundle:nil] instantiateViewControllerWithIdentifier:@"LoanProgressIngVC"];
@@ -317,7 +323,7 @@
 //    //添加点击事件
 //    [view.headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeIcon:)]];
     
-    if ([ZcxUserDefauts boolForKey:@"isChecIdentity"] == YES && [ZcxUserDefauts boolForKey:@"isChecOperator"] == YES &&[ZcxUserDefauts boolForKey:@"isChecAlipay"] == YES &&[ZcxUserDefauts boolForKey:@"isChecBankCard"] == YES ){
+    if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 1 && [ZcxUserDefauts integerForKey:@"isChecOperator"] == 1 &&[ZcxUserDefauts integerForKey:@"isChecAlipay"] == 1 &&[ZcxUserDefauts integerForKey:@"isChecBankCard"] == 1 ){
         [view.renzhenBtn setBackgroundImage:[UIImage imageNamed:@"agree"] forState:UIControlStateNormal];
         [view.renzhenBtn setTitle:@"已认证" forState:UIControlStateNormal];
         

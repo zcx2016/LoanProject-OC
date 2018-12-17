@@ -76,17 +76,22 @@
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-//        NSLog(@"上传身份证---%@",responseObject);
+        NSLog(@"上传身份证---%@",responseObject);
+        [SVProgressHUD setMaximumDismissTimeInterval:3];
+        [SVProgressHUD showProgress:-1 status:@"身份证正在系统扫描中，等待系统认证中"];
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
         if ([stateCode isEqualToString:@"0"]){
             [SVProgressHUD showSuccessWithStatus:@"上传成功！"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //推回上一个界面
+                [SVProgressHUD dismiss];
                 [self.navigationController popViewControllerAnimated:YES];
             });
         }else{
+             [SVProgressHUD dismiss];
             [SVProgressHUD showErrorWithStatus:@"上传失败，请重新上传！"];
+
             return;
         }
         
@@ -225,12 +230,15 @@
             
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                [SVProgressHUD showProgress:-1 status:@"上传中..."];
+              
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic1UrlStr = result[@"img"];
+                    [SVProgressHUD dismiss];
                 }else{
-                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    [SVProgressHUD showErrorWithStatus:@"身份证人像面上传失败！"];
+                     [SVProgressHUD dismiss];
                     return;
                 }
             }];
@@ -240,12 +248,15 @@
             
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                [SVProgressHUD showProgress:-1 status:@"上传中..."];
+    
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic2UrlStr = result[@"img"];
+                    [SVProgressHUD dismiss];
                 }else{
-                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    [SVProgressHUD showErrorWithStatus:@"身份证国徽面上传失败！"];
+                    [SVProgressHUD dismiss];
                     return;
                 }
             }];
@@ -254,12 +265,14 @@
             
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                [SVProgressHUD showProgress:-1 status:@"上传中..."];
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic3UrlStr = result[@"img"];
+                    [SVProgressHUD dismiss];
                 }else{
-                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    [SVProgressHUD showErrorWithStatus:@"手持身份证照片上传失败！"];
+                    [SVProgressHUD dismiss];
                     return;
                 }
             }];
@@ -277,12 +290,14 @@
             
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                [SVProgressHUD showProgress:-1 status:@"上传中..."];
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic1UrlStr = result[@"img"];
+                    [SVProgressHUD dismiss];
                 }else{
-                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    [SVProgressHUD showErrorWithStatus:@"身份证人像面上传失败！"];
+                    [SVProgressHUD dismiss];
                     return;
                 }
             }];
@@ -291,12 +306,14 @@
             
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                [SVProgressHUD showProgress:-1 status:@"上传中..."];
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic2UrlStr = result[@"img"];
+                    [SVProgressHUD dismiss];
                 }else{
-                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    [SVProgressHUD showErrorWithStatus:@"身份证国徽面上传失败！"];
+                    [SVProgressHUD dismiss];
                     return;
                 }
             }];
@@ -305,12 +322,14 @@
             
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+                [SVProgressHUD showProgress:-1 status:@"上传中..."];
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic3UrlStr = result[@"img"];
+                    [SVProgressHUD dismiss];
                 }else{
-                    [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+                    [SVProgressHUD showErrorWithStatus:@"手持身份证照片上传失败！"];
+                    [SVProgressHUD dismiss];
                     return;
                 }
             }];

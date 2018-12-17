@@ -108,22 +108,25 @@
     if (indexPath.row == 0){
         _weak_nameCell = cell;
         cell.inputTF.delegate = self;
+        cell.inputTF.placeholder = @"请输入姓名";
         cell.inputTF.returnKeyType = UIReturnKeyDone;
     }
     if (indexPath.row == 1){
         _weak_idCardCell = cell;
         cell.inputTF.delegate = self;
+        cell.inputTF.placeholder = @"请输入身份证号";
         cell.inputTF.returnKeyType = UIReturnKeyDone;
         cell.inputTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     }
     if (indexPath.row == 2){
         _weak_cardCell = cell;
-        cell.inputTF.placeholder = @"请输入银行卡号";
+        cell.inputTF.placeholder = @"请输入储蓄卡号";
         cell.inputTF.keyboardType = UIKeyboardTypeNumberPad;
         cell.inputTF.inputAccessoryView = self.customAccessoryView;
     }
     if (indexPath.row == 3){
         _weak_phoneCell = cell;
+        cell.inputTF.placeholder = @"请输入预留手机号";
         cell.inputTF.keyboardType = UIKeyboardTypePhonePad;
         cell.inputTF.inputAccessoryView = self.customAccessoryView;
     }
