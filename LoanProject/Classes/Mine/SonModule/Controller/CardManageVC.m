@@ -26,24 +26,7 @@
     
     self.nameLabel.text = self.name;
     self.cardNumLabel.text = self.card;
-    
-//    [self loadCardInfo];
-}
 
-- (void)loadCardInfo{
-    NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-    
-    NSDictionary *dict = @{@"uid" : uid, @"key" : kLpKey};
-    
-    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetBank"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"银行卡信息-----%@",responseObject);
-        
-        self.nameLabel.text = responseObject[@"bankcard"];
-        self.cardNumLabel.text = responseObject[@"savingscard"];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"银行卡信息错误-----%@",error);
-    }];
 }
 
 - (void)changeCard{

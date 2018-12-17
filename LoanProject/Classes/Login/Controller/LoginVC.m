@@ -35,7 +35,6 @@
     self.loginBtn.layer.cornerRadius = 5;
     self.loginBtn.layer.masksToBounds = YES;
     [self.loginBtn addTarget:self action:@selector(loginEvents) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)sendCodeEvents{
@@ -45,14 +44,12 @@
         [SVProgressHUD showErrorWithStatus:@"手机号和服务密码不能为空！"];
         return;
     }
-    
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
-    
+
     NSDictionary *dict = @{@"phone" : self.phoneTF.text, @"key":kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"发送验证码-----%@",responseObject);
+//        NSLog(@"发送验证码-----%@",responseObject);
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
         if ([stateCode isEqualToString:@"0"]){
             // 开启倒计时效果
@@ -77,15 +74,14 @@
         [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
         return;
     }
-   
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
+ 
     NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
          [SVProgressHUD showProgress:-1 status:@"登录中..."];
         
-        NSLog(@"登录---%@",responseObject);
+//        NSLog(@"登录---%@",responseObject);
         //保存用户编号和手机
         [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
         [ZcxUserDefauts setObject:responseObject[@"phone"] forKey:@"phone"];
@@ -125,7 +121,7 @@
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"登录---%@",error);
+        NSLog(@"登录错误---%@",error);
     }];
     
 }

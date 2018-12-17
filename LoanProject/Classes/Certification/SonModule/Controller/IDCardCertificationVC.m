@@ -71,13 +71,12 @@
 
 - (void)submitClick{
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
-    
+ 
     NSDictionary *dict = @{@"uid" : uid, @"key": kLpKey ,@"positive" : self.pic1UrlStr, @"back":self.pic2UrlStr,@"hold":self.pic3UrlStr};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"上传身份证---%@",responseObject);
+//        NSLog(@"上传身份证---%@",responseObject);
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
         if ([stateCode isEqualToString:@"0"]){
@@ -94,8 +93,6 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"上传身份证---%@",error);
     }];
-    
-    
 }
 
 #pragma mark - tableView Delegate

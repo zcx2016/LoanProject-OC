@@ -64,7 +64,6 @@
 }
 
 - (void)submitClick{
-    NSLog(@"提交银行卡信息-- %@,%@,%@,%@",_weak_nameCell.inputTF.text,_weak_idCardCell.inputTF.text,_weak_cardCell.inputTF.text,_weak_phoneCell.inputTF.text);
     
     if ([_weak_nameCell.inputTF.text isEqualToString:@""] || [_weak_idCardCell.inputTF.text isEqualToString:@""] || [_weak_cardCell.inputTF.text isEqualToString:@""] || [_weak_phoneCell.inputTF.text isEqualToString:@""]){
         
@@ -73,12 +72,11 @@
     }
     
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
-    
+  
     NSDictionary *dict = @{@"uid" : uid, @"key" :kLpKey, @"bankcard" : _weak_nameCell.inputTF.text,@"idnumber" : _weak_idCardCell.inputTF.text, @"savingscard": _weak_cardCell.inputTF.text, @"phone" :_weak_phoneCell.inputTF.text};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveBank"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"银行卡-----%@",responseObject);
+//        NSLog(@"银行卡-----%@",responseObject);
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
         if ([stateCode isEqualToString:@"0"]){

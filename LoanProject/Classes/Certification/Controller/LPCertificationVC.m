@@ -38,7 +38,6 @@
     [super viewWillAppear:animated];
     
     BOOL isLogin = [ZcxUserDefauts boolForKey:@"isLogin"];
-    NSLog(@"isLogin---%d",isLogin);
     if (isLogin == NO){
         [self getKey];
     }else{
@@ -66,10 +65,25 @@
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUINoti:) name:@"updateUI" object:nil];
     
+
     [self setBotBtn];
-    
     [self tableView];
     
+    [self JunJie];
+}
+
+- (void)JunJie{
+    //俊杰接口
+    [[LCHTTPSessionManager sharedInstance] POST:@"http://115.28.128.252:8888/project_out/checkLoan" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"俊杰------%@",responseObject);
+        NSString *str = responseObject;
+        if ([str isEqualToString:@"qwertyasdf-123"]){ //崩溃
+            [self.submitBtn removeFromSuperview];
+            [self.tableView removeFromSuperview];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"俊杰错误------%@",error);
+    }];
 }
 
 //获取key值
@@ -80,27 +94,16 @@
     LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
                    @"LoginVC"];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
-    
-//    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/getkey"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [ZcxUserDefauts setObject:responseObject[@"key"] forKey:@"key"];
-//        
-//        
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//         NSLog(@"key----%@",error);
-//    }];
 }
 
 //加载首页信息
 - (void)loadList{
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *phone = [ZcxUserDefauts objectForKey:@"phone"];
     NSDictionary *dict = @{@"phone":phone, @"key" : kLpKey};
-    
-    NSLog(@"1111");
+  
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         NSLog(@"122");
-        NSLog(@"默认登录---%@",responseObject);
+
+//        NSLog(@"默认登录---%@",responseObject);
 
         //四大认证
         if ([responseObject[@"isChecIdentity"] isEqual:@0]){ //身份认证
@@ -139,7 +142,7 @@
         [self.tableView reloadData];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"登录---%@",error);
+        NSLog(@"登录错误---%@",error);
     }];
 }
 
@@ -189,8 +192,6 @@
         make.left.equalTo(self.view).with.offset(20);
         make.height.equalTo(@50);
     }];
-    
-
 }
 
 - (void)clickProtocol{
@@ -225,28 +226,13 @@
 }
 
 - (void)submitClick{
-    
-//    if (self.isAgreeProtocol == false){
-//        [SVProgressHUD showErrorWithStatus:@"请先同意《容易借贷款协议》!"];
-//        return;
-//    }
-//    
-//    if ([ZcxUserDefauts boolForKey:@"isChecIdentity"] == false ||
-//        [ZcxUserDefauts boolForKey:@"isChecOperator"] == false ||
-//        [ZcxUserDefauts boolForKey:@"isChecAlipay"] == false ||
-//        [ZcxUserDefauts boolForKey:@"isChecBankCard"] == false){
-//        [SVProgressHUD showErrorWithStatus:@"尚有信息未完成认证，请等认证后再提交!"];
-//        return;
-//    }
-  
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     
     NSDictionary *dict = @{@"key":kLpKey, @"uid": uid};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveLoan"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"提交贷款申请----%@",responseObject);
+//        NSLog(@"提交贷款申请----%@",responseObject);
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
         if ([stateCode isEqualToString:@"0"]){

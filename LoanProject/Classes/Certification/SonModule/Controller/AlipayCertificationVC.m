@@ -69,19 +69,18 @@
 }
 
 - (void)submitClick{
-    NSLog(@"支付宝认证-- %@,%@",_weak_numCell.inputTF.text,_weak_pwdCell.inputTF.text);
+    
     if ([_weak_numCell.inputTF.text isEqualToString:@""] || [_weak_pwdCell.inputTF.text isEqualToString:@""] ){
         [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
         return;
     }
     
-//    NSString *key = [ZcxUserDefauts objectForKey:@"key"];
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
     
     NSDictionary *dict = @{@"uid":uid, @"key":kLpKey,@"alipay":_weak_numCell.inputTF.text, @"alipaycipher" : _weak_pwdCell.inputTF.text , @"zmImg" : self.zmImgStr};
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveAlipay"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"支付宝认证----%@",responseObject);
+//        NSLog(@"支付宝认证----%@",responseObject);
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
         if ([stateCode isEqualToString:@"0"]){
