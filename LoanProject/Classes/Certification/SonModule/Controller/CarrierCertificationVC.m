@@ -120,7 +120,7 @@
                            };
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveOperator"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"保存紧急联系人---%@",responseObject);
+        NSLog(@"保存紧急联系人---%@",responseObject);
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];
         if ([stateCode isEqualToString:@"0"]){
@@ -330,6 +330,8 @@
 
         }
         [self.addressBookDict setObject:nameStr forKey:phoneStr];
+        
+        NSLog(@"获取到的通讯录----%@",self.addressBookDict);
     }];
 }
 

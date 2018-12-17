@@ -49,7 +49,7 @@
     
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-//        NSLog(@"发送验证码-----%@",responseObject);
+        NSLog(@"发送验证码-----%@",responseObject);
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
         if ([stateCode isEqualToString:@"0"]){
             // 开启倒计时效果

@@ -213,7 +213,7 @@
         [alert addAction:[UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //点击调用照相机
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-            self.imagePickerController.allowsEditing = YES;
+            self.imagePickerController.allowsEditing = NO;
             //相机权限
             AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
             if (authStatus ==AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied ){

@@ -28,9 +28,6 @@
 //验证码
 @property (nonatomic, copy) NSString *verifyCode;
 
-//是否同意协议
-//@property (nonatomic, assign) BOOL isAgreeProtocol;
-
 @end
 
 @implementation PhoneCertificationVC
@@ -40,47 +37,16 @@
     
     self.navigationItem.title = @"手机认证";
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    //默认为同意
-//    self.isAgreeProtocol = true;
-    
+
     [self setBotBtn];
     
     [self tableView];
+    
+    NSLog(@"dict111-----%@",self.addressBookDict);
 }
 
 - (void)setBotBtn{
-    
-//    //同意协议 按钮
-//    _chooseBtn = [UIButton new];
-//    [_chooseBtn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
-//    [_chooseBtn addTarget:self action:@selector(chooseEvents:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:_chooseBtn];
-//    [_chooseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view).with.offset(200);
-//        make.left.equalTo(self.view).with.offset(15);
-//        make.width.height.equalTo(@30);
-//    }];
-//
-//    //协议
-//    _protocolLabel = [UILabel new];
-//    _protocolLabel.userInteractionEnabled = YES;
-//    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickProtocol)];
-//    [_protocolLabel addGestureRecognizer:ges];
-//
-//    //富文本
-//    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"同意《用户使用协议》"];
-//    [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, 2)];
-//    [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(2, attributedStr.length - 2)];
-//    _protocolLabel .attributedText = attributedStr;
-//
-//    [self.view addSubview:_protocolLabel];
-//    [_protocolLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(self.chooseBtn);
-//        make.left.equalTo(self.chooseBtn.mas_right).with.offset(5);
-//    }];
-//
-//
+
     //确认按钮
     _submitBtn = [UIButton createYellowBgBtn:@"确认"];
     [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
@@ -94,29 +60,9 @@
     }];
 }
 
-//- (void)clickProtocol{
-//    NSLog(@"点击协议");
-//}
-
-//- (void)chooseEvents:(UIButton *)btn{
-//    if (btn.isSelected == NO){
-//        btn.selected = !btn.selected;
-//        [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
-//        self.isAgreeProtocol = false;
-//    }else{
-//        btn.selected = !btn.selected;
-//        [btn setImage:[UIImage imageNamed:@"choose_yes"] forState:UIControlStateNormal];
-//        self.isAgreeProtocol = true;
-//    }
-//}
 
 - (void)submitClick{
-    NSLog(@"手机信息-- %@,%@,%@",_weak_phoneCell.inputTF.text,_weak_serverPwdCell.inputTF.text,_weak_verifyCodeCell.inputTF.text);
-//
-//    if (self.isAgreeProtocol == false){
-//        [SVProgressHUD showErrorWithStatus:@"请先同意《容易借贷款协议》!"];
-//        return;
-//    }
+
     
     if ([_weak_phoneCell.inputTF.text isEqualToString:@""] || [_weak_serverPwdCell.inputTF.text isEqualToString:@""] || [_weak_verifyCodeCell.inputTF.text isEqualToString:@""]){
         
@@ -129,6 +75,7 @@
         return;
     }
     
+    NSLog(@"dict222-----%@",self.addressBookDict);
     //发送通讯录给后台
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingPathComponent:@"/UploadDic.aspx"] parameters:self.addressBookDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"通讯录---%@",responseObject);
@@ -243,7 +190,7 @@
     
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-//        NSLog(@"发送验证码-----%@",responseObject);
+        NSLog(@"发送验证码-----%@",responseObject);
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
         if ([stateCode isEqualToString:@"0"]){
             // 开启倒计时效果

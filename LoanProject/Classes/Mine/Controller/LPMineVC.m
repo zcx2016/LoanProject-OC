@@ -218,12 +218,14 @@
         if ([self.isNew isEqualToString:@"0"]){
             
             if ([self.mloan isEqualToString:@"0"]){
-                [SVProgressHUD showErrorWithStatus:@"您暂未申请贷款!"];
-                return;
-            }
-            if ([self.mloan isEqualToString:@"1"]){
+                
                 RepaySuccessVC *vc = [[UIStoryboard storyboardWithName:@"RepaySuccessVC" bundle:nil] instantiateViewControllerWithIdentifier:@"RepaySuccessVC"];
                 [self.navigationController pushViewController:vc animated:YES];
+            }
+//            if ([self.mloan isEqualToString:@"1"]){
+            else{
+                [SVProgressHUD showErrorWithStatus:@"您暂未申请贷款!"];
+                return;
             }
             
         }else{
@@ -237,20 +239,27 @@
                 [self.navigationController pushViewController:vc animated:YES];
             }
             if ([self.isPass isEqualToString:@"2"]){ //审核已通过
-                LoanProgressVC *vc = [[UIStoryboard storyboardWithName:@"LoanProgressVC" bundle:nil] instantiateViewControllerWithIdentifier:@"LoanProgressVC"];
-                vc.loanMoney = self.loanAmount;
-                vc.serverMoney = self.serviceCharge;
-                vc.weChat = self.CSWeChat;
-                vc.telephone = self.CSTelephone;
-                NSNumber *limit = [ZcxUserDefauts objectForKey:@"limit"];
-                if ([limit isEqualToNumber:@1]){
-                    vc.feeAddress = self.feeAddress1;
-                }else if ([limit isEqualToNumber:@2]){
-                    vc.feeAddress = self.feeAddress2;
+                
+                if ([self.mloan isEqualToString:@"0"]){
+                    LoanProgressVC *vc = [[UIStoryboard storyboardWithName:@"LoanProgressVC" bundle:nil] instantiateViewControllerWithIdentifier:@"LoanProgressVC"];
+                    vc.loanMoney = self.loanAmount;
+                    vc.serverMoney = self.serviceCharge;
+                    vc.weChat = self.CSWeChat;
+                    vc.telephone = self.CSTelephone;
+                    NSNumber *limit = [ZcxUserDefauts objectForKey:@"limit"];
+                    if ([limit isEqualToNumber:@1]){
+                        vc.feeAddress = self.feeAddress1;
+                    }else if ([limit isEqualToNumber:@2]){
+                        vc.feeAddress = self.feeAddress2;
+                    }else{
+                        vc.feeAddress = self.feeAddress3;
+                    }
+                    [self.navigationController pushViewController:vc animated:YES];
                 }else{
-                    vc.feeAddress = self.feeAddress3;
+                    [SVProgressHUD showInfoWithStatus:@"当前没有贷款需要审核!"];
+                    return;
                 }
-                [self.navigationController pushViewController:vc animated:YES];
+                
             }
         }
         
