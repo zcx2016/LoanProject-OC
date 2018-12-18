@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,14 +22,14 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lpd-Ja-Ap4">
-                                        <rect key="frame" x="0.0" y="501" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="499" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Go0-IO-ho3"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLO-3D-9fA">
-                                        <rect key="frame" x="261" y="514.5" width="94" height="36"/>
+                                        <rect key="frame" x="261" y="512.5" width="94" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="uDy-m2-4qs"/>
                                             <constraint firstAttribute="width" constant="94" id="vSJ-jn-zSt"/>
@@ -40,19 +40,19 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNO-qf-0gH">
-                                        <rect key="frame" x="46.5" y="170" width="282" height="86"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="72"/>
+                                        <rect key="frame" x="60.5" y="170" width="254" height="84"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                         <color key="textColor" red="0.93333333330000001" green="0.5568627451" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18655170038" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMA-tt-fqa">
-                                        <rect key="frame" x="76" y="522" width="107" height="21"/>
+                                        <rect key="frame" x="76" y="520" width="107" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weixin" translatesAutoresizingMaskIntoConstraints="NO" id="aoe-Vj-lAN">
-                                        <rect key="frame" x="20" y="452.5" width="41" height="41"/>
+                                        <rect key="frame" x="20" y="450.5" width="41" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="41" id="AHd-zt-MZE"/>
                                             <constraint firstAttribute="height" constant="41" id="SRX-4v-O1v"/>
@@ -64,13 +64,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还款日:自借款日7天" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMc-dV-l7U">
-                                        <rect key="frame" x="47.5" y="261" width="280" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="借款期限：七天" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMc-dV-l7U">
+                                        <rect key="frame" x="47.5" y="259" width="280" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FJe-Eo-xtS"/>
                                             <constraint firstAttribute="width" constant="280" id="kqV-L8-bjw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -81,13 +81,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="若还款后当前状态未更新，可能处于人工处理中，请耐心等待（还款成功通知会以短信形式发送到注册账户手机号）。请勿重复提交还款！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8h-Nf-dJ6">
-                                        <rect key="frame" x="20" y="321" width="335" height="81.5"/>
+                                        <rect key="frame" x="20" y="319" width="335" height="81.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pt-ic-7th">
-                                        <rect key="frame" x="261" y="455" width="94" height="36"/>
+                                        <rect key="frame" x="261" y="453" width="94" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="94" id="KKF-Z8-hgp"/>
                                             <constraint firstAttribute="height" constant="36" id="noj-Lt-dpV"/>
@@ -105,13 +105,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="castle0905" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7we-5m-xjc">
-                                        <rect key="frame" x="76" y="462.5" width="87" height="21"/>
+                                        <rect key="frame" x="76" y="460.5" width="87" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="Uzl-IE-qUn">
-                                        <rect key="frame" x="20" y="512" width="41" height="41"/>
+                                        <rect key="frame" x="20" y="510" width="41" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="41" id="Pz1-jl-SzG"/>
                                             <constraint firstAttribute="height" constant="41" id="d1l-hY-Sdw"/>

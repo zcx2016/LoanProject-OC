@@ -18,6 +18,8 @@
 #import "ProtocolVC.h"
 #import "LoanProgressIngVC.h"
 
+#import "PaymentCodePopView.h"
+
 @interface LPCertificationVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -212,6 +214,7 @@
 }
 
 - (void)chooseEvents:(UIButton *)btn{
+    
     if (btn.isSelected == NO){
         btn.selected = !btn.selected;
         [btn setImage:[UIImage imageNamed:@"choose_no"] forState:UIControlStateNormal];
@@ -233,15 +236,15 @@
             [_submitBtn setBackgroundImage:[UIImage imageNamed:@"grayNavbg"] forState:UIControlStateNormal];
             _submitBtn.userInteractionEnabled = NO;
         }
-
     }
+    
 }
 
 - (void)submitClick{
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
-    
+
     NSDictionary *dict = @{@"key":kLpKey, @"uid": uid};
-    
+
     //先调接口，看申请了贷款没有
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetLoan"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *isNew = responseObject[@"isNew"];
@@ -253,7 +256,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
-   
+
 }
 
 //已申请，弹出框提示
@@ -306,65 +309,67 @@
     cell.titleLb.text = _titleArr[indexPath.row];
     
     if (indexPath.row == 0){
-        if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 0){ //身份 未认证
-            cell.checkLb.text = @"未认证";
-            cell.checkLb.textColor = [UIColor lightGrayColor];
-            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        }else if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 2){
+        //身份
+         if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 2){
             cell.checkLb.text = @"认证中";
             cell.checkLb.textColor = [UIColor lightGrayColor];
             [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        }else{
+        }else if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 1){
             cell.checkLb.text = @"已认证";
             cell.checkLb.textColor = ZCXColor(0, 189, 0);
             [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
+        }else{
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
         }
     }else if (indexPath.row == 1){
-        if ([ZcxUserDefauts integerForKey:@"isChecOperator"] == 0){ //运营商 未认证
-            cell.checkLb.text = @"未认证";
-            cell.checkLb.textColor = [UIColor lightGrayColor];
-            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        }else if ([ZcxUserDefauts integerForKey:@"isChecOperator"] == 2){
+        
+        //运营商
+        if ([ZcxUserDefauts integerForKey:@"isChecOperator"] == 2){
             cell.checkLb.text = @"认证中";
             cell.checkLb.textColor = [UIColor lightGrayColor];
             [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        }else{
+        }else  if ([ZcxUserDefauts integerForKey:@"isChecOperator"] == 1){
             cell.checkLb.text = @"已认证";
             cell.checkLb.textColor = ZCXColor(0, 189, 0);
             [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
+        }else{
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
         }
     }else if (indexPath.row == 2){
-        if ([ZcxUserDefauts integerForKey:@"isChecAlipay"] == 0){ //支付宝 未认证
-            cell.checkLb.text = @"未认证";
-            cell.checkLb.textColor = [UIColor lightGrayColor];
-            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        
-        }else if ([ZcxUserDefauts integerForKey:@"isChecAlipay"] == 2){
+        //支付宝
+        if ([ZcxUserDefauts integerForKey:@"isChecAlipay"] == 2){
             cell.checkLb.text = @"认证中";
             cell.checkLb.textColor = [UIColor lightGrayColor];
             [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        }else{
+        }else if ([ZcxUserDefauts integerForKey:@"isChecAlipay"] == 1){
             cell.checkLb.text = @"已认证";
             cell.checkLb.textColor = ZCXColor(0, 189, 0);
             [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
-        
+        }else{
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
         }
     }else{
-        if ([ZcxUserDefauts integerForKey:@"isChecBankCard"] == 0){ //银行卡 未认证
-            cell.checkLb.text = @"未认证";
-            cell.checkLb.textColor = [UIColor lightGrayColor];
-            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        
-        }else if ([ZcxUserDefauts integerForKey:@"isChecBankCard"] == 2){
+        //银行卡
+        if ([ZcxUserDefauts integerForKey:@"isChecBankCard"] == 2){
             cell.checkLb.text = @"认证中";
             cell.checkLb.textColor = [UIColor lightGrayColor];
             [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
-        }else{
+        }else if ([ZcxUserDefauts integerForKey:@"isChecBankCard"] == 1){
             cell.checkLb.text = @"已认证";
             cell.checkLb.textColor = ZCXColor(0, 189, 0);
             [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
-            
+        }else{
+            cell.checkLb.text = @"未认证";
+            cell.checkLb.textColor = [UIColor lightGrayColor];
+            [cell.indicatorView setImage:[UIImage imageNamed:@"rightArrow"]];
         }
+        
     }
 
     return cell;

@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 //金额
 @property (nonatomic, copy) NSString  *money;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *describeLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END
