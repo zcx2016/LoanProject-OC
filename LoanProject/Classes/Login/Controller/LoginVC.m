@@ -30,21 +30,26 @@
     self.sendCodeBtn.layer.cornerRadius = 5;
     self.sendCodeBtn.layer.borderWidth = 1;
     self.sendCodeBtn.layer.borderColor = ZCXColor(238, 142, 33).CGColor;
-    [self.sendCodeBtn addTarget:self action:@selector(sendCodeEvents) forControlEvents:UIControlEventTouchUpInside];
+    [self.sendCodeBtn addTarget:self action:@selector(sendCodeEvents:) forControlEvents:UIControlEventTouchUpInside];
     
     self.loginBtn.layer.cornerRadius = 5;
     self.loginBtn.layer.masksToBounds = YES;
-    [self.loginBtn addTarget:self action:@selector(loginEvents) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginBtn addTarget:self action:@selector(loginEvents:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)sendCodeEvents{
-    NSLog(@"发送验证码");
-    
+- (void)sendCodeEvents:(UIButton *)btn{
+  
     if ([self.phoneTF.text isEqualToString:@""]){
         [SVProgressHUD showErrorWithStatus:@"手机号和服务密码不能为空！"];
         return;
     }
-
+    
+    //3秒内 按钮不能重复点击
+    btn.userInteractionEnabled = false;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        btn.userInteractionEnabled = true;
+    });
+    
     NSDictionary *dict = @{@"phone" : self.phoneTF.text, @"key":kLpKey};
     
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -68,47 +73,71 @@
 }
 
 #pragma mark - 登录
-- (void)loginEvents{
+- (void)loginEvents:(UIButton *)btn{
     
     if ([_phoneTF.text isEqualToString:@""] || [_verifyCodeTF.text isEqualToString:@""]){
         [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
         return;
     }
+    
+    //3秒内 按钮不能重复点击
+    btn.userInteractionEnabled = false;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        btn.userInteractionEnabled = true;
+    });
  
     NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : kLpKey};
     
+    [SVProgressHUD showProgress:-1 status:@"登录中..."];
+    
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/GetUser"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-         [SVProgressHUD showProgress:-1 status:@"登录中..."];
+        NSLog(@"登录---%@",responseObject);
         
-//        NSLog(@"登录---%@",responseObject);
+        if (responseObject == nil){
+            [SVProgressHUD showErrorWithStatus:@"网络不畅，登录失败!"];
+            return;
+        }
+        
         //保存用户编号和手机
         [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
-        [ZcxUserDefauts setObject:responseObject[@"phone"] forKey:@"phone"];
+        [ZcxUserDefauts setObject:self.phoneTF.text forKey:@"phone"];
         //保存额度
         [ZcxUserDefauts setObject:responseObject[@"limit"] forKey:@"limit"];
         //设置 已登录 属性
         [ZcxUserDefauts setBool:YES forKey:@"isLogin"];
         //四大认证
-        if ([responseObject[@"isChecIdentity"] isEqual:@0]){ //身份认证
-            [ZcxUserDefauts setBool:NO forKey:@"isChecIdentity"];
+        //身份认证
+        if ([responseObject[@"isChecIdentity"] isEqual:@0]){
+            [ZcxUserDefauts setInteger:0 forKey:@"isChecIdentity"];
+        }else if ([responseObject[@"isChecIdentity"] isEqual:@1]){
+            [ZcxUserDefauts setInteger:1 forKey:@"isChecIdentity"];
         }else{
-            [ZcxUserDefauts setBool:YES forKey:@"isChecIdentity"];
+            [ZcxUserDefauts setInteger:2 forKey:@"isChecIdentity"];
         }
-        if ([responseObject[@"isChecOperator"] isEqual:@0]){ //运营商认证
-            [ZcxUserDefauts setBool:NO forKey:@"isChecOperator"];
+        //运营商认证
+        if ([responseObject[@"isChecOperator"] isEqual:@0]){
+            [ZcxUserDefauts setInteger:0 forKey:@"isChecOperator"];
+        }else if ([responseObject[@"isChecOperator"] isEqual:@1]){
+            [ZcxUserDefauts setInteger:1 forKey:@"isChecOperator"];
         }else{
-            [ZcxUserDefauts setBool:YES forKey:@"isChecOperator"];
+            [ZcxUserDefauts setInteger:2 forKey:@"isChecOperator"];
         }
-        if ([responseObject[@"isChecAlipay"] isEqual:@0]){ //支付宝认证
-            [ZcxUserDefauts setBool:NO forKey:@"isChecAlipay"];
+        //支付宝认证
+        if ([responseObject[@"isChecAlipay"] isEqual:@0]){
+            [ZcxUserDefauts setInteger:0  forKey:@"isChecAlipay"];
+        }else if ([responseObject[@"isChecAlipay"] isEqual:@1]){
+            [ZcxUserDefauts setInteger:1 forKey:@"isChecAlipay"];
         }else{
-            [ZcxUserDefauts setBool:YES forKey:@"isChecAlipay"];
+            [ZcxUserDefauts setInteger:2  forKey:@"isChecAlipay"];
         }
-        if ([responseObject[@"isChecBankCard"] isEqual:@0]){ //银行卡认证
-            [ZcxUserDefauts setBool:NO forKey:@"isChecBankCard"];
+        //银行卡认证
+        if ([responseObject[@"isChecBankCard"] isEqual:@0]){
+            [ZcxUserDefauts setInteger:0 forKey:@"isChecBankCard"];
+        }else if ([responseObject[@"isChecBankCard"] isEqual:@1]){
+            [ZcxUserDefauts setInteger:1 forKey:@"isChecBankCard"];
         }else{
-            [ZcxUserDefauts setBool:YES forKey:@"isChecBankCard"];
+            [ZcxUserDefauts setInteger:2 forKey:@"isChecBankCard"];
         }
         
         [ZcxUserDefauts synchronize];

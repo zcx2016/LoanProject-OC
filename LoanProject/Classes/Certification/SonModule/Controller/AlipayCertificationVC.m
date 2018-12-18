@@ -194,7 +194,7 @@
     [alert addAction:[UIAlertAction actionWithTitle:@"打开相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //点击调用相册
         self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        self.imagePickerController.allowsEditing = YES;
+        self.imagePickerController.allowsEditing = NO;
         //相册权限
         ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
         if (authStatus == ALAuthorizationStatusRestricted || authStatus ==ALAuthorizationStatusDenied){
@@ -236,20 +236,19 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     //通过key值获取到图片
     UIImage * image =info[UIImagePickerControllerOriginalImage];
-   
-//    NSData *imageData2 = [image compressWithMaxLength:100];
-    
     //转换成jpg格式，并压缩，0.5比例最好
-    NSData *imageData2 = UIImageJPEGRepresentation(image, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     
-    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"zhima.jpg" data:imageData2 completion:^(id  _Nonnull result, BOOL isSuccess) {
-        
-        NSLog(@"res----%@, isSuc---%d",result,isSuccess);
+    [SVProgressHUD showProgress:-1 status:@"上传中..."];
+    [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"imgarray0" fileName:@"zhima.jpg" data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
+
         NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
         if ([stateCode isEqualToString:@"200"]){
             self.zmImgStr = result[@"img"];
+            [SVProgressHUD dismiss];
         }else{
             [SVProgressHUD showErrorWithStatus:@"图片上传失败！"];
+            [SVProgressHUD dismiss];
             return;
         }
         }];

@@ -66,7 +66,6 @@
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUINoti:) name:@"updateUI" object:nil];
     
-
     [self setBotBtn];
     [self tableView];
     
@@ -141,7 +140,6 @@
         }
         
         //设置 按钮状态
-            
         if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 1 &&
             [ZcxUserDefauts integerForKey:@"isChecOperator"] == 1 &&
             [ZcxUserDefauts integerForKey:@"isChecAlipay"] == 1 &&
@@ -260,7 +258,7 @@
 
 //已申请，弹出框提示
 - (void)popDoneView{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"您的贷款申请已提交，管理员正在审核中，请去“我的”—“贷款进度”进行查看" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"您的贷款申请已提交，系统人工正在审核中，请去“我的”—“贷款进度”进行查看" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
        
@@ -334,7 +332,6 @@
             cell.checkLb.text = @"已认证";
             cell.checkLb.textColor = ZCXColor(0, 189, 0);
             [cell.indicatorView setImage:[UIImage imageNamed:@"renzheng_Yes"]];
- 
         }
     }else if (indexPath.row == 2){
         if ([ZcxUserDefauts integerForKey:@"isChecAlipay"] == 0){ //支付宝 未认证

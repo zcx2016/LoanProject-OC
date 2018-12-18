@@ -48,16 +48,17 @@
 - (void)saveToAlbum:(UILongPressGestureRecognizer*)gestureRecognizer{
    
     if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
-            UIImageWriteToSavedPhotosAlbum(_codeImgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        UIImageWriteToSavedPhotosAlbum(_codeImgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }
 
 }
 
 -(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if(error){
-        [SVProgressHUD showErrorWithStatus:@"保存图片失败!"];
+        [SVProgressHUD showErrorWithStatus:error.description];
+//        [SVProgressHUD showErrorWithStatus:@"保存图片失败!"];
     }else{
-        [SVProgressHUD showSuccessWithStatus:@"已保存图片至相册!"];
+        [SVProgressHUD showSuccessWithStatus:@"付款码已经保存至相册!"];
     }
 }
 

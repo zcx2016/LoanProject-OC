@@ -163,7 +163,7 @@
 - (void)setBotBtn{
     
     _quitBtn = [UIButton createYellowBgBtn:@"退出登录"];
-    [_quitBtn addTarget:self action:@selector(quitClick) forControlEvents:UIControlEventTouchUpInside];
+    [_quitBtn addTarget:self action:@selector(judgeIsQuitPopView) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_quitBtn];
     [_quitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -174,7 +174,7 @@
     }];
 }
 
-- (void)quitClick{
+- (void)quitLogin{
     //先清空信息
     _weak_headView.phoneLabel.text = @"  ";
     [ZcxUserDefauts removeObjectForKey:@"uid"];
@@ -192,6 +192,24 @@
     LoginVC *vc = [sb instantiateViewControllerWithIdentifier:
                    @"LoginVC"];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)judgeIsQuitPopView{
+    
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"确定要退出登录吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *actNo = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *actYes = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self quitLogin];
+    }];
+    
+    [alertC addAction:actNo];
+    [alertC addAction:actYes];
+    
+    [self.navigationController presentViewController:alertC animated:YES completion:nil];
 }
 
 #pragma mark - tableView Delegate
@@ -214,21 +232,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
-        //此处分3种情况，分别是 审核中/审核失败/审核通过
-        if ([self.isNew isEqualToString:@"0"]){
+       
+        if([self.isNew isEqualToString:@"0"] && [self.mloan isEqualToString:@"0"]){
             
-            if ([self.mloan isEqualToString:@"0"]){
-                
+            if([self.isPayLoan isEqualToString:@"1"]){
+                //还款成功!
                 RepaySuccessVC *vc = [[UIStoryboard storyboardWithName:@"RepaySuccessVC" bundle:nil] instantiateViewControllerWithIdentifier:@"RepaySuccessVC"];
                 [self.navigationController pushViewController:vc animated:YES];
-            }
-//            if ([self.mloan isEqualToString:@"1"]){
-            else{
+            }else{
                 [SVProgressHUD showErrorWithStatus:@"您暂未申请贷款!"];
                 return;
             }
-            
-        }else{
+        }
+        
+        if ([self.isNew isEqualToString:@"1"]){
             if ([self.isPass isEqualToString:@"0"]){ //审核中
                 LoanProgressIngVC *vc = [[UIStoryboard storyboardWithName:@"LoanProgressIngVC" bundle:nil] instantiateViewControllerWithIdentifier:@"LoanProgressIngVC"];
                 [self.navigationController pushViewController:vc animated:YES];
@@ -240,7 +257,8 @@
             }
             if ([self.isPass isEqualToString:@"2"]){ //审核已通过
                 
-                if ([self.mloan isEqualToString:@"0"]){
+                if ([self.isPayCost isEqualToString:@"0"]){
+                    //未支付 服务费
                     LoanProgressVC *vc = [[UIStoryboard storyboardWithName:@"LoanProgressVC" bundle:nil] instantiateViewControllerWithIdentifier:@"LoanProgressVC"];
                     vc.loanMoney = self.loanAmount;
                     vc.serverMoney = self.serviceCharge;
@@ -255,13 +273,16 @@
                         vc.feeAddress = self.feeAddress3;
                     }
                     [self.navigationController pushViewController:vc animated:YES];
-                }else{
+                    
+                }else{ //已经支付服务费
                     [SVProgressHUD showInfoWithStatus:@"当前没有贷款需要审核!"];
                     return;
                 }
                 
             }
         }
+        
+        
         
     }else if (indexPath.row == 1){
         

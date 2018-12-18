@@ -174,7 +174,8 @@
     [alert addAction:[UIAlertAction actionWithTitle:@"打开相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //点击调用相册
         self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        self.imagePickerController.allowsEditing = YES;
+        //设为yes,再加上其他语句，就可以编辑了
+        self.imagePickerController.allowsEditing = NO;
         //相册权限
         ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
         if (authStatus == ALAuthorizationStatusRestricted || authStatus ==ALAuthorizationStatusDenied){
@@ -193,7 +194,7 @@
         [alert addAction:[UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //点击调用照相机
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-            self.imagePickerController.allowsEditing = YES;
+            self.imagePickerController.allowsEditing = NO;
             //相机权限
             AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
             if (authStatus ==AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied ){
@@ -221,17 +222,16 @@
     
     NSString *imageName = [NSString stringWithFormat:@"%@.jpg",[self getCurrentTime]];
 
-    
-    //    //判断数据源类型
+  //判断数据源类型
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {    //相册
         if (_selectIndex.row == 0){
             
             _weak_firstCell.imgView.image = image;
-            
+            [SVProgressHUD showProgress:-1 status:@"上传中..."];
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                [SVProgressHUD showProgress:-1 status:@"上传中..."];
-              
+                
+                NSLog(@"相册1------%@,%d",result,isSuccess);
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic1UrlStr = result[@"img"];
@@ -245,11 +245,11 @@
         }else if (_selectIndex.row == 1){
             
             _weak_secCell.imgView.image = image;
-            
+            [SVProgressHUD showProgress:-1 status:@"上传中..."];
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                [SVProgressHUD showProgress:-1 status:@"上传中..."];
-    
+                
+                NSLog(@"相册2------%@,%d",result,isSuccess);
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic2UrlStr = result[@"img"];
@@ -262,10 +262,10 @@
             }];
         }else{
             _weak_thirdCell.imgView.image = image;
-            
+            [SVProgressHUD showProgress:-1 status:@"上传中..."];
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                [SVProgressHUD showProgress:-1 status:@"上传中..."];
+                NSLog(@"相册3-------%@,%d",result,isSuccess);
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic3UrlStr = result[@"img"];
@@ -287,10 +287,11 @@
 
         if (_selectIndex.row == 0){
             _weak_firstCell.imgView.image = image;
-            
+            [SVProgressHUD showProgress:-1 status:@"上传中..."];
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                [SVProgressHUD showProgress:-1 status:@"上传中..."];
+    
+                NSLog(@"相机1-------%@,%d",result,isSuccess);
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic1UrlStr = result[@"img"];
@@ -303,10 +304,10 @@
             }];
         }else if (_selectIndex.row == 1){
             _weak_secCell.imgView.image = image;
-            
+            [SVProgressHUD showProgress:-1 status:@"上传中..."];
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
-                
-                [SVProgressHUD showProgress:-1 status:@"上传中..."];
+        
+                NSLog(@"相机2------%@,%d",result,isSuccess);
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic2UrlStr = result[@"img"];
@@ -319,10 +320,10 @@
             }];
         }else{
             _weak_thirdCell.imgView.image = image;
-            
+            [SVProgressHUD showProgress:-1 status:@"上传中..."];
             [[LCHTTPSessionManager sharedInstance] upload:[kUrlReqHead stringByAppendingString:@"/UpLoadFiles.aspx"] parameters:nil name:@"img0" fileName:imageName data:imageData completion:^(id  _Nonnull result, BOOL isSuccess) {
                 
-                [SVProgressHUD showProgress:-1 status:@"上传中..."];
+                NSLog(@"相机3-------%@,%d",result,isSuccess);
                 NSString *stateCode = [NSString stringWithFormat:@"%@",result[@"state"]];
                 if ([stateCode isEqualToString:@"200"]){
                     self.pic3UrlStr = result[@"img"];
