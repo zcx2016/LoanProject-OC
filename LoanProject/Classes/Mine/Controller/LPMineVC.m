@@ -103,12 +103,6 @@
     
     [self tableView];
     
-    //照片选择器
-//    self.imagePickerController = [[UIImagePickerController alloc] init];
-//    self.imagePickerController.delegate = self;
-//    self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//    self.imagePickerController.allowsEditing = YES;
-
     [self JunJie];
 }
 
@@ -170,7 +164,7 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).with.offset(-80);
         make.left.equalTo(self.view).with.offset(20);
-        make.height.equalTo(@50);
+        make.height.equalTo(@kBtnHeight);
     }];
 }
 
@@ -282,8 +276,6 @@
             }
         }
         
-        
-        
     }else if (indexPath.row == 1){
         
         if ([self.isNew isEqualToString:@"0"]){
@@ -350,8 +342,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     MineHeadView *view = [MineHeadView viewWithTableView:tableView];
     _weak_headView = view;
-//    //添加点击事件
-//    [view.headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeIcon:)]];
     
     if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 1 && [ZcxUserDefauts integerForKey:@"isChecOperator"] == 1 &&[ZcxUserDefauts integerForKey:@"isChecAlipay"] == 1 &&[ZcxUserDefauts integerForKey:@"isChecBankCard"] == 1 ){
         [view.renzhenBtn setBackgroundImage:[UIImage imageNamed:@"agree"] forState:UIControlStateNormal];
@@ -384,81 +374,5 @@
     }
     return _tableView;
 }
-
-//#pragma mark - 换头像
-//- (void)changeIcon:(UITapGestureRecognizer *)recognize{
-//
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"更换头像" message:nil preferredStyle:UIAlertControllerStyleAlert];
-//    [alert addAction:[UIAlertAction actionWithTitle:@"打开相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        //点击调用相册
-//        self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        self.imagePickerController.allowsEditing = YES;
-//        //相册权限
-//        ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
-//        if (authStatus == ALAuthorizationStatusRestricted || authStatus ==ALAuthorizationStatusDenied){
-//            //无权限 引导去开启
-//            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-//            if ([[UIApplication sharedApplication] canOpenURL:url]) {
-//                [[UIApplication sharedApplication] openURL:url];
-//            }
-//        }
-//        [self presentViewController:self.imagePickerController animated:YES completion:nil];
-//    }]];
-//
-//    //判断设备是否有具有摄像头(相机)功能
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-//    {
-//        [alert addAction:[UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            //点击调用照相机
-//            self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-//            self.imagePickerController.allowsEditing = YES;
-//            //相机权限
-//            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-//            if (authStatus ==AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied ){
-//                // 无权限 引导去开启
-//                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-//                if ([[UIApplication sharedApplication]canOpenURL:url]) {
-//                    [[UIApplication sharedApplication]openURL:url];
-//                }
-//            }
-//            [self presentViewController:self.imagePickerController animated:YES completion:nil];
-//        }]];
-//    }
-//    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-//
-//    }]];
-//    [self  presentViewController:alert animated:YES completion:nil];
-//}
-//
-//#pragma mark - 相机／相册 代理
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-//    //通过key值获取到图片
-//    UIImage * image =info[UIImagePickerControllerOriginalImage];
-//    //转换成jpg格式，并压缩，0.5比例最好
-//    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-//
-//    //    //判断数据源类型
-//    if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {    //相册
-//
-//        _weak_headView.headImgView.image = image;
-//
-//        [self  dismissViewControllerAnimated:YES completion:nil];
-//    }
-//
-//    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {   //相机
-//
-//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-//
-//        _weak_headView.headImgView.image = image;
-//
-//        [self  dismissViewControllerAnimated:YES completion:nil];
-//    }
-//}
-//
-////当用户取消选取时调用
-//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
 
 @end

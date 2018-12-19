@@ -47,13 +47,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付500000元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLx-6E-8QU">
-                            <rect key="frame" x="66" y="281" width="178" height="31.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                            <rect key="frame" x="71.5" y="281" width="167.5" height="30"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
                             <color key="textColor" red="1" green="0.55686274509803924" blue="0.015686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SP-fW-EEF">
-                            <rect key="frame" x="15" y="337.5" width="280" height="16"/>
+                            <rect key="frame" x="15" y="336" width="280" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

@@ -22,7 +22,9 @@
 
 #define kLpKey @"8562E592C0C3D2EA2B56A5855CAD22F9"
 
-#define kUrlReqHead @"http://43.229.152.127"
+#define kUrlReqHead @"http://211.149.172.183"
+
+#define kBtnHeight 45
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height

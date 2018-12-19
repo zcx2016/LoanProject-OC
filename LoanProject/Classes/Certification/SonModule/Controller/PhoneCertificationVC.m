@@ -23,7 +23,7 @@
 //弱引用3个cell
 @property (nonatomic, weak) CarrierCell *weak_phoneCell;
 @property (nonatomic, weak) CarrierCell *weak_serverPwdCell;
-@property (nonatomic, weak) CarrierCell *weak_verifyCodeCell;
+//@property (nonatomic, weak) CarrierCell *weak_verifyCodeCell;
 
 //验证码
 @property (nonatomic, copy) NSString *verifyCode;
@@ -53,15 +53,16 @@
     [self.view addSubview:_submitBtn];
     [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(250);
+        make.top.equalTo(self.view).with.offset(180);
         make.left.equalTo(self.view).with.offset(15);
-        make.height.equalTo(@50);
+        make.height.equalTo(@kBtnHeight);
     }];
     
     //提示文字
     _promptLabel = [UILabel new];
     _promptLabel.numberOfLines = 0;
-    _promptLabel.text = @"温馨提示: \n 1、授权期间将收到运营商的通知短信，这是正常现象，无需担心。\n 2、服务密码为运营商的业务办理密码，一般为6位数字，神州行号码为8位数字具体可联系运营商官方咨";
+    _promptLabel.text = @"温馨提示: \n 1、授权期间将收到运营商的通知短信，这是正常现象，无需担心。\n 2、服务密码为运营商的业务办理密码，一般为6位数字，神州行号码为8位数字具体可联系运营商官方咨询。";
+    _promptLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_promptLabel];
     [_promptLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.submitBtn.mas_bottom).with.offset(50);
@@ -74,14 +75,9 @@
 
 - (void)submitClick:(UIButton *)btn{
 
-    if ([_weak_phoneCell.inputTF.text isEqualToString:@""] || [_weak_serverPwdCell.inputTF.text isEqualToString:@""] || [_weak_verifyCodeCell.inputTF.text isEqualToString:@""]){
+    if ([_weak_phoneCell.inputTF.text isEqualToString:@""] || [_weak_serverPwdCell.inputTF.text isEqualToString:@""] ){
         
         [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
-        return;
-    }
-    
-    if (![_weak_verifyCodeCell.inputTF.text isEqualToString:self.verifyCode]){
-        [SVProgressHUD showErrorWithStatus:@"验证码输入错误！"];
         return;
     }
     
@@ -97,8 +93,15 @@
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
         if ([stateCode isEqualToString:@"200"]){
-            [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            [SVProgressHUD showProgress:-1 status:@""];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+            });
+            
+//            [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
             [SVProgressHUD showErrorWithStatus:@"提交失败！"];
             return;
@@ -116,7 +119,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 2;
 }
 
 #pragma mark - tableView DataSource
@@ -131,12 +134,6 @@
     if (indexPath.row == 1){
         _weak_serverPwdCell = cell;
         cell.inputTF.placeholder = @"请输入服务密码";
-    }
-    if (indexPath.row == 2){
-        _weak_verifyCodeCell = cell;
-        [cell.codeBtn setHidden:NO];
-        cell.inputTF.placeholder = @"请输入验证码";
-        [cell.codeBtn addTarget:self action:@selector(sendVerifyCode:) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return cell;
@@ -190,82 +187,6 @@
 - (void)done{
     [self.weak_phoneCell.inputTF resignFirstResponder];
     [self.weak_serverPwdCell.inputTF resignFirstResponder];
-    [self.weak_verifyCodeCell.inputTF resignFirstResponder];
-}
-
-#pragma mark - 发送验证码
-- (void)sendVerifyCode:(UIButton *)btn{
-    
-    if ([self.weak_phoneCell.inputTF.text isEqualToString:@""] || [self.weak_serverPwdCell.inputTF.text isEqualToString:@""]){
-        [SVProgressHUD showErrorWithStatus:@"手机号和服务密码不能为空！"];
-        return;
-    }
-
-    NSDictionary *dict = @{@"phone" : self.weak_phoneCell.inputTF.text, @"key":kLpKey};
-    
-    //3秒内 按钮不能重复点击
-    btn.userInteractionEnabled = false;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        btn.userInteractionEnabled = true;
-    });
-    
-    [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingString:@"/API.asmx/SendSMS"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSLog(@"发送验证码-----%@",responseObject);
-        NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
-        if ([stateCode isEqualToString:@"0"]){
-            // 开启倒计时效果
-            [self showCountDown];
-            //保存验证码
-            self.verifyCode = responseObject[@"key"];
-        }else{
-            [SVProgressHUD showErrorWithStatus:@"获取验证码失败！"];
-            return;
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"发送验证码错误-----%@",error);
-    }];
-}
-
-// 开启倒计时效果
-- (void)showCountDown{
-    __block NSInteger time = 59; //倒计时时间
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    
-    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
-    
-    dispatch_source_set_event_handler(_timer, ^{
-        
-        if(time <= 0){ //倒计时结束，关闭
-            
-            dispatch_source_cancel(_timer);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //设置按钮的样式
-                [self.weak_verifyCodeCell.codeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
-                [self.weak_verifyCodeCell.codeBtn setTitleColor:ZCXColor(253, 141, 38) forState:UIControlStateNormal];
-                self.weak_verifyCodeCell.codeBtn.layer.borderColor = ZCXColor(253, 141, 38).CGColor;
-                self.weak_verifyCodeCell.codeBtn.userInteractionEnabled = YES;
-            });
-            
-        }else{ //倒计时开始
-            
-            int seconds = time % 60;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //设置按钮显示读秒效果
-                [self.weak_verifyCodeCell.codeBtn setTitle:[NSString stringWithFormat:@"%ds后重发", seconds] forState:UIControlStateNormal];
-                [self.weak_verifyCodeCell.codeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-                self.weak_verifyCodeCell.codeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-                self.weak_verifyCodeCell.codeBtn.userInteractionEnabled = NO;
-            });
-            time--;
-        }
-    });
-    dispatch_resume(_timer);
 }
 
 @end

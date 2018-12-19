@@ -51,6 +51,8 @@
 		35D974D921AFE2DD007F139C /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D821AFE2DD007F139C /* LoginVC.m */; };
 		35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D974DC21AFE30B007F139C /* LoginVC.storyboard */; };
 		35D974E721AFF2E5007F139C /* HelpCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974E621AFF2E5007F139C /* HelpCenterVC.m */; };
+		35FE9A2F21CABE230025774C /* ProgressPoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FE9A2E21CABE230025774C /* ProgressPoolVC.m */; };
+		35FE9A3221CABE5B0025774C /* BackToHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FE9A3121CABE5B0025774C /* BackToHomeVC.m */; };
 		35FEF01D21BF99460026196E /* CustomServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FEF01B21BF99460026196E /* CustomServerCell.m */; };
 		35FEF01E21BF99460026196E /* CustomServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FEF01C21BF99460026196E /* CustomServerCell.xib */; };
 		35FEF02021BFB51C0026196E /* CardManageVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FEF01F21BFB51C0026196E /* CardManageVC.storyboard */; };
@@ -142,6 +144,10 @@
 		35D974DC21AFE30B007F139C /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		35D974E521AFF2E5007F139C /* HelpCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterVC.h; sourceTree = "<group>"; };
 		35D974E621AFF2E5007F139C /* HelpCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterVC.m; sourceTree = "<group>"; };
+		35FE9A2D21CABE230025774C /* ProgressPoolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressPoolVC.h; sourceTree = "<group>"; };
+		35FE9A2E21CABE230025774C /* ProgressPoolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressPoolVC.m; sourceTree = "<group>"; };
+		35FE9A3021CABE5B0025774C /* BackToHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackToHomeVC.h; sourceTree = "<group>"; };
+		35FE9A3121CABE5B0025774C /* BackToHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackToHomeVC.m; sourceTree = "<group>"; };
 		35FEF01A21BF99460026196E /* CustomServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomServerCell.h; sourceTree = "<group>"; };
 		35FEF01B21BF99460026196E /* CustomServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomServerCell.m; sourceTree = "<group>"; };
 		35FEF01C21BF99460026196E /* CustomServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomServerCell.xib; sourceTree = "<group>"; };
@@ -406,8 +412,8 @@
 				35CFBE0E21BE0AA80065B11D /* MyLoanVC.m */,
 				35FEF03221BFC4700026196E /* MyLoanVC.storyboard */,
 				35CFBE1021BE0AD50065B11D /* CustomerServiceVC.h */,
-				35CFBE1321BE0AFC0065B11D /* CardManageVC.h */,
 				35CFBE1121BE0AD50065B11D /* CustomerServiceVC.m */,
+				35CFBE1321BE0AFC0065B11D /* CardManageVC.h */,
 				35CFBE1421BE0AFC0065B11D /* CardManageVC.m */,
 				35FEF01F21BFB51C0026196E /* CardManageVC.storyboard */,
 				35D974E521AFF2E5007F139C /* HelpCenterVC.h */,
@@ -443,6 +449,10 @@
 				35CFBE2021BE0C3C0065B11D /* BankCardCertificationVC.m */,
 				3564978821C6370B0075AD7F /* ProtocolVC.h */,
 				3564978921C6370B0075AD7F /* ProtocolVC.m */,
+				35FE9A2D21CABE230025774C /* ProgressPoolVC.h */,
+				35FE9A2E21CABE230025774C /* ProgressPoolVC.m */,
+				35FE9A3021CABE5B0025774C /* BackToHomeVC.h */,
+				35FE9A3121CABE5B0025774C /* BackToHomeVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -635,6 +645,7 @@
 				35CFBE1E21BE0C1C0065B11D /* IDCardCertificationVC.m in Sources */,
 				35FEF02D21BFC2D70026196E /* LoanProgressLoseVC.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
+				35FE9A3221CABE5B0025774C /* BackToHomeVC.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
 				3564978A21C6370B0075AD7F /* ProtocolVC.m in Sources */,
 				35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */,
@@ -648,6 +659,7 @@
 				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
 				35CFBE3721BE5D060065B11D /* BankCardCell.m in Sources */,
 				359EDD9721BECD2700C2A8EB /* IDCardCell.m in Sources */,
+				35FE9A2F21CABE230025774C /* ProgressPoolVC.m in Sources */,
 				35FEF02821BFC2080026196E /* LoanProgressIngVC.m in Sources */,
 				35CFBE1521BE0AFC0065B11D /* CardManageVC.m in Sources */,
 				35CFBE1B21BE0BE20065B11D /* AlipayCertificationVC.m in Sources */,

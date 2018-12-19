@@ -65,7 +65,7 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).with.offset(-20);
         make.left.equalTo(self.view).with.offset(15);
-        make.height.equalTo(@50);
+        make.height.equalTo(@kBtnHeight);
     }];
 }
 
