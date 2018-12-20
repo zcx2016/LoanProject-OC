@@ -14,6 +14,7 @@
     [super awakeFromNib];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.eventBtn.zcx_acceptEventInterval = 3;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

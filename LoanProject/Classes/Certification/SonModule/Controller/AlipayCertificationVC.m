@@ -57,6 +57,7 @@
 - (void)setBotBtn{
     //确认按钮
     _submitBtn = [UIButton createYellowBgBtn:@"提交"];
+    _submitBtn.zcx_acceptEventInterval = 3;
     [_submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_submitBtn];

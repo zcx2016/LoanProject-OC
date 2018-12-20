@@ -21,6 +21,7 @@
     
     self.applyMoneyBtn.layer.cornerRadius = 5;
     self.applyMoneyBtn.layer.masksToBounds = YES;
+    self.applyMoneyBtn.zcx_acceptEventInterval = 3;
     [self.applyMoneyBtn addTarget:self action:@selector(applyLoan) forControlEvents:UIControlEventTouchUpInside];
     
 }

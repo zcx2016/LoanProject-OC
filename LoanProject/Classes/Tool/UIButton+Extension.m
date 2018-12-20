@@ -10,6 +10,7 @@
 
 @implementation UIButton (Extension)
 
+//创建统一样式的 btn
 + (UIButton *)createYellowBgBtn:(NSString *)title{
     
     UIButton *btn = [UIButton new];

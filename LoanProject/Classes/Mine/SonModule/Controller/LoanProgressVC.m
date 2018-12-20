@@ -44,6 +44,7 @@
 - (void)setBotBtn{
     
     _payMoneyBtn = [UIButton createYellowBgBtn:@"支 付"];
+    _payMoneyBtn.zcx_acceptEventInterval = 3;
     [_payMoneyBtn addTarget:self action:@selector(returnMoneyClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_payMoneyBtn];

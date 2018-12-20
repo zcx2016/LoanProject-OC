@@ -157,6 +157,7 @@
 - (void)setBotBtn{
     
     _quitBtn = [UIButton createYellowBgBtn:@"退出登录"];
+    _quitBtn.zcx_acceptEventInterval = 3;
     [_quitBtn addTarget:self action:@selector(judgeIsQuitPopView) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_quitBtn];

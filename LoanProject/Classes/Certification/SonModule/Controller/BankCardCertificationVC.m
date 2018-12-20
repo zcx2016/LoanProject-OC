@@ -46,6 +46,7 @@
 - (void)setBotBtn{
     
     _submitBtn = [UIButton new];
+    _submitBtn.zcx_acceptEventInterval = 3;
     [_submitBtn setTitle:@"提交" forState:UIControlStateNormal];
     [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _submitBtn.layer.cornerRadius = 6;

@@ -51,6 +51,7 @@
 		35D974D921AFE2DD007F139C /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D821AFE2DD007F139C /* LoginVC.m */; };
 		35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D974DC21AFE30B007F139C /* LoginVC.storyboard */; };
 		35D974E721AFF2E5007F139C /* HelpCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974E621AFF2E5007F139C /* HelpCenterVC.m */; };
+		35FCAFD921CB3248006EE3FB /* UIButton+DealMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FCAFD821CB3248006EE3FB /* UIButton+DealMultiClick.m */; };
 		35FE9A2F21CABE230025774C /* ProgressPoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FE9A2E21CABE230025774C /* ProgressPoolVC.m */; };
 		35FE9A3221CABE5B0025774C /* BackToHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FE9A3121CABE5B0025774C /* BackToHomeVC.m */; };
 		35FEF01D21BF99460026196E /* CustomServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FEF01B21BF99460026196E /* CustomServerCell.m */; };
@@ -144,6 +145,8 @@
 		35D974DC21AFE30B007F139C /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		35D974E521AFF2E5007F139C /* HelpCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterVC.h; sourceTree = "<group>"; };
 		35D974E621AFF2E5007F139C /* HelpCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterVC.m; sourceTree = "<group>"; };
+		35FCAFD721CB3248006EE3FB /* UIButton+DealMultiClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+DealMultiClick.h"; sourceTree = "<group>"; };
+		35FCAFD821CB3248006EE3FB /* UIButton+DealMultiClick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DealMultiClick.m"; sourceTree = "<group>"; };
 		35FE9A2D21CABE230025774C /* ProgressPoolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressPoolVC.h; sourceTree = "<group>"; };
 		35FE9A2E21CABE230025774C /* ProgressPoolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressPoolVC.m; sourceTree = "<group>"; };
 		35FE9A3021CABE5B0025774C /* BackToHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackToHomeVC.h; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 				35A4ED3521C2635500C35ECB /* LPUser.m */,
 				3564978521C54A080075AD7F /* UIImage+Extension.h */,
 				3564978621C54A080075AD7F /* UIImage+Extension.m */,
+				35FCAFD721CB3248006EE3FB /* UIButton+DealMultiClick.h */,
+				35FCAFD821CB3248006EE3FB /* UIButton+DealMultiClick.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -648,6 +653,7 @@
 				35FE9A3221CABE5B0025774C /* BackToHomeVC.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
 				3564978A21C6370B0075AD7F /* ProtocolVC.m in Sources */,
+				35FCAFD921CB3248006EE3FB /* UIButton+DealMultiClick.m in Sources */,
 				35D974D121AEA068007F139C /* LPCertificationCell.m in Sources */,
 				35D9749A21AE978D007F139C /* AppDelegate.m in Sources */,
 				35D974D921AFE2DD007F139C /* LoginVC.m in Sources */,

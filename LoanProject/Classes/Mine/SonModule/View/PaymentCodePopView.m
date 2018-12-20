@@ -24,6 +24,7 @@
     [_codeImgView addGestureRecognizer:longPress];
     
     //关闭按钮点击事件
+    _closeBtn.zcx_acceptEventInterval = 3;
     [_closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
     
     self.describeLabel.text = @"1.请备注姓名与手机号码，否则影响审批进度 \n2.支付以后如有疑问请在客服中心联系人工客服";
@@ -57,8 +58,8 @@
 
 -(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if(error){
-        [SVProgressHUD showErrorWithStatus:error.description];
-//        [SVProgressHUD showErrorWithStatus:@"保存图片失败!"];
+//        [SVProgressHUD showErrorWithStatus:error.description];
+        [SVProgressHUD showErrorWithStatus:@"保存图片失败!"];
     }else{
         [SVProgressHUD showSuccessWithStatus:@"付款码已经保存至相册!"];
     }

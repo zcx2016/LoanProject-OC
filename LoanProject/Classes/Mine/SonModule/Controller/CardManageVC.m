@@ -22,6 +22,7 @@
     
     self.changeCardBtn.layer.cornerRadius = 5;
     self.changeCardBtn.layer.masksToBounds = YES;
+    self.changeCardBtn.zcx_acceptEventInterval = 3;
     [self.changeCardBtn addTarget:self action:@selector(changeCard) forControlEvents:UIControlEventTouchUpInside];
     
     self.nameLabel.text = self.name;

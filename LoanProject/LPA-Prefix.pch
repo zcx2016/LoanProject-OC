@@ -12,13 +12,17 @@
 #ifdef __OBJC__  //判断一下， 之后oc文件才会导入下面的头文件
 
 #import <LCNetworking.h>
-#import "UIImageView+WebCache.h"
 
-#import "SVProgressHUD.h"
-#import "UIButton+Extension.h"
+//引入SDWebImage头文件
+//#import "UIImageView+WebCache.h"
 #import <Masonry.h>
+#import "SVProgressHUD.h"
 
-#import "LPUser.h"
+#import "UIButton+Extension.h"
+#import "UIButton+DealMultiClick.h"
+
+//引入单例
+//#import "LPUser.h"
 
 #define kLpKey @"8562E592C0C3D2EA2B56A5855CAD22F9"
 

@@ -39,6 +39,7 @@
 - (void)setBotBtn{
     
     _returnMoneyBtn = [UIButton createYellowBgBtn:@"我要还款"];
+    _returnMoneyBtn.zcx_acceptEventInterval = 3;
     [_returnMoneyBtn addTarget:self action:@selector(returnMoneyClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_returnMoneyBtn];

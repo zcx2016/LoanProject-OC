@@ -48,6 +48,7 @@
 
     //确认按钮
     _submitBtn = [UIButton createYellowBgBtn:@"确认"];
+    _submitBtn.zcx_acceptEventInterval = 3;
     [_submitBtn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_submitBtn];
@@ -80,12 +81,6 @@
         [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
         return;
     }
-    
-    //3秒内 按钮不能重复点击
-    btn.userInteractionEnabled = false;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        btn.userInteractionEnabled = true;
-    });
     
     //发送通讯录给后台
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingPathComponent:@"/UploadDic.aspx"] parameters:self.addressBookDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

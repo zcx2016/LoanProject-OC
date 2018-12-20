@@ -31,9 +31,12 @@
     self.sendCodeBtn.layer.borderWidth = 1;
     self.sendCodeBtn.layer.borderColor = ZCXColor(238, 142, 33).CGColor;
     [self.sendCodeBtn addTarget:self action:@selector(sendCodeEvents:) forControlEvents:UIControlEventTouchUpInside];
+    //设置 按钮3秒内点击效果 只能实现一次
+    self.sendCodeBtn.zcx_acceptEventInterval = 3;
     
     self.loginBtn.layer.cornerRadius = 5;
     self.loginBtn.layer.masksToBounds = YES;
+    self.loginBtn.zcx_acceptEventInterval = 3;
     [self.loginBtn addTarget:self action:@selector(loginEvents:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -43,12 +46,6 @@
         [SVProgressHUD showErrorWithStatus:@"手机号和服务密码不能为空！"];
         return;
     }
-    
-    //3秒内 按钮不能重复点击
-    btn.userInteractionEnabled = false;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        btn.userInteractionEnabled = true;
-    });
     
     [self.verifyCodeTF becomeFirstResponder];
     
@@ -81,12 +78,6 @@
         [SVProgressHUD showErrorWithStatus:@"请先填写完信息！"];
         return;
     }
-    
-    //3秒内 按钮不能重复点击
-    btn.userInteractionEnabled = false;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        btn.userInteractionEnabled = true;
-    });
  
     NSDictionary *dict = @{@"phone":_phoneTF.text, @"key" : kLpKey};
     

@@ -84,6 +84,7 @@
 #pragma mark - 确认按钮
 - (void)setBotBtn{
     _sureBtn = [UIButton createYellowBgBtn:@"确认"];
+    _sureBtn.zcx_acceptEventInterval = 3;
     [_sureBtn addTarget:self action:@selector(sureClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_sureBtn];
