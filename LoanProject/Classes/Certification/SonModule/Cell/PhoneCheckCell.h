@@ -12,7 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PhoneCheckCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
+@property (weak, nonatomic) IBOutlet UITextField *inputTF;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconW;
 
 @end
 

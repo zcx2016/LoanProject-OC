@@ -20,16 +20,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddp-D2-I70">
-                        <rect key="frame" x="15" y="12" width="20" height="20"/>
+                        <rect key="frame" x="18" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="AXQ-Tp-Ih7"/>
                             <constraint firstAttribute="width" constant="20" id="gk5-cU-dc2"/>
                         </constraints>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEW-Mm-Nhx">
-                        <rect key="frame" x="45" y="7" width="255" height="30"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEW-Mm-Nhx">
+                        <rect key="frame" x="50" y="11.5" width="250" height="21"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2z4-dt-tgs">
@@ -43,15 +43,21 @@
                 <constraints>
                     <constraint firstItem="2z4-dt-tgs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1v6-Ml-IVN"/>
                     <constraint firstAttribute="trailing" secondItem="jEW-Mm-Nhx" secondAttribute="trailing" constant="20" id="5xM-0j-I23"/>
+                    <constraint firstItem="jEW-Mm-Nhx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="Oqm-q3-PDf"/>
                     <constraint firstItem="jEW-Mm-Nhx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Quw-jL-YxQ"/>
                     <constraint firstAttribute="bottom" secondItem="2z4-dt-tgs" secondAttribute="bottom" id="Xbt-Dl-LNU"/>
                     <constraint firstItem="ddp-D2-I70" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c8i-hy-JaG"/>
-                    <constraint firstItem="jEW-Mm-Nhx" firstAttribute="leading" secondItem="ddp-D2-I70" secondAttribute="trailing" constant="10" id="cHM-F5-Ab0"/>
                     <constraint firstAttribute="trailing" secondItem="2z4-dt-tgs" secondAttribute="trailing" id="o8Y-JE-1E3"/>
-                    <constraint firstItem="ddp-D2-I70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vy7-Qc-eSz"/>
+                    <constraint firstItem="ddp-D2-I70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="vy7-Qc-eSz"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="iconH" destination="AXQ-Tp-Ih7" id="Ix8-w9-6up"/>
+                <outlet property="iconView" destination="ddp-D2-I70" id="Ku9-YM-Sqp"/>
+                <outlet property="iconW" destination="gk5-cU-dc2" id="GDg-rI-VdH"/>
+                <outlet property="inputTF" destination="jEW-Mm-Nhx" id="3hO-m6-Muu"/>
+            </connections>
             <point key="canvasLocation" x="137.59999999999999" y="123.23838080959521"/>
         </tableViewCell>
     </objects>

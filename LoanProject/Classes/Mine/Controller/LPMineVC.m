@@ -344,11 +344,12 @@
     MineHeadView *view = [MineHeadView viewWithTableView:tableView];
     _weak_headView = view;
     
+    view.phoneLabel.text = [NSString stringWithFormat:@"%@",[ZcxUserDefauts objectForKey:@"phone"]];
+    
     if ([ZcxUserDefauts integerForKey:@"isChecIdentity"] == 1 && [ZcxUserDefauts integerForKey:@"isChecOperator"] == 1 &&[ZcxUserDefauts integerForKey:@"isChecAlipay"] == 1 &&[ZcxUserDefauts integerForKey:@"isChecBankCard"] == 1 ){
         [view.renzhenBtn setBackgroundImage:[UIImage imageNamed:@"agree"] forState:UIControlStateNormal];
         [view.renzhenBtn setTitle:@"已认证" forState:UIControlStateNormal];
         
-        view.phoneLabel.text = [NSString stringWithFormat:@"%@",[ZcxUserDefauts objectForKey:@"phone"]];
     }else{
         [view.renzhenBtn setBackgroundImage:[UIImage imageNamed:@"weirenzheng"] forState:UIControlStateNormal];
          [view.renzhenBtn setTitle:@"未认证" forState:UIControlStateNormal];

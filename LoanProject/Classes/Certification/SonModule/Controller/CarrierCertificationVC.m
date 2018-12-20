@@ -120,6 +120,7 @@
                            @"phone3": _weak_thirdPhoneCell.inputTF.text
                            };
     
+    NSLog(@"dict-=---%@",dict);
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveOperator"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"保存紧急联系人---%@",responseObject);
         

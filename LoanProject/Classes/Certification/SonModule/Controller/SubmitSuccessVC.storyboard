@@ -22,20 +22,20 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="250"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="submitSuc" translatesAutoresizingMaskIntoConstraints="NO" id="LkK-Ne-RxF">
-                                        <rect key="frame" x="150" y="30" width="75" height="75"/>
+                                        <rect key="frame" x="150" y="45" width="75" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="WaH-KE-70G"/>
                                             <constraint firstAttribute="height" constant="75" id="xuA-yh-UFq"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bg-Ey-VMS">
-                                        <rect key="frame" x="143" y="120" width="89.5" height="26.5"/>
+                                        <rect key="frame" x="143" y="135" width="89.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" red="0.047058823530000002" green="0.38111468549999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您所输入的内容已成功提交" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpb-cJ-Vyz">
-                                        <rect key="frame" x="83.5" y="155.5" width="208" height="21"/>
+                                        <rect key="frame" x="83.5" y="170.5" width="208" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                                     <constraint firstItem="8bg-Ey-VMS" firstAttribute="centerX" secondItem="XhO-uJ-jpi" secondAttribute="centerX" id="CTv-1u-rEo"/>
                                     <constraint firstAttribute="height" constant="250" id="NK7-mN-ju5"/>
                                     <constraint firstItem="mpb-cJ-Vyz" firstAttribute="top" secondItem="8bg-Ey-VMS" secondAttribute="bottom" constant="9" id="hKh-2H-Xk7"/>
-                                    <constraint firstItem="LkK-Ne-RxF" firstAttribute="top" secondItem="XhO-uJ-jpi" secondAttribute="top" constant="30" id="irU-rS-CIi"/>
+                                    <constraint firstItem="LkK-Ne-RxF" firstAttribute="top" secondItem="XhO-uJ-jpi" secondAttribute="top" constant="45" id="irU-rS-CIi"/>
                                     <constraint firstItem="8bg-Ey-VMS" firstAttribute="top" secondItem="LkK-Ne-RxF" secondAttribute="bottom" constant="15" id="lGw-NH-pXu"/>
                                 </constraints>
                             </view>
@@ -63,7 +63,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1i-SZ-ggw">
-                                <rect key="frame" x="127" y="621" width="121" height="16"/>
+                                <rect key="frame" x="127" y="626" width="121" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="  信息安全保护中.." image="safeProtect">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="e4S-58-aez" firstAttribute="trailing" secondItem="WaC-bt-aFW" secondAttribute="trailing" constant="30" id="Xc3-e9-qDb"/>
                             <constraint firstItem="e4S-58-aez" firstAttribute="trailing" secondItem="XhO-uJ-jpi" secondAttribute="trailing" id="Xeh-0Z-BmB"/>
                             <constraint firstItem="WaC-bt-aFW" firstAttribute="centerX" secondItem="f34-on-s7I" secondAttribute="centerX" id="dj9-NZ-4dA"/>
-                            <constraint firstItem="e4S-58-aez" firstAttribute="bottom" secondItem="a1i-SZ-ggw" secondAttribute="bottom" constant="30" id="gBe-Ot-GSv"/>
+                            <constraint firstItem="e4S-58-aez" firstAttribute="bottom" secondItem="a1i-SZ-ggw" secondAttribute="bottom" constant="25" id="gBe-Ot-GSv"/>
                             <constraint firstItem="XhO-uJ-jpi" firstAttribute="top" secondItem="e4S-58-aez" secondAttribute="top" id="gdB-Cl-sIv"/>
                             <constraint firstItem="a1i-SZ-ggw" firstAttribute="centerX" secondItem="f34-on-s7I" secondAttribute="centerX" id="zeu-WX-q84"/>
                         </constraints>

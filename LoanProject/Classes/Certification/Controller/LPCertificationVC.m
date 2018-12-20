@@ -18,7 +18,7 @@
 #import "ProtocolVC.h"
 #import "LoanProgressIngVC.h"
 
-#import "PaymentCodePopView.h"
+#import "CarrierProtocolVC.h"
 
 @interface LPCertificationVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -107,6 +107,7 @@
 
         NSLog(@"默认登录---%@",responseObject);
 
+        [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
         //四大认证  -- 0:未认证 1:已认证 2:认证中
          //身份认证
         if ([responseObject[@"isChecIdentity"] isEqual:@0]){
@@ -209,7 +210,8 @@
 }
 
 - (void)clickProtocol{
-    ProtocolVC *vc = [ProtocolVC new];
+    CarrierProtocolVC * vc = [CarrierProtocolVC new];
+//    ProtocolVC *vc = [ProtocolVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -414,6 +416,7 @@
     UIImageView *imgview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banner1"]];
     return imgview;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
