@@ -59,6 +59,7 @@
     popView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     popView.feeAddress = self.feeAddress;
     popView.money = self.loanMoney;
+    popView.fromVc = @"我的贷款";
     [UIApplication.sharedApplication.keyWindow addSubview:popView];
 }
 

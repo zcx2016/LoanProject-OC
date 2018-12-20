@@ -64,6 +64,7 @@
     popView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     popView.feeAddress = self.feeAddress;
     popView.money = self.serverMoney;
+    popView.fromVc = @"贷款进度";
     [UIApplication.sharedApplication.keyWindow addSubview:popView];
 }
 
@@ -79,6 +80,5 @@
     NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_phoneLabel.text];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
-
 
 @end

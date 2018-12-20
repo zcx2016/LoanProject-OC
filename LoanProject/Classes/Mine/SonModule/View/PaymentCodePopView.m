@@ -26,7 +26,7 @@
     _closeBtn.zcx_acceptEventInterval = 3;
     [_closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
     
-    self.describeLabel.text = @"1.请备注姓名与手机号码，否则影响审批进度 \n2.支付以后如有疑问请在客服中心联系人工客服";
+    self.describeLabel.text = @"【方式1】可添加客服微信在线转账 \n【方式2】支付宝转账务必备注借款人姓名和注册手\n                 机号码";
 }
 
 - (void)layoutSubviews{
@@ -34,7 +34,13 @@
     
     //设置 金额 和 二维码
     if (self.money != nil){
-        self.payMoneyLabel.text = [[@"支付" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
+        
+        if ([self.fromVc isEqualToString:@"贷款进度"]){
+            self.payMoneyLabel.text = [[@"会员服务费:" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
+        }else{
+            self.payMoneyLabel.text = [[@"需还款:" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
+        }
+
     }
     
     if (self.feeAddress != nil){

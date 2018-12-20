@@ -111,7 +111,7 @@
     CarrierCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CarrierCell" forIndexPath:indexPath];
     if (indexPath.row == 0){
         cell.inputTF.placeholder = @"支付宝账号";
-        cell.inputTF.keyboardType = UIKeyboardTypeNamePhonePad;
+        cell.inputTF.keyboardType = UIKeyboardTypeDefault;
         cell.inputTF.returnKeyType = UIReturnKeyDone;
         cell.inputTF.delegate = self;
         _weak_numCell = cell;

@@ -21,10 +21,9 @@
 #import "CardManageVC.h"
 #import "HelpCenterVC.h"
 
-#import <AVFoundation/AVFoundation.h>
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "PaymentCodePopView.h"
 
-@interface LPMineVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface LPMineVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -32,9 +31,6 @@
 @property (nonatomic, strong) NSArray *titleArr;
 
 @property (nonatomic, strong) UIButton *quitBtn;
-
-// 调用相机/相册
-//@property (nonatomic, strong) UIImagePickerController *imagePickerController;
 
 @property (nonatomic, weak) MineHeadView *weak_headView;
 
