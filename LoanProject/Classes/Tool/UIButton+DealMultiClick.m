@@ -35,9 +35,41 @@ static const char *UIControl_acceptEventTime = "UIControl_acceptEventTime";
 
 // 在load时执行hook
 + (void)load {
-    Method before   = class_getInstanceMethod(self, @selector(sendAction:to:forEvent:));
-    Method after    = class_getInstanceMethod(self, @selector(zcx_sendAction:to:forEvent:));
-    method_exchangeImplementations(before, after);
+//    Method before   = class_getInstanceMethod(self, @selector(sendAction:to:forEvent:));
+//    Method after    = class_getInstanceMethod(self, @selector(zcx_sendAction:to:forEvent:));
+//    method_exchangeImplementations(before, after);
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        //分别获取
+        SEL beforeSelector = @selector(sendAction:to:forEvent:);
+        SEL afterSelector = @selector(zcx_sendAction:to:forEvent:);
+        
+        Method beforeMethod = class_getInstanceMethod(class, beforeSelector);
+        Method afterMethod = class_getInstanceMethod(class, afterSelector);
+        //先尝试给原来的方法添加实现，如果原来的方法不存在就可以添加成功。返回为YES，否则
+        //返回为NO。
+        //UIButton 真的没有sendAction方法的实现，这是继承了UIControl的而已，UIControl才真正的实现了。
+        BOOL didAddMethod =
+        class_addMethod(class,
+                        beforeSelector,
+                        method_getImplementation(afterMethod),
+                        method_getTypeEncoding(afterMethod));
+        NSLog(@"%d",didAddMethod);
+        if (didAddMethod) {
+            // 如果之前不存在，但是添加成功了，此时添加成功的是cs_sendAction方法的实现
+            // 这里只需要方法替换
+            class_replaceMethod(class,
+                                afterSelector,
+                                method_getImplementation(beforeMethod),
+                                method_getTypeEncoding(beforeMethod));
+        } else {
+            //本来如果存在就进行交换
+            method_exchangeImplementations(afterMethod, beforeMethod);
+        }
+    });
+
 }
 
 - (void)zcx_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {

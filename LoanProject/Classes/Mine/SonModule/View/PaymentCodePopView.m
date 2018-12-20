@@ -7,7 +7,6 @@
 //
 
 #import "PaymentCodePopView.h"
-#import "UIImageView+WebCache.h"
 
 @implementation PaymentCodePopView
 

@@ -27,6 +27,9 @@
 
 //验证码
 @property (nonatomic, copy) NSString *verifyCode;
+//placeholder文字和图片
+@property (nonatomic, strong) NSArray *imgArr;
+@property (nonatomic, strong) NSArray *titleArr;
 
 @end
 
@@ -37,6 +40,9 @@
     
     self.navigationItem.title = @"手机认证";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.imgArr = @[@"telephone",@"lock",@"idCard",@"person"];
+    self.titleArr = @[@"请输入手机号码",@"请输入服务密码",@"本人身份证号码",@"姓名"];
 
     [self setBotBtn];
     
@@ -47,14 +53,14 @@
 - (void)setBotBtn{
 
     //确认按钮
-    _submitBtn = [UIButton createYellowBgBtn:@"确认"];
+    _submitBtn = [UIButton createYellowBgBtn:@"下一步"];
     _submitBtn.zcx_acceptEventInterval = 3;
     [_submitBtn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_submitBtn];
     [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(180);
+        make.top.equalTo(self.view).with.offset(150);
         make.left.equalTo(self.view).with.offset(15);
         make.height.equalTo(@kBtnHeight);
     }];
@@ -66,7 +72,7 @@
     _promptLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_promptLabel];
     [_promptLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.submitBtn.mas_bottom).with.offset(50);
+        make.top.equalTo(self.submitBtn.mas_bottom).with.offset(40);
         make.leading.equalTo(self.submitBtn.mas_leading);
         make.trailing.equalTo(self.submitBtn.mas_trailing);
     }];
@@ -82,6 +88,11 @@
         return;
     }
     
+    if (![_weak_phoneCell.inputTF.text isEqualToString:[ZcxUserDefauts objectForKey:@"phone"]]){
+        [SVProgressHUD showErrorWithStatus:@"手机号码需与登录手机号匹配！"];
+        return;
+    }
+    
     //发送通讯录给后台
     [[LCHTTPSessionManager sharedInstance] POST:[kUrlReqHead stringByAppendingPathComponent:@"/UploadDic.aspx"] parameters:self.addressBookDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"通讯录---%@",responseObject);
@@ -89,14 +100,15 @@
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"state"]];
         if ([stateCode isEqualToString:@"200"]){
             
-            [SVProgressHUD showProgress:-1 status:@""];
+//            [SVProgressHUD showProgress:-1];
+//
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//            });
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-            });
+            [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
             
-//            [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
-//            [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
             [SVProgressHUD showErrorWithStatus:@"提交失败！"];
             return;
@@ -114,7 +126,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return 4;
 }
 
 #pragma mark - tableView DataSource
@@ -153,7 +165,7 @@
 #pragma mark - 懒加载tableView
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 130) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);

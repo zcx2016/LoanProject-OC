@@ -71,6 +71,12 @@
 }
 
 - (void)submitClick{
+    
+    if (self.pic1UrlStr == nil || self.pic2UrlStr == nil || self.pic3UrlStr == nil){
+        [SVProgressHUD showErrorWithStatus:@"请先上传完图片再提交!"];
+        return;
+    }
+    
     NSString *uid = [ZcxUserDefauts objectForKey:@"uid"];
  
     NSDictionary *dict = @{@"uid" : uid, @"key": kLpKey ,@"positive" : self.pic1UrlStr, @"back":self.pic2UrlStr,@"hold":self.pic3UrlStr};

@@ -14,7 +14,7 @@
 #import <LCNetworking.h>
 
 //引入SDWebImage头文件
-//#import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 #import <Masonry.h>
 #import "SVProgressHUD.h"
 

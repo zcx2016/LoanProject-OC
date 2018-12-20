@@ -1,5 +1,5 @@
 //
-//  ProgressPoolVC.h
+//  CarrierProtocolVC.h
 //  LoanProject
 //
 //  Created by 张晨曦 on 2018/12/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProgressPoolVC : UIViewController
+@interface CarrierProtocolVC : UIViewController
 
 @end
 

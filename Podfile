@@ -7,6 +7,8 @@ pod "Masonry"
 
 pod "SVProgressHUD"
 
+pod "SDWebImage"
+
 pod "AFNetworking"
 
 pod "LCNetworking"

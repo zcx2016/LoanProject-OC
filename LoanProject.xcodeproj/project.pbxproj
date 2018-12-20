@@ -51,9 +51,12 @@
 		35D974D921AFE2DD007F139C /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D821AFE2DD007F139C /* LoginVC.m */; };
 		35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D974DC21AFE30B007F139C /* LoginVC.storyboard */; };
 		35D974E721AFF2E5007F139C /* HelpCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974E621AFF2E5007F139C /* HelpCenterVC.m */; };
+		35F0176621CB6FDD00BCEC4E /* SubmitSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F0176521CB6FDD00BCEC4E /* SubmitSuccessVC.m */; };
+		35F0176821CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F0176721CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard */; };
+		35F0176B21CB701000BCEC4E /* CarrierProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F0176A21CB701000BCEC4E /* CarrierProtocolVC.m */; };
+		35F0176F21CB7BCA00BCEC4E /* PhoneCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F0176D21CB7BCA00BCEC4E /* PhoneCheckCell.m */; };
+		35F0177021CB7BCA00BCEC4E /* PhoneCheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F0176E21CB7BCA00BCEC4E /* PhoneCheckCell.xib */; };
 		35FCAFD921CB3248006EE3FB /* UIButton+DealMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FCAFD821CB3248006EE3FB /* UIButton+DealMultiClick.m */; };
-		35FE9A2F21CABE230025774C /* ProgressPoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FE9A2E21CABE230025774C /* ProgressPoolVC.m */; };
-		35FE9A3221CABE5B0025774C /* BackToHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FE9A3121CABE5B0025774C /* BackToHomeVC.m */; };
 		35FEF01D21BF99460026196E /* CustomServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FEF01B21BF99460026196E /* CustomServerCell.m */; };
 		35FEF01E21BF99460026196E /* CustomServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FEF01C21BF99460026196E /* CustomServerCell.xib */; };
 		35FEF02021BFB51C0026196E /* CardManageVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FEF01F21BFB51C0026196E /* CardManageVC.storyboard */; };
@@ -145,12 +148,16 @@
 		35D974DC21AFE30B007F139C /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		35D974E521AFF2E5007F139C /* HelpCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterVC.h; sourceTree = "<group>"; };
 		35D974E621AFF2E5007F139C /* HelpCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterVC.m; sourceTree = "<group>"; };
+		35F0176421CB6FDD00BCEC4E /* SubmitSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitSuccessVC.h; sourceTree = "<group>"; };
+		35F0176521CB6FDD00BCEC4E /* SubmitSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitSuccessVC.m; sourceTree = "<group>"; };
+		35F0176721CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubmitSuccessVC.storyboard; sourceTree = "<group>"; };
+		35F0176921CB701000BCEC4E /* CarrierProtocolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarrierProtocolVC.h; sourceTree = "<group>"; };
+		35F0176A21CB701000BCEC4E /* CarrierProtocolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarrierProtocolVC.m; sourceTree = "<group>"; };
+		35F0176C21CB7BCA00BCEC4E /* PhoneCheckCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneCheckCell.h; sourceTree = "<group>"; };
+		35F0176D21CB7BCA00BCEC4E /* PhoneCheckCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneCheckCell.m; sourceTree = "<group>"; };
+		35F0176E21CB7BCA00BCEC4E /* PhoneCheckCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneCheckCell.xib; sourceTree = "<group>"; };
 		35FCAFD721CB3248006EE3FB /* UIButton+DealMultiClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+DealMultiClick.h"; sourceTree = "<group>"; };
 		35FCAFD821CB3248006EE3FB /* UIButton+DealMultiClick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DealMultiClick.m"; sourceTree = "<group>"; };
-		35FE9A2D21CABE230025774C /* ProgressPoolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressPoolVC.h; sourceTree = "<group>"; };
-		35FE9A2E21CABE230025774C /* ProgressPoolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressPoolVC.m; sourceTree = "<group>"; };
-		35FE9A3021CABE5B0025774C /* BackToHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackToHomeVC.h; sourceTree = "<group>"; };
-		35FE9A3121CABE5B0025774C /* BackToHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackToHomeVC.m; sourceTree = "<group>"; };
 		35FEF01A21BF99460026196E /* CustomServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomServerCell.h; sourceTree = "<group>"; };
 		35FEF01B21BF99460026196E /* CustomServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomServerCell.m; sourceTree = "<group>"; };
 		35FEF01C21BF99460026196E /* CustomServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomServerCell.xib; sourceTree = "<group>"; };
@@ -209,6 +216,9 @@
 				357E657421C10DB100245EC8 /* GetAddressBookPopView.h */,
 				357E657521C10DB100245EC8 /* GetAddressBookPopView.m */,
 				357E657721C10DE900245EC8 /* GetAddressBookPopView.xib */,
+				35F0176C21CB7BCA00BCEC4E /* PhoneCheckCell.h */,
+				35F0176D21CB7BCA00BCEC4E /* PhoneCheckCell.m */,
+				35F0176E21CB7BCA00BCEC4E /* PhoneCheckCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -454,10 +464,11 @@
 				35CFBE2021BE0C3C0065B11D /* BankCardCertificationVC.m */,
 				3564978821C6370B0075AD7F /* ProtocolVC.h */,
 				3564978921C6370B0075AD7F /* ProtocolVC.m */,
-				35FE9A2D21CABE230025774C /* ProgressPoolVC.h */,
-				35FE9A2E21CABE230025774C /* ProgressPoolVC.m */,
-				35FE9A3021CABE5B0025774C /* BackToHomeVC.h */,
-				35FE9A3121CABE5B0025774C /* BackToHomeVC.m */,
+				35F0176421CB6FDD00BCEC4E /* SubmitSuccessVC.h */,
+				35F0176521CB6FDD00BCEC4E /* SubmitSuccessVC.m */,
+				35F0176721CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard */,
+				35F0176921CB701000BCEC4E /* CarrierProtocolVC.h */,
+				35F0176A21CB701000BCEC4E /* CarrierProtocolVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -555,6 +566,8 @@
 				35FEF01E21BF99460026196E /* CustomServerCell.xib in Resources */,
 				357E657821C10DE900245EC8 /* GetAddressBookPopView.xib in Resources */,
 				359EDD8A21BEC3A900C2A8EB /* AliPayFooterView.xib in Resources */,
+				35F0176821CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard in Resources */,
+				35F0177021CB7BCA00BCEC4E /* PhoneCheckCell.xib in Resources */,
 				357E657D21C10E7900245EC8 /* RepaySuccessVC.storyboard in Resources */,
 				35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */,
 				35FEF03321BFC4700026196E /* MyLoanVC.storyboard in Resources */,
@@ -648,9 +661,10 @@
 				35FEF01D21BF99460026196E /* CustomServerCell.m in Sources */,
 				35CFBE4921BE6E560065B11D /* UIButton+Extension.m in Sources */,
 				35CFBE1E21BE0C1C0065B11D /* IDCardCertificationVC.m in Sources */,
+				35F0176F21CB7BCA00BCEC4E /* PhoneCheckCell.m in Sources */,
 				35FEF02D21BFC2D70026196E /* LoanProgressLoseVC.m in Sources */,
 				35D974A821AE978E007F139C /* main.m in Sources */,
-				35FE9A3221CABE5B0025774C /* BackToHomeVC.m in Sources */,
+				35F0176B21CB701000BCEC4E /* CarrierProtocolVC.m in Sources */,
 				35D974CB21AE9A86007F139C /* LPCertificationVC.m in Sources */,
 				3564978A21C6370B0075AD7F /* ProtocolVC.m in Sources */,
 				35FCAFD921CB3248006EE3FB /* UIButton+DealMultiClick.m in Sources */,
@@ -665,8 +679,8 @@
 				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
 				35CFBE3721BE5D060065B11D /* BankCardCell.m in Sources */,
 				359EDD9721BECD2700C2A8EB /* IDCardCell.m in Sources */,
-				35FE9A2F21CABE230025774C /* ProgressPoolVC.m in Sources */,
 				35FEF02821BFC2080026196E /* LoanProgressIngVC.m in Sources */,
+				35F0176621CB6FDD00BCEC4E /* SubmitSuccessVC.m in Sources */,
 				35CFBE1521BE0AFC0065B11D /* CardManageVC.m in Sources */,
 				35CFBE1B21BE0BE20065B11D /* AlipayCertificationVC.m in Sources */,
 				359EDD8821BEC38300C2A8EB /* AliPayFooterView.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  BackToHomeVC.h
+//  SubmitSuccessVC.h
 //  LoanProject
 //
 //  Created by 张晨曦 on 2018/12/20.
@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BackToHomeVC : UIViewController
+@interface SubmitSuccessVC : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *doneBtn;
 
 @end
 

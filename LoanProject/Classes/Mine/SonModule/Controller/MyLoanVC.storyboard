@@ -22,29 +22,29 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNO-qf-0gH">
-                                        <rect key="frame" x="20" y="170" width="335" height="79"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="66"/>
+                                        <rect key="frame" x="20" y="157" width="335" height="79"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="66"/>
                                         <color key="textColor" red="0.93333333330000001" green="0.5568627451" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUc-k9-qAn">
-                                        <rect key="frame" x="136.5" y="141" width="102" height="24"/>
+                                        <rect key="frame" x="136.5" y="131" width="102" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="借款期限：七天" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMc-dV-l7U">
-                                        <rect key="frame" x="47.5" y="254" width="280" height="40"/>
+                                        <rect key="frame" x="87.5" y="238" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FJe-Eo-xtS"/>
-                                            <constraint firstAttribute="width" constant="280" id="kqV-L8-bjw"/>
+                                            <constraint firstAttribute="width" constant="200" id="kqV-L8-bjw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的贷款已发放至您绑定的银行卡！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol4-ai-tKy">
-                                        <rect key="frame" x="41" y="100" width="293" height="21"/>
+                                        <rect key="frame" x="41" y="95" width="293" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.76470588240000004" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adds" translatesAutoresizingMaskIntoConstraints="NO" id="M9K-7G-Uzg">
-                                        <rect key="frame" x="12" y="324" width="351" height="207"/>
+                                        <rect key="frame" x="12" y="288" width="351" height="207"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="207" id="Sxh-hE-Eop"/>
                                             <constraint firstAttribute="width" constant="351" id="Wao-MS-dtj"/>
@@ -67,18 +67,18 @@
                                 <constraints>
                                     <constraint firstItem="T6E-9r-yh6" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="0UA-Lk-bKV"/>
                                     <constraint firstItem="GNO-qf-0gH" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="76A-Ud-9Wh"/>
-                                    <constraint firstItem="QMc-dV-l7U" firstAttribute="top" secondItem="GNO-qf-0gH" secondAttribute="bottom" constant="5" id="9DJ-eh-Aai"/>
+                                    <constraint firstItem="QMc-dV-l7U" firstAttribute="top" secondItem="GNO-qf-0gH" secondAttribute="bottom" constant="2" id="9DJ-eh-Aai"/>
                                     <constraint firstAttribute="bottom" secondItem="M9K-7G-Uzg" secondAttribute="bottom" constant="91" id="JB8-oZ-QYY"/>
-                                    <constraint firstItem="PUc-k9-qAn" firstAttribute="top" secondItem="ol4-ai-tKy" secondAttribute="bottom" constant="20" id="PXu-ZH-jI6"/>
-                                    <constraint firstItem="ol4-ai-tKy" firstAttribute="top" secondItem="T6E-9r-yh6" secondAttribute="bottom" constant="20" id="URd-7X-Sjn"/>
+                                    <constraint firstItem="PUc-k9-qAn" firstAttribute="top" secondItem="ol4-ai-tKy" secondAttribute="bottom" constant="15" id="PXu-ZH-jI6"/>
+                                    <constraint firstItem="ol4-ai-tKy" firstAttribute="top" secondItem="T6E-9r-yh6" secondAttribute="bottom" constant="15" id="URd-7X-Sjn"/>
                                     <constraint firstItem="ol4-ai-tKy" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="VwE-xv-45b"/>
                                     <constraint firstItem="ol4-ai-tKy" firstAttribute="leading" secondItem="aNs-VV-1fV" secondAttribute="leading" constant="41" id="X82-7n-T48"/>
                                     <constraint firstItem="PUc-k9-qAn" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="bSi-Mq-Uei"/>
                                     <constraint firstItem="M9K-7G-Uzg" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="bck-QC-tTc"/>
                                     <constraint firstItem="GNO-qf-0gH" firstAttribute="leading" secondItem="aNs-VV-1fV" secondAttribute="leading" constant="20" id="nrN-Jh-js0"/>
                                     <constraint firstItem="T6E-9r-yh6" firstAttribute="top" secondItem="aNs-VV-1fV" secondAttribute="top" constant="20" id="rGg-v6-MwQ"/>
-                                    <constraint firstItem="M9K-7G-Uzg" firstAttribute="top" secondItem="QMc-dV-l7U" secondAttribute="bottom" constant="30" id="sEc-3n-mqk"/>
-                                    <constraint firstItem="GNO-qf-0gH" firstAttribute="top" secondItem="PUc-k9-qAn" secondAttribute="bottom" constant="5" id="tf6-dg-zs7"/>
+                                    <constraint firstItem="M9K-7G-Uzg" firstAttribute="top" secondItem="QMc-dV-l7U" secondAttribute="bottom" constant="10" id="sEc-3n-mqk"/>
+                                    <constraint firstItem="GNO-qf-0gH" firstAttribute="top" secondItem="PUc-k9-qAn" secondAttribute="bottom" constant="2" id="tf6-dg-zs7"/>
                                     <constraint firstItem="QMc-dV-l7U" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="wKK-P8-36Q"/>
                                     <constraint firstAttribute="trailing" secondItem="GNO-qf-0gH" secondAttribute="trailing" constant="20" id="x6b-pr-Ks9"/>
                                 </constraints>
