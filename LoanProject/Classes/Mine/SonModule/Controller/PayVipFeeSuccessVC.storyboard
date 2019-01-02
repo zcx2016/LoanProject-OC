@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pay Vip Fee SuccessVC-->
+        <scene sceneID="7ae-Ny-eSX">
+            <objects>
+                <viewController storyboardIdentifier="PayVipFeeSuccessVC" id="2lq-c5-4HX" customClass="PayVipFeeSuccessVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Yv-tf-jCQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payVipFeeSuc" translatesAutoresizingMaskIntoConstraints="NO" id="JNQ-PA-00T">
+                                <rect key="frame" x="130" y="70" width="115" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="Goe-Cz-3ql"/>
+                                    <constraint firstAttribute="width" constant="115" id="XBf-tA-IbY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交成功！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gZ-h4-AEW">
+                                <rect key="frame" x="139" y="200" width="97" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.76470588240000004" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待客服人员确认您的付款信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0k-Gn-bTV">
+                                <rect key="frame" x="52" y="233" width="271.5" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.76470588240000004" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红鲤鱼在收到您的会员费用以后最快30分钟最晚48小时以内放款到签约银行卡" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxT-8L-iSd">
+                                <rect key="frame" x="20" y="276" width="335" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mxT-8L-iSd" firstAttribute="leading" secondItem="Rqs-YK-1Qa" secondAttribute="leading" constant="20" id="1kT-8Y-btX"/>
+                            <constraint firstItem="x0k-Gn-bTV" firstAttribute="centerX" secondItem="8Yv-tf-jCQ" secondAttribute="centerX" id="9z7-dx-NFn"/>
+                            <constraint firstItem="mxT-8L-iSd" firstAttribute="centerX" secondItem="8Yv-tf-jCQ" secondAttribute="centerX" id="F38-ko-tsa"/>
+                            <constraint firstItem="JNQ-PA-00T" firstAttribute="top" secondItem="Rqs-YK-1Qa" secondAttribute="top" constant="50" id="IQ5-IN-yYy"/>
+                            <constraint firstItem="mxT-8L-iSd" firstAttribute="top" secondItem="x0k-Gn-bTV" secondAttribute="bottom" constant="20" id="RP3-70-D8b"/>
+                            <constraint firstItem="x0k-Gn-bTV" firstAttribute="top" secondItem="4gZ-h4-AEW" secondAttribute="bottom" constant="10" id="WQU-at-zvB"/>
+                            <constraint firstItem="4gZ-h4-AEW" firstAttribute="centerX" secondItem="8Yv-tf-jCQ" secondAttribute="centerX" id="bOx-cR-D9t"/>
+                            <constraint firstItem="4gZ-h4-AEW" firstAttribute="top" secondItem="JNQ-PA-00T" secondAttribute="bottom" constant="15" id="knB-dD-bju"/>
+                            <constraint firstItem="Rqs-YK-1Qa" firstAttribute="trailing" secondItem="mxT-8L-iSd" secondAttribute="trailing" constant="20" id="sRy-eB-TLB"/>
+                            <constraint firstItem="JNQ-PA-00T" firstAttribute="centerX" secondItem="8Yv-tf-jCQ" secondAttribute="centerX" id="xX3-HI-Zhz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rqs-YK-1Qa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0HY-8a-xZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="73" y="33"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="payVipFeeSuc" width="57.5" height="57.5"/>
+    </resources>
+</document>

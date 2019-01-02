@@ -8,10 +8,14 @@
 
 #import "LoanProgressVC.h"
 #import "PaymentCodePopView.h"
+#import "PayVipFeeSuccessVC.h"
 
 @interface LoanProgressVC ()
 
+//支付按钮
 @property (nonatomic, strong) UIButton *payMoneyBtn;
+//我已完成支付按钮
+@property (nonatomic, strong) UIButton *donePayBtn;
 
 @end
 
@@ -50,12 +54,43 @@
     [self.view addSubview:_payMoneyBtn];
     [_payMoneyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(-70);
+        make.left.equalTo(self.view).with.offset(20);
+        make.height.equalTo(@kBtnHeight);
+    }];
+    
+    _donePayBtn = [UIButton createYellowBgBtn:@"我已完成支付"];
+    [_donePayBtn setBackgroundImage:[UIImage imageNamed:@"redBtn"] forState:UIControlStateNormal];
+    _donePayBtn.zcx_acceptEventInterval = 3;
+    [_donePayBtn addTarget:self action:@selector(compeletPayClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:_payMoneyBtn];
+    [_donePayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).with.offset(-20);
         make.left.equalTo(self.view).with.offset(20);
         make.height.equalTo(@kBtnHeight);
     }];
 }
 
+
+- (void)compeletPayClick{
+    //我已完成支付
+    NSString *uid = [ZcxUserDefauts objectForKey:@""];
+    NSString *key = [ZcxUserDefauts objectForKey:@""];
+    NSDictionary *dict = @{@"uid" : uid , @"key" :key};
+    [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"UpdateIsPayCost"] parameters:dict  progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"我已支付费用responseObject------%@",responseObject);
+        
+        PayVipFeeSuccessVC *vc = [[UIStoryboard storyboardWithName:@"PayVipFeeSuccessVC" bundle:nil] instantiateViewControllerWithIdentifier:@"PayVipFeeSuccessVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"我已支付费用error------%@",error);
+    }];
+    
+}
 
 - (void)returnMoneyClick{
 

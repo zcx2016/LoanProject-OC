@@ -51,6 +51,8 @@
 		35D974D921AFE2DD007F139C /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974D821AFE2DD007F139C /* LoginVC.m */; };
 		35D974DD21AFE30B007F139C /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D974DC21AFE30B007F139C /* LoginVC.storyboard */; };
 		35D974E721AFF2E5007F139C /* HelpCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D974E621AFF2E5007F139C /* HelpCenterVC.m */; };
+		35EEE57921DCFA8700E3C28D /* PayVipFeeSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35EEE57821DCFA8700E3C28D /* PayVipFeeSuccessVC.m */; };
+		35EEE57B21DCFA9400E3C28D /* PayVipFeeSuccessVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35EEE57A21DCFA9400E3C28D /* PayVipFeeSuccessVC.storyboard */; };
 		35F0176621CB6FDD00BCEC4E /* SubmitSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F0176521CB6FDD00BCEC4E /* SubmitSuccessVC.m */; };
 		35F0176821CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F0176721CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard */; };
 		35F0176B21CB701000BCEC4E /* CarrierProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F0176A21CB701000BCEC4E /* CarrierProtocolVC.m */; };
@@ -148,6 +150,9 @@
 		35D974DC21AFE30B007F139C /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		35D974E521AFF2E5007F139C /* HelpCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterVC.h; sourceTree = "<group>"; };
 		35D974E621AFF2E5007F139C /* HelpCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterVC.m; sourceTree = "<group>"; };
+		35EEE57721DCFA8700E3C28D /* PayVipFeeSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayVipFeeSuccessVC.h; sourceTree = "<group>"; };
+		35EEE57821DCFA8700E3C28D /* PayVipFeeSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayVipFeeSuccessVC.m; sourceTree = "<group>"; };
+		35EEE57A21DCFA9400E3C28D /* PayVipFeeSuccessVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PayVipFeeSuccessVC.storyboard; sourceTree = "<group>"; };
 		35F0176421CB6FDD00BCEC4E /* SubmitSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitSuccessVC.h; sourceTree = "<group>"; };
 		35F0176521CB6FDD00BCEC4E /* SubmitSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitSuccessVC.m; sourceTree = "<group>"; };
 		35F0176721CB6FEB00BCEC4E /* SubmitSuccessVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubmitSuccessVC.storyboard; sourceTree = "<group>"; };
@@ -423,6 +428,9 @@
 				35FEF02B21BFC2D70026196E /* LoanProgressLoseVC.h */,
 				35FEF02C21BFC2D70026196E /* LoanProgressLoseVC.m */,
 				35FEF02E21BFC2DF0026196E /* LoanProgressLoseVC.storyboard */,
+				35EEE57721DCFA8700E3C28D /* PayVipFeeSuccessVC.h */,
+				35EEE57821DCFA8700E3C28D /* PayVipFeeSuccessVC.m */,
+				35EEE57A21DCFA9400E3C28D /* PayVipFeeSuccessVC.storyboard */,
 				35CFBE0D21BE0AA80065B11D /* MyLoanVC.h */,
 				35CFBE0E21BE0AA80065B11D /* MyLoanVC.m */,
 				35FEF03221BFC4700026196E /* MyLoanVC.storyboard */,
@@ -572,6 +580,7 @@
 				35D974A521AE978E007F139C /* LaunchScreen.storyboard in Resources */,
 				35FEF03321BFC4700026196E /* MyLoanVC.storyboard in Resources */,
 				35FEF02F21BFC2DF0026196E /* LoanProgressLoseVC.storyboard in Resources */,
+				35EEE57B21DCFA9400E3C28D /* PayVipFeeSuccessVC.storyboard in Resources */,
 				35CFBE4021BE65380065B11D /* CarrierCell.xib in Resources */,
 				35D974C821AE9A0F007F139C /* UI.json in Resources */,
 				35D974A221AE978E007F139C /* Assets.xcassets in Resources */,
@@ -677,6 +686,7 @@
 				35CFBE2821BE485A0065B11D /* MineHeadView.m in Sources */,
 				35CFBE2121BE0C3C0065B11D /* BankCardCertificationVC.m in Sources */,
 				35D974C521AE991A007F139C /* LPMainNavC.m in Sources */,
+				35EEE57921DCFA8700E3C28D /* PayVipFeeSuccessVC.m in Sources */,
 				35CFBE3721BE5D060065B11D /* BankCardCell.m in Sources */,
 				359EDD9721BECD2700C2A8EB /* IDCardCell.m in Sources */,
 				35FEF02821BFC2080026196E /* LoanProgressIngVC.m in Sources */,

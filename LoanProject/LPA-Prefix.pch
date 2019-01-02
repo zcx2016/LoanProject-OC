@@ -26,7 +26,10 @@
 
 #define kLpKey @"8562E592C0C3D2EA2B56A5855CAD22F9"
 
-#define kUrlReqHead @"http://211.149.172.183"
+//#define kUrlReqHead @"http://211.149.172.183"
+
+
+#define kUrlReqHead @"http://43.229.152.127"
 
 #define kBtnHeight 45
 

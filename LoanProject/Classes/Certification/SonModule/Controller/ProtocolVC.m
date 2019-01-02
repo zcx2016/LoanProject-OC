@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    self.navigationItem.title = @"《容易借》贷款协议";
+    self.navigationItem.title = @"《红鲤鱼》贷款协议";
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.tv = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth - 20, kScreenHeight - 20)];

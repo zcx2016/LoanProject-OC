@@ -92,6 +92,11 @@
             return;
         }
         
+        if ([responseObject[@"isillegal"] isEqualToString:@"1"]){
+            [SVProgressHUD showErrorWithStatus:@"您已被加入黑名单，暂时禁止使用该app，请联系工作人员!"];
+            return;
+        }
+        
         //保存用户编号和手机
         [ZcxUserDefauts setObject:responseObject[@"id"] forKey:@"uid"];
         [ZcxUserDefauts setObject:self.phoneTF.text forKey:@"phone"];
