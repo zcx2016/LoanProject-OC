@@ -92,7 +92,9 @@
             return;
         }
         
-        if ([responseObject[@"isillegal"] isEqualToString:@"1"]){
+        NSString *isOk = [NSString stringWithFormat:@"%@",responseObject[@"isillegal"]];
+        
+        if ([isOk isEqualToString:@"1"]){
             [SVProgressHUD showErrorWithStatus:@"您已被加入黑名单，暂时禁止使用该app，请联系工作人员!"];
             return;
         }

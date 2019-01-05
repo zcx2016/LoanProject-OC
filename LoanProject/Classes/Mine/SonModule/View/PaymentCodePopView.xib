@@ -87,6 +87,7 @@
             <connections>
                 <outlet property="closeBtn" destination="N8f-SX-H2G" id="vW7-F4-MQS"/>
                 <outlet property="codeImgView" destination="gQ0-U5-e3N" id="Zdv-1T-e5e"/>
+                <outlet property="describeLabel" destination="xGu-Mg-fxn" id="8MC-J6-qun"/>
                 <outlet property="payMoneyLabel" destination="gLx-6E-8QU" id="M5k-ae-rZ3"/>
                 <outlet property="whiteContentView" destination="hIy-84-wEN" id="Vab-rt-WE7"/>
             </connections>

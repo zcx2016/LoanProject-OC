@@ -83,8 +83,7 @@
     
     [[LCHTTPSessionManager sharedInstance] GET:[kUrlReqHead stringByAppendingString:@"/API.asmx/SaveIDCard"] parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"上传身份证---%@",responseObject);
-//        [SVProgressHUD setMaximumDismissTimeInterval:3];
+//        NSLog(@"上传身份证---%@",responseObject);
         [SVProgressHUD showProgress:-1 status:@"身份证正在系统扫描中，等待系统认证中"];
         
         NSString *stateCode = [NSString stringWithFormat:@"%@",responseObject[@"isSave"]];

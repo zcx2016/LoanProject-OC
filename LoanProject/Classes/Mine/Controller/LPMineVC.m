@@ -21,7 +21,7 @@
 #import "CardManageVC.h"
 #import "HelpCenterVC.h"
 
-#import "PaymentCodePopView.h"
+#import "PayVipFeeSuccessVC.h"
 
 @interface LPMineVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -265,8 +265,10 @@
                     }
                     [self.navigationController pushViewController:vc animated:YES];
                     
-                }else{ //已经支付服务费
-                    [SVProgressHUD showInfoWithStatus:@"当前没有贷款需要审核!"];
+                }else{ //已经支付服务费  self.isPayCost = 1  或 2
+//                    [SVProgressHUD showInfoWithStatus:@"当前没有贷款需要审核!"];
+                    PayVipFeeSuccessVC *vc = [[UIStoryboard storyboardWithName:@"PayVipFeeSuccessVC" bundle:nil] instantiateViewControllerWithIdentifier:@"PayVipFeeSuccessVC"];
+                    [self.navigationController pushViewController:vc animated:YES];
                     return;
                 }
                 

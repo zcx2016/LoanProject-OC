@@ -211,7 +211,6 @@
 
 - (void)clickProtocol{
     CarrierProtocolVC * vc = [CarrierProtocolVC new];
-//    ProtocolVC *vc = [ProtocolVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

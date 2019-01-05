@@ -109,17 +109,18 @@
 #pragma mark - tableView DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CarrierCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CarrierCell" forIndexPath:indexPath];
+    cell.inputTF.keyboardType = UIKeyboardTypeDefault;
+    cell.inputTF.returnKeyType = UIReturnKeyDone;
+    cell.inputTF.delegate = self;
+    
     if (indexPath.row == 0){
         cell.inputTF.placeholder = @"支付宝账号";
-        cell.inputTF.keyboardType = UIKeyboardTypeDefault;
-        cell.inputTF.returnKeyType = UIReturnKeyDone;
-        cell.inputTF.delegate = self;
         _weak_numCell = cell;
     }
     if (indexPath.row == 1){
         cell.inputTF.placeholder = @"支付宝密码";
-        cell.inputTF.inputAccessoryView = self.customAccessoryView;
-        cell.inputTF.keyboardType = UIKeyboardTypeNumberPad;
+//        cell.inputTF.inputAccessoryView = self.customAccessoryView;
+//        cell.inputTF.keyboardType = UIKeyboardTypeNumberPad;
         _weak_pwdCell = cell;
     }
     

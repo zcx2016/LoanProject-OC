@@ -79,8 +79,8 @@
                                     <constraint firstAttribute="height" constant="1" id="6U8-Ad-A6k"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深圳市鼎盛世网络科技有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnI-Me-Rd3">
-                                <rect key="frame" x="66" y="626" width="243" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="西安前风科技电子有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnI-Me-Rd3">
+                                <rect key="frame" x="83.5" y="626" width="208" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="85.5" height="122"/>
+        <image name="logo" width="127" height="175.5"/>
         <image name="navbg" width="347" height="42.5"/>
     </resources>
 </document>

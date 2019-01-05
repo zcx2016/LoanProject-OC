@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的贷款已发放至您绑定的银行卡！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol4-ai-tKy">
-                                        <rect key="frame" x="41" y="95" width="293" height="21"/>
+                                        <rect key="frame" x="38" y="95" width="299" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.76470588240000004" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -72,7 +72,7 @@
                                     <constraint firstItem="PUc-k9-qAn" firstAttribute="top" secondItem="ol4-ai-tKy" secondAttribute="bottom" constant="15" id="PXu-ZH-jI6"/>
                                     <constraint firstItem="ol4-ai-tKy" firstAttribute="top" secondItem="T6E-9r-yh6" secondAttribute="bottom" constant="15" id="URd-7X-Sjn"/>
                                     <constraint firstItem="ol4-ai-tKy" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="VwE-xv-45b"/>
-                                    <constraint firstItem="ol4-ai-tKy" firstAttribute="leading" secondItem="aNs-VV-1fV" secondAttribute="leading" constant="41" id="X82-7n-T48"/>
+                                    <constraint firstItem="ol4-ai-tKy" firstAttribute="leading" secondItem="aNs-VV-1fV" secondAttribute="leading" constant="38" id="X82-7n-T48"/>
                                     <constraint firstItem="PUc-k9-qAn" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="bSi-Mq-Uei"/>
                                     <constraint firstItem="M9K-7G-Uzg" firstAttribute="centerX" secondItem="aNs-VV-1fV" secondAttribute="centerX" id="bck-QC-tTc"/>
                                     <constraint firstItem="GNO-qf-0gH" firstAttribute="leading" secondItem="aNs-VV-1fV" secondAttribute="leading" constant="20" id="nrN-Jh-js0"/>
@@ -104,7 +104,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="adds" width="350" height="206"/>
-        <image name="pass" width="43" height="43"/>
+        <image name="adds" width="525.5" height="309.5"/>
+        <image name="pass" width="43.5" height="43.5"/>
     </resources>
 </document>

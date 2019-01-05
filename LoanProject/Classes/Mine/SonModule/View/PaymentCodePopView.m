@@ -26,7 +26,7 @@
     _closeBtn.zcx_acceptEventInterval = 3;
     [_closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
     
-    self.describeLabel.text = @"【方式1】可添加客服微信在线转账 \n【方式2】支付宝转账务必备注借款人姓名和注册手\n                 机号码";
+//    self.describeLabel.text = @"【方式1】可添加客服微信在线转账 \n【方式2】支付宝转账务必备注借款人姓名和注册手\n                 机号码";
 }
 
 - (void)layoutSubviews{
@@ -37,8 +37,10 @@
         
         if ([self.fromVc isEqualToString:@"贷款进度"]){
             self.payMoneyLabel.text = [[@"会员服务费:" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
+            self.describeLabel.text = @"请添加红鲤鱼客服微信缴纳会员费";
         }else{
             self.payMoneyLabel.text = [[@"需还款:" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
+            self.describeLabel.text = @"请添加红鲤鱼客服微信缴纳所有欠款";
         }
 
     }
