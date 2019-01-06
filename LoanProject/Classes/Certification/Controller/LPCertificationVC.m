@@ -185,7 +185,7 @@
     [_protocolLabel addGestureRecognizer:ges];
     
     //富文本
-    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"同意《红鲤鱼贷款协议》"];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"同意《前风科技贷款协议》"];
     [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, 2)];
     [attributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(2, attributedStr.length - 2)];
     _protocolLabel .attributedText = attributedStr;

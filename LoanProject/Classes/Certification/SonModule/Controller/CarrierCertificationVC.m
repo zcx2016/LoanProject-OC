@@ -342,7 +342,7 @@
     
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"请授权通讯录权限"
-                                          message:@"请在iPhone的\"设置-隐私-通讯录\"选项中,允许红鲤鱼app访问你的通讯录"
+                                          message:@"请在iPhone的\"设置-隐私-通讯录\"选项中,允许前风科技app访问你的通讯录"
                                           preferredStyle: UIAlertControllerStyleAlert];
     
     UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];

@@ -37,10 +37,10 @@
         
         if ([self.fromVc isEqualToString:@"贷款进度"]){
             self.payMoneyLabel.text = [[@"会员服务费:" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
-            self.describeLabel.text = @"请添加红鲤鱼客服微信缴纳会员费";
+            self.describeLabel.text = @"请添加前风科技客服微信缴纳会员费";
         }else{
             self.payMoneyLabel.text = [[@"需还款:" stringByAppendingString:self.money]  stringByAppendingString:@"元"];
-            self.describeLabel.text = @"请添加红鲤鱼客服微信缴纳所有欠款";
+            self.describeLabel.text = @"请添加前风科技客服微信缴纳所有欠款";
         }
 
     }
